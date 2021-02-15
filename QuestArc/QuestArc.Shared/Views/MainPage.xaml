@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="QuestArc.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QuestArc.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.TopAppBar>
+        <CommandBar x:Name="topBar" HorizontalContentAlignment="Center">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Content="Month" Tag="Month" Label="Month" Click="OnTopAppBarButtonTapped" />
+                <AppBarButton Content="Week" Tag="Week" Label="Week" Click="OnTopAppBarButtonTapped" />
+                <AppBarButton Content="Day" Tag="Day" Label="Day" Click="OnTopAppBarButtonTapped" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.TopAppBar>
+    
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Content="Home" Tag="Home" Label="Home" Click="OnAppBarButtonTapped" />
+                <AppBarButton Content="Character" Tag="Character" Label="Character" Click="OnAppBarButtonTapped" />
+                <AppBarButton Content="Inventory" Tag="Inventory" Label="Inventory" Click="OnAppBarButtonTapped" />
+                <AppBarButton Content="Quest Log" Tag="Quest Log" Label="Quest Log" Click="OnAppBarButtonTapped" />
+                <AppBarButton Content="Map" Tag="Map" Label="Map" Click="OnAppBarButtonTapped" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Frame x:Name="contentView" />
+    </StackPanel>
+</Page>

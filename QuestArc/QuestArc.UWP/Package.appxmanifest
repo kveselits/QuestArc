@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="a5d7133c-3162-4e5c-9b4c-de0521ae0c90"
-    Publisher="CN=e27f38d5-b51f-4ca5-ba65-9c677532b466"
+    Name="fdda259a-517f-49c2-a860-f20471b6410b"
+    Publisher="CN=kjuli"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="a2e6eccd-c0e8-484e-a505-b0e95b860676" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>QuestArc.UWP</DisplayName>
-    <PublisherDisplayName>e27f38d5-b51f-4ca5-ba65-9c677532b466</PublisherDisplayName>
+    <DisplayName>QuestArc</DisplayName>
+    <PublisherDisplayName>QuestArc</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -30,20 +30,14 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="QuestArc.UWP.App">
+      EntryPoint="QuestArc.App">
       <uap:VisualElements
-        DisplayName="QuestArc.UWP"
+        DisplayName="QuestArc"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="QuestArc.UWP"
+        Description="QuestArc"
         BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
-          <uap:ShowNameOnTiles>
-            <uap:ShowOn Tile="square150x150Logo" />
-            <uap:ShowOn Tile="wide310x150Logo" />
-            <uap:ShowOn Tile="square310x310Logo" />
-          </uap:ShowNameOnTiles>
-        </uap:DefaultTile>
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
     </Application>

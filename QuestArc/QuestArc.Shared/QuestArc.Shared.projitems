@@ -83,4 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogoSmall.png" />
+  </ItemGroup>
 </Project>

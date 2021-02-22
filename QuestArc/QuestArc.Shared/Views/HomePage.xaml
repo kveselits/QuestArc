@@ -5,12 +5,24 @@
     xmlns:local="using:QuestArc.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d" >
+    <Page.Resources>
+        <Style x:Key="DayColorBlock" TargetType="CalendarViewDayItem" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CalendarViewDayItem" >
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="0, 20, 0, 0">
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
-        <TextBlock Text="Home Month Page" HorizontalAlignment="Center" FontSize="30"/>
-
-    </StackPanel>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <CalendarView x:Name="calendarView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            CalendarViewDayItemChanging="CalendarView_OnCalendarViewDayItemChanging"
+            CalendarViewDayItemStyle="{StaticResource DayColorBlock}">
+        </CalendarView>
+    </Grid>
 </Page>
+

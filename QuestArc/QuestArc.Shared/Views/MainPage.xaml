@@ -5,31 +5,36 @@
     xmlns:local="using:QuestArc.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
+    xmlns:not_win="http://platform.uno/xamarin"
+    mc:Ignorable="d not_win"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Page.TopAppBar>
-        <CommandBar x:Name="topBar" HorizontalContentAlignment="Center">
-            <CommandBar.PrimaryCommands>
-                <AppBarButton Content="Month" Tag="Month" Label="Month" Click="OnTopAppBarButtonTapped" />
+    <Page.Resources>
+        <Style TargetType="CommandBar" not_win:BasedOn="{StaticResource NativeDefaultCommandBar}" />
+    </Page.Resources>
+        <Grid>
+        
+        <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+            
+            <CommandBar Grid.Row="0" x:Name="topBar" HorizontalContentAlignment="Center" FontSize="30" OverflowButtonVisibility="Collapsed">
+                
+                <AppBarButton Content="Month" Tag="Month" FontSize="30" Label="Month" Click="OnTopAppBarButtonTapped"/>
                 <AppBarButton Content="Week" Tag="Week" Label="Week" Click="OnTopAppBarButtonTapped" />
-                <AppBarButton Content="Day" Tag="Day" Label="Day" Click="OnTopAppBarButtonTapped" />
-            </CommandBar.PrimaryCommands>
-        </CommandBar>
-    </Page.TopAppBar>
-    
-    <Page.BottomAppBar>
-        <CommandBar>
-            <CommandBar.PrimaryCommands>
+                    <AppBarButton Content="Day" Tag="Day" Label="Day" Click="OnTopAppBarButtonTapped" />
+                </CommandBar>
+                
+            <Frame x:Name="contentView" />
+                
+        </StackPanel>
+            <CommandBar Grid.Row="1" Padding="3" HorizontalAlignment="Center" FontSize="15" OverflowButtonVisibility="Collapsed">
                 <AppBarButton Content="Home" Tag="Home" Label="Home" Click="OnAppBarButtonTapped" />
                 <AppBarButton Content="Character" Tag="Character" Label="Character" Click="OnAppBarButtonTapped" />
                 <AppBarButton Content="Inventory" Tag="Inventory" Label="Inventory" Click="OnAppBarButtonTapped" />
                 <AppBarButton Content="Quest Log" Tag="Quest Log" Label="Quest Log" Click="OnAppBarButtonTapped" />
                 <AppBarButton Content="Map" Tag="Map" Label="Map" Click="OnAppBarButtonTapped" />
-            </CommandBar.PrimaryCommands>
-        </CommandBar>
-    </Page.BottomAppBar>
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Frame x:Name="contentView" />
-    </StackPanel>
+            </CommandBar>
+        </Grid>
 </Page>

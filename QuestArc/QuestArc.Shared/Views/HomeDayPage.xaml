@@ -8,7 +8,24 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Padding="0,20,0,0">
-        <TextBlock Text="Home Day Page" HorizontalAlignment="Center" FontSize="30"/>
-    </Grid>
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Center"  Text="Quests - Day View" Margin="0,0,0,20" FontSize="24" FontWeight="Normal"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Row="1" x:Name="Quests" Grid.ColumnSpan="2">
+                
+            </ListView>
+            <ListView Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
+                <TextBox Text="Quest Details">
+                </TextBox>
+            </ListView>
+        </Grid>
+    </StackPanel>
 </Page>

@@ -14,22 +14,22 @@
         <Grid>
         
         <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+
+        </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-            
+
             <CommandBar Grid.Row="0" x:Name="topBar" HorizontalContentAlignment="Center" FontSize="30" OverflowButtonVisibility="Collapsed">
-                
+
                 <AppBarButton Content="Month" Tag="Month" FontSize="30" Label="Month" Click="OnTopAppBarButtonTapped"/>
                 <AppBarButton Content="Week" Tag="Week" Label="Week" Click="OnTopAppBarButtonTapped" />
-                    <AppBarButton Content="Day" Tag="Day" Label="Day" Click="OnTopAppBarButtonTapped" />
-                </CommandBar>
-                
-            <Frame x:Name="contentView" />
-                
+                <AppBarButton Content="Day" Tag="Day" Label="Day" Click="OnTopAppBarButtonTapped" />
+            </CommandBar>
         </StackPanel>
-            <CommandBar Grid.Row="1" Padding="3" HorizontalAlignment="Center" FontSize="15" OverflowButtonVisibility="Collapsed">
+        <Frame x:Name="contentView" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <CommandBar Grid.Row="2" Padding="3" HorizontalAlignment="Center" FontSize="15" OverflowButtonVisibility="Collapsed">
                 <AppBarButton Content="Home" Tag="Home" Label="Home" Click="OnAppBarButtonTapped" />
                 <AppBarButton Content="Character" Tag="Character" Label="Character" Click="OnAppBarButtonTapped" />
                 <AppBarButton Content="Inventory" Tag="Inventory" Label="Inventory" Click="OnAppBarButtonTapped" />

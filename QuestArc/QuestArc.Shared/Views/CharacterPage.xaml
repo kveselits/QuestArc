@@ -8,25 +8,59 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Width="1500" Height="1000" Padding="0,20,0,0" Background="Azure">
-        <TextBlock Text="Character Page" HorizontalAlignment="Center" FontSize="30"/>
-        
-        <!--#region LeftPane -->
-        <Grid Margin="50,50,910,50" Background="Khaki" CornerRadius="10">
+    <Viewbox MaxHeight="900" MaxWidth="1800">
+        <Grid>
+            <TextBlock Text="Character Page" HorizontalAlignment="Center" FontSize="30"/>
+            <Image Source="../Assets/tavernBackground.jpg" Stretch="Fill" Opacity="0.5"></Image>
 
-            <Border BorderBrush="DarkBlue" BorderThickness="4" CornerRadius="10"/>
-            <StackPanel Height="400" Width="450" Margin="0,0,0,400">
-                <Image  Source="../Assets/UnoLogoSmall.png" Height="400" Width="450"></Image>   
-            </StackPanel>
+            <!--#region LeftPane -->
+            <Grid Margin="50,50,910,50" Background="LightYellow" CornerRadius="10" BorderBrush="DarkBlue" BorderThickness="4">
+
+                <StackPanel Margin="45,25,45,450" BorderBrush="DarkBlue" BorderThickness="2">
+                    <TextBlock Text="Name: Dwarf" TextWrapping="Wrap" Width="430"/>
+                    <Image  Source="../Assets/dwarf.jpg" Height="320" Width="350"/>
+                    <TextBlock Text="Level: 1" Width="430"></TextBlock>
+                    <ProgressBar Height="10" Width="430"></ProgressBar>
+                </StackPanel>
+
+                <StackPanel Margin="45,440,45,40" Background="WhiteSmoke" BorderBrush="DarkBlue" BorderThickness="2" Spacing="5">
+                    <TextBlock Text="STR: " Width="90" FontSize="40" Margin="-300,10,0,0"></TextBlock>
+                    <Button Content="+" Margin="160,-55,0,0"/>
+                    <TextBlock Text="CON: " Width="90" FontSize="40" Margin="-300,0,0,0"></TextBlock>
+                    <Button Content="+" Margin="160,-55,0,0"/>
+                    <TextBlock Text="DEX: " Width="90" FontSize="40" Margin="-300,0,0,0"></TextBlock>
+                    <Button Content="+" Margin="160,-55,0,0"/>
+                    <TextBlock Text="WIS: " Width="90" FontSize="40" Margin="-300,0,0,0"></TextBlock>
+                    <Button Content="+" Margin="160,-55,0,0"/>
+                    <TextBlock Text="CHS: " Width="90" FontSize="40" Margin="-300,0,0,0"></TextBlock>
+                    <Button Content="+" Margin="160,-55,0,0"/>
+                    <TextBlock Text="INT: " Width="90" FontSize="40" Margin="-300,0,0,0"></TextBlock>
+                    <Button Content="+" Margin="160,-55,0,0"/>
+                </StackPanel>
+
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region RightPane -->
+            <Grid Margin="625,50,35,500" Background="DimGray" CornerRadius="10" BorderBrush="DarkBlue" BorderThickness="4">
+                <TextBox HorizontalAlignment="Center" CornerRadius="10" Text="Dwarf took 12 damage from Goblin" TextWrapping="Wrap" VerticalAlignment="Top" Height="350" Width="820" Margin="0,10,0,0"/>
+                <TextBox HorizontalAlignment="Center" CornerRadius="10" Margin="0,365,0,0" Text="Command..." TextWrapping="Wrap" VerticalAlignment="Top" Height="55" Width="820"/>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Ailments&Blessings-->
+            <Grid Margin="625,500,450,50" Background="IndianRed" CornerRadius="10" BorderBrush="DarkBlue" BorderThickness="4">
+                <TextBlock Text="Ailments" TextWrapping="Wrap" Width="150" FontSize="32" Margin="130,15,100,360"/>
+                <ListView Margin="15,65,15,10"/>
+            </Grid>
+
+            <Grid Margin="1070,500,35,50" Background="PaleGreen" CornerRadius="10" BorderBrush="DarkBlue" BorderThickness="4">
+                <TextBlock Text="Blessings" TextWrapping="Wrap" FontSize="32" Margin="130,15,100,360"/>
+                <ListView Margin="15,65,15,10"/>
+            </Grid>
+
+            <!--#endregion-->
 
         </Grid>
-        <!--#endregion-->
-
-        <!--#region RightPane -->
-        <Grid Margin="610,50,50,50" Background="LightBlue" CornerRadius="10">
-            <Border BorderBrush="DarkBlue" BorderThickness="4" CornerRadius="10" Opacity="1.0"/>
-        </Grid>
-        <!--#endregion-->
-
-    </Grid>
+    </Viewbox>
 </Page>

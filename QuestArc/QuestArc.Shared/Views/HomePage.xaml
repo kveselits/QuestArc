@@ -6,23 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" >
+
     <Page.Resources>
-        <Style x:Key="DayColorBlock" TargetType="CalendarViewDayItem" >
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="CalendarViewDayItem" >
-
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <Flyout x:Name="flyout">
+            <TextBlock Text="xxxxxxxxxx"></TextBlock>
+        </Flyout>
     </Page.Resources>
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <CalendarView x:Name="calendarView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-            CalendarViewDayItemChanging="CalendarView_OnCalendarViewDayItemChanging"
-            CalendarViewDayItemStyle="{StaticResource DayColorBlock}">
-        </CalendarView>
-    </Grid>
+    
+    <CalendarView x:Name="calendarView" 
+            CalendarViewDayItemChanging="CalendarView_OnCalendarViewDayItemChanging" 
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    </CalendarView>
 </Page>
-

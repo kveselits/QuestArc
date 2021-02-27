@@ -60,7 +60,7 @@
                     <RowDefinition Height="830*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Margin="10,10,10,10" BorderBrush="Black" BorderThickness="2">
-                    <TextBlock Text="Thursay" HorizontalAlignment="Center" FontSize="15"/>
+                    <TextBlock Text="Thursday" HorizontalAlignment="Center" FontSize="15"/>
                 </StackPanel>
                 <StackPanel Margin="10,50,10,50" BorderBrush="Black" BorderThickness="2" Grid.RowSpan="2">
                     <ListBox Height="775"/>

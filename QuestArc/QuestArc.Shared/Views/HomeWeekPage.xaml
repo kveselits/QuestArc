@@ -8,7 +8,108 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Padding="0,20,0,0">
-        <TextBlock Text="Home Week Page" HorizontalAlignment="Center" FontSize="30"/>
-    </Grid>
+    <Viewbox MaxHeight="900" MaxWidth="1800">
+        <Grid>
+            <TextBlock Text="Home Week Page" HorizontalAlignment="Center" FontSize="30" Grid.RowSpan="2"/>
+
+            <Grid Margin="25,55,1225,55" Background="White" BorderBrush="Black" BorderThickness="3" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55*"/>
+                    <RowDefinition Height="830*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="10,10,10,10" BorderBrush="Black" BorderThickness="2">
+                    <TextBlock Text="Monday" HorizontalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+                <StackPanel Margin="10,50,10,50" BorderBrush="Black" BorderThickness="2" Grid.RowSpan="2">
+                    <ListBox Height="775"/>
+                </StackPanel>
+                <Button Content="Add a quest" Margin="0,785,0,0" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center" Height="35" Grid.Row="1"/>
+            </Grid>
+
+            <Grid Margin="225,55,1025,55" Background="White" BorderBrush="Black" BorderThickness="3" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55*"/>
+                    <RowDefinition Height="830*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="10,10,10,10" BorderBrush="Black" BorderThickness="2">
+                    <TextBlock Text="Tuesday" HorizontalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+                <StackPanel Margin="10,50,10,50" BorderBrush="Black" BorderThickness="2" Grid.RowSpan="2">
+                    <ListBox Height="775"/>
+                </StackPanel>
+                <Button Content="Add a quest" Margin="0,785,0,0" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center" Height="35" Grid.Row="1"/>
+            </Grid>
+
+            <Grid Margin="425,55,825,55" Background="White" BorderBrush="Black" BorderThickness="3" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55*"/>
+                    <RowDefinition Height="830*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="10,10,10,10" BorderBrush="Black" BorderThickness="2">
+                    <TextBlock Text="Wednesday" HorizontalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+                <StackPanel Margin="10,50,10,50" BorderBrush="Black" BorderThickness="2" Grid.RowSpan="2">
+                    <ListBox Height="775"/>
+                </StackPanel>
+                <Button Content="Add a quest" Margin="0,785,0,0" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center" Height="35" Grid.Row="1"/>
+            </Grid>
+
+            <Grid Margin="625,55,625,55" Background="White" BorderBrush="Black" BorderThickness="3" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55*"/>
+                    <RowDefinition Height="830*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="10,10,10,10" BorderBrush="Black" BorderThickness="2">
+                    <TextBlock Text="Thursay" HorizontalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+                <StackPanel Margin="10,50,10,50" BorderBrush="Black" BorderThickness="2" Grid.RowSpan="2">
+                    <ListBox Height="775"/>
+                </StackPanel>
+                <Button Content="Add a quest" Margin="0,785,0,0" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center" Height="35" Grid.Row="1"/>
+            </Grid>
+
+            <Grid Margin="825,55,425,55" Background="White" BorderBrush="Black" BorderThickness="3" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55*"/>
+                    <RowDefinition Height="830*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="10,10,10,10" BorderBrush="Black" BorderThickness="2">
+                    <TextBlock Text="Friday" HorizontalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+                <StackPanel Margin="10,50,10,50" BorderBrush="Black" BorderThickness="2" Grid.RowSpan="2">
+                    <ListBox Height="775"/>
+                </StackPanel>
+                <Button Content="Add a quest" Margin="0,785,0,0" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center" Height="35" Grid.Row="1"/>
+            </Grid>
+
+            <Grid Margin="1025,55,225,55" Background="White" BorderBrush="Black" BorderThickness="3" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55*"/>
+                    <RowDefinition Height="830*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="10,10,10,10" BorderBrush="Black" BorderThickness="2">
+                    <TextBlock Text="Saturday" HorizontalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+                <StackPanel Margin="10,50,10,50" BorderBrush="Black" BorderThickness="2" Grid.RowSpan="2">
+                    <ListBox Height="775"/>
+                </StackPanel>
+                <Button Content="Add a quest" Margin="0,785,0,0" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center" Height="35" Grid.Row="1"/>
+            </Grid>
+
+            <Grid Margin="1325,55,25,55" Background="White" BorderBrush="Black" BorderThickness="3" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55*"/>
+                    <RowDefinition Height="830*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="10,10,10,10" BorderBrush="Black" BorderThickness="2">
+                    <TextBlock Text="Sunday" HorizontalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+                <StackPanel Margin="10,50,10,50" BorderBrush="Black" BorderThickness="2" Grid.RowSpan="2">
+                    <ListBox Height="775"/>
+                </StackPanel>
+                <Button Content="Add a quest" Margin="0,785,0,0" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center" Height="35" Grid.Row="1"/>
+            </Grid>
+
+        </Grid>
+    </Viewbox>
 </Page>

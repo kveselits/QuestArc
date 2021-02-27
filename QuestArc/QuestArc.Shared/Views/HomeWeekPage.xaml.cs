@@ -26,5 +26,10 @@ namespace QuestArc.Views
         {
             this.InitializeComponent();
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

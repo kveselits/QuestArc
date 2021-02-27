@@ -5,12 +5,16 @@
     xmlns:local="using:QuestArc.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d" >
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="0, 20, 0, 0">
-
-        <TextBlock Text="Home Month Page" HorizontalAlignment="Center" FontSize="30"/>
-
-    </StackPanel>
+    <Page.Resources>
+        <Flyout x:Name="flyout">
+            <TextBlock Text="xxxxxxxxxx"></TextBlock>
+        </Flyout>
+    </Page.Resources>
+    
+    <CalendarView x:Name="calendarView" 
+            CalendarViewDayItemChanging="CalendarView_OnCalendarViewDayItemChanging" 
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    </CalendarView>
 </Page>

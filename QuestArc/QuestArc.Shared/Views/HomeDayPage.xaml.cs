@@ -25,7 +25,8 @@ namespace QuestArc.Views
         public HomeDayPage()
         {
             this.InitializeComponent();
+            Quests.ItemsSource = new string[] { "Quest 1", "Quest 2", "Quest 3", "Quest 4", "Quest 5", "Quest 6" };
         }
-      
+
     }
 }

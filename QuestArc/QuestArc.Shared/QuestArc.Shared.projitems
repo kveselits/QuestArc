@@ -84,6 +84,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\dwarf.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\tavernBackground.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogoSmall.png" />
   </ItemGroup>
 </Project>

@@ -55,7 +55,7 @@ namespace QuestArc.Views
 
         private void UpdateList(SQLiteConnection db)
         {
-            Quests.ItemsSource = db.Table<Quest>().Select(s => s.Title).ToList();
+            //Quests.ItemsSource = db.Table<Quest>().Select(s => s.Title).ToList();
         }
 
         public static void AddStock(SQLiteConnection db, string title)

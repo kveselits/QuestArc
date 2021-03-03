@@ -27,7 +27,6 @@ namespace QuestArc.Models
 		public DateTime EndTime { get; set; }
 		public String Description { get; set; }
 		public Difficulty Difficulty { get; set; }
-
 		public Boolean AllDay { get; set; }
 	}
 }

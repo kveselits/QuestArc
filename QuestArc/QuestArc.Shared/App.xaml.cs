@@ -90,6 +90,8 @@ namespace QuestArc
                 }
                 // Ensure the current window is active
                 window.Activate();
+
+                ViewModels.ViewModelLocator.QuestsViewModel.Launch();
             }
         }
 

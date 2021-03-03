@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:not_win="http://platform.uno/xamarin"
+    DataContext="{Binding Source={StaticResource VML}, Path=QuestsViewModel}"
     mc:Ignorable="d not_win"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>

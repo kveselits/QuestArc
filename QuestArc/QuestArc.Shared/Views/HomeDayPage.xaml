@@ -5,6 +5,7 @@
     xmlns:local="using:QuestArc.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding Source={StaticResource VML}, Path=QuestsViewModel}"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -19,9 +20,20 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ListView Grid.Row="1" x:Name="Quests" Grid.ColumnSpan="2">
-                
-            </ListView>
+            <ListBox Grid.Row="1" ItemsSource="{Binding Quests}" Grid.ColumnSpan="2">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Id}"/>
+                            <TextBlock Text="{Binding Description}"/>
+                            <TextBlock Text="{Binding Difficulty}"/>
+                            <TextBlock Text="{Binding StartTime}"/>
+                            <TextBlock Text="{Binding EndTime}"/>
+                            <TextBlock Text="{Binding AllDay}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
             <ListView Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
                 <TextBox Text="Quest Details">
                 </TextBox>

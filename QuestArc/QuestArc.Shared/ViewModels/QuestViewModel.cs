@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using QuestArc.Models;
+using ViewModels;
 
 namespace QuestArc.ViewModels
 {

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using QuestArc.Annotations;
 
-namespace QuestArc.Models
+namespace ViewModels
 {
     public class NotificationBase : INotifyPropertyChanged
     {

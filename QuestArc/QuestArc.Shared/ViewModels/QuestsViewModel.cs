@@ -5,12 +5,14 @@ using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using QuestArc.Models;
+using ViewModels;
 
 namespace QuestArc.ViewModels
 {
     public class QuestsViewModel : NotificationBase
     {
         private ObservableCollection<QuestViewModel> _quests;
+        private ObservableCollection<QuestViewModel> _selectedQuest;
 
         public QuestsViewModel()
         {
@@ -26,6 +28,18 @@ namespace QuestArc.ViewModels
                 if (_quests == value)
                     return;
                 _quests = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<QuestViewModel> SelectedQuest
+        {
+            get => _selectedQuest;
+            set
+            {
+                if (_selectedQuest == value)
+                    return;
+                _selectedQuest = value;
                 OnPropertyChanged();
             }
         }

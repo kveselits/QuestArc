@@ -19,7 +19,13 @@ namespace QuestArc.Models
 	public enum Difficulty { Easy, Normal, Hard }
 	public class Quest
 	{
-		[PrimaryKey, AutoIncrement]
+		public Quest()
+        {
+            CreatedAt = DateTime.Now;
+        }
+
+
+        [PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
 		[Indexed]
 		public String Title { get; set; }
@@ -28,5 +34,6 @@ namespace QuestArc.Models
 		public String Description { get; set; }
 		public Difficulty Difficulty { get; set; }
 		public Boolean AllDay { get; set; }
+        public DateTime CreatedAt { get; set; }
 	}
 }

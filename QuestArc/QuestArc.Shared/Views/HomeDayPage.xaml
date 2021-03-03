@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ListBox Grid.Row="1" ItemsSource="{Binding Quests}" Grid.ColumnSpan="2">
+            <ListBox Grid.Row="1" ItemsSource="{Binding Quests}" SelectedItem="{Binding SelectedQuest, Mode=TwoWay}" Grid.ColumnSpan="2">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>

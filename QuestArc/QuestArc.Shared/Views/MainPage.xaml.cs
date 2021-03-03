@@ -58,7 +58,7 @@ namespace QuestArc.Views
             //Quests.ItemsSource = db.Table<Quest>().Select(s => s.Title).ToList();
         }
 
-        public static void AddStock(SQLiteConnection db, string title)
+        public static void AddQuest(SQLiteConnection db, string title)
         {
             var quest = new Quest()
             {

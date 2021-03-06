@@ -19,12 +19,10 @@ using Windows.UI;
 
 namespace QuestArc.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class HomePage : Page
     {
 
+        Flyout flyout;
         public HomePage()
         {
             InitializeComponent();
@@ -42,6 +40,17 @@ namespace QuestArc.Views
                 }
             }
             return null;
+        }
+
+        private async void OnFlyOutButtonClickAsync(object sender, RoutedEventArgs e)
+        {
+            ContentDialog1 dialog = new ContentDialog1();
+            await dialog.ShowAsync();
+        }
+
+        private void OnFlyoutCloseButtonClick(object sender, RoutedEventArgs e)
+        {
+            flyout.Hide();
         }
 
         private void CalendarView_OnCalendarViewDayItemChanging(
@@ -62,7 +71,7 @@ namespace QuestArc.Views
         private void Item_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             FrameworkElement element = sender as FrameworkElement;
-            Flyout flyout = new Flyout();
+            flyout = (Flyout)this.Resources["flyout"];
             flyout.ShowAt(element);
         }
     }

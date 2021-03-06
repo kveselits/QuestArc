@@ -17,10 +17,10 @@
         <TimePicker x:Name="startTimePicker" Header="Start Time"/>
         <TimePicker x:Name="endTimePicker" Header="End Time"/>
 
-        <TextBlock x:Name="errorTextBlock" IsColorFontEnabled="True" SelectionHighlightColor="Red"/>
+        <TextBlock x:Name="errorTextBlock" Foreground="Red"/>
 
         <!-- Content body -->
-        <TextBlock Name="body" TextWrapping="Wrap" SelectionHighlightColor="Red">
+        <TextBlock Name="body">
             <TextBlock.Text>
                 Create a new Quest
             </TextBlock.Text>

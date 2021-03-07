@@ -1,0 +1,29 @@
+﻿<ContentDialog
+    x:Class="QuestArc.Views.ContentDialog1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QuestArc.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="NewTaskCreation"
+    Title="Create A New Task"
+    PrimaryButtonText="Cancel"
+    SecondaryButtonText="Create"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TextBox Name="titleTextBox" Header="Title"/>
+        <TextBox Name="passwordTextBox" Header="Description"/>
+        <TimePicker x:Name="startTimePicker" Header="Start Time"/>
+        <TimePicker x:Name="endTimePicker" Header="End Time"/>
+
+        <TextBlock x:Name="errorTextBlock" Foreground="Red"/>
+
+        <!-- Content body -->
+        <TextBlock Name="body">
+            <TextBlock.Text>
+                Create a new Quest
+            </TextBlock.Text>
+        </TextBlock>
+    </StackPanel>
+</ContentDialog>

@@ -8,13 +8,32 @@
     mc:Ignorable="d" >
 
     <Page.Resources>
-        <Flyout x:Name="flyout">
-            <TextBlock Text="xxxxxxxxxx"></TextBlock>
+        <Flyout x:Key="flyout">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled"/>
+                    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+                    <Setter Property="IsTabStop" Value="True"/>
+                    <Setter Property="TabNavigation" Value="Cycle"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock TextWrapping="Wrap" Text="This is some text in a flyout." Grid.Row="0"/>
+                <Button Content="Add New Task" Click="OnFlyOutButtonClickAsync" Grid.Row="1" HorizontalAlignment="Right"/>
+                <Button Content="Close" Click="OnFlyoutCloseButtonClick" Grid.Row="1" HorizontalAlignment="Left"/>
+            </Grid>
         </Flyout>
     </Page.Resources>
-    
-    <CalendarView x:Name="calendarView" 
+
+    <Grid>
+        <CalendarView x:Name="calendarView" 
             CalendarViewDayItemChanging="CalendarView_OnCalendarViewDayItemChanging" 
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    </CalendarView>
+            
+        </CalendarView>
+    </Grid>
 </Page>

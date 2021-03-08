@@ -24,7 +24,7 @@ namespace QuestArc.ViewModels
             set => SetProperty(ref _selectedItem, value);
         }
 
-        public ObservableCollection<SampleCompany> SampleItems { get; } = new ObservableCollection<SampleCompany>();
+        public ObservableCollection<Character> SampleItems { get; } = new ObservableCollection<Character>();
 
         public ICommand ItemInvokedCommand => _itemInvokedCommand ?? (_itemInvokedCommand = new RelayCommand<WinUI.TreeViewItemInvokedEventArgs>(OnItemInvoked));
 

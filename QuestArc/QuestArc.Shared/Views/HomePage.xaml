@@ -47,109 +47,99 @@
             </Grid>
         </Flyout>
 
-        <DataTemplate x:Key="CompanyTemplate" x:DataType="model:SampleCompany">
+        <DataTemplate x:Key="CharacterTemplate" x:DataType="model:Character">
             <winui:TreeViewItem
-                AutomationProperties.Name="{x:Bind CompanyName}"
+                AutomationProperties.Name="{x:Bind Name}"
                 IsExpanded="False"
-                ItemsSource="{x:Bind Orders}">
-                <TextBlock Margin="{StaticResource XXSmallTopRightBottomMargin}" Text="{x:Bind CompanyName}" />
+                ItemsSource="{x:Bind Arcs}">
+                <TextBlock Margin="{StaticResource XXSmallTopRightBottomMargin}" Text="{x:Bind Name}" />
             </winui:TreeViewItem>
         </DataTemplate>
 
-        <DataTemplate x:Key="CompanyContentTemplate" x:DataType="model:SampleCompany">
+        <DataTemplate x:Key="CharacterContentTemplate" x:DataType="model:Character">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Company ID" />
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Character ID" />
                     <TextBlock
                         Margin="{StaticResource SmallLeftMargin}"
                         Style="{StaticResource TitleTextBlockStyle}"
-                        Text="{x:Bind CompanyID}" />
+                        Text="{x:Bind Id}" />
                 </StackPanel>
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Company name" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind CompanyName}" />
+                    Text="Name" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Name}" />
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Contact name" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind ContactName}" />
+                    Text="Health" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Health}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Contact title" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind ContactTitle}" />
+                    Text="Strength" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Strength}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Contact phone" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Phone}" />
+                    Text="Stamina" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Stamina}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Contact fax" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Fax}" />
+                    Text="Intelligence" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Intelligence}" />
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Address" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Address}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="City" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind City}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Country" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Country}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Postal code" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind PostalCode}" />
+                    Text="Level" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Level}" />
             </StackPanel>
         </DataTemplate>
 
-        <DataTemplate x:Key="OrderTemplate" x:DataType="model:SampleOrder">
+        <DataTemplate x:Key="ArcTemplate" x:DataType="model:Arc">
             <winui:TreeViewItem
-                AutomationProperties.Name="{x:Bind OrderID}"
+                AutomationProperties.Name="{x:Bind Title}"
                 IsExpanded="False"
-                ItemsSource="{x:Bind Details}">
+                ItemsSource="{x:Bind Quests}">
                 <TextBlock Margin="{StaticResource XXSmallTopRightBottomMargin}" Text="{x:Bind ShortDescription}" />
             </winui:TreeViewItem>
         </DataTemplate>
 
-        <DataTemplate x:Key="OrderContentTemplate" x:DataType="model:SampleOrder">
+        <DataTemplate x:Key="ArcContentTemplate" x:DataType="model:Arc">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock
                         VerticalAlignment="Center"
                         Style="{StaticResource TitleTextBlockStyle}"
-                        Text="Order ID" />
+                        Text="Arc ID" />
                     <TextBlock
                         Margin="{StaticResource SmallLeftMargin}"
                         VerticalAlignment="Center"
                         Style="{StaticResource TitleTextBlockStyle}"
-                        Text="{x:Bind OrderID}" />
+                        Text="{x:Bind ArcId}" />
                 </StackPanel>
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Order date" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind OrderDate}" />
+                    Text="Title" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Title}" />
+                <TextBlock
+                    Margin="{StaticResource MediumTopMargin}"
+                    Style="{StaticResource DetailSubTitleStyle}"
+                    Text="Created on" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind CreatedTime}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Required date" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind RequiredDate}" />
+                    Text="Start time" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind StartTime}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Shipped date" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind ShippedDate}" />
+                    Text="End time" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind EndTime}" />
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
@@ -158,28 +148,19 @@
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Freight" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Freight}" />
+                    Text="Symbol" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Symbol}" />
+
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="OrderTotal" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind OrderTotal}" />
-                <TextBlock
-                    Margin="{StaticResource MediumTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Shipper name" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind ShipperName}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Shipper phone" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind ShipperPhone}" />
+                    Text="Difficulty" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Difficulty}" />
             </StackPanel>
         </DataTemplate>
 
-        <DataTemplate x:Key="OrderDetailTemplate" x:DataType="model:SampleOrderDetail">
-            <winui:TreeViewItem AutomationProperties.Name="{x:Bind ProductName}">
+        <DataTemplate x:Key="QuestTemplate" x:DataType="model:Quest">
+            <winui:TreeViewItem AutomationProperties.Name="{x:Bind Title}">
                 <TextBlock
                     Margin="{StaticResource XXSmallTopRightBottomMargin}"
                     Text="{x:Bind ShortDescription}"
@@ -187,70 +168,70 @@
             </winui:TreeViewItem>
         </DataTemplate>
 
-        <DataTemplate x:Key="OrderDetailContentTemplate" x:DataType="model:SampleOrderDetail">
+        <DataTemplate x:Key="QuestContentTemplate" x:DataType="model:Quest">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Product ID" />
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Quest ID" />
                     <TextBlock
                         Margin="{StaticResource SmallLeftMargin}"
                         Style="{StaticResource TitleTextBlockStyle}"
-                        Text="{x:Bind ProductID}" />
+                        Text="{x:Bind QuestId}" />
                 </StackPanel>
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Product name" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind ProductName}" />
+                    Text="Quest title" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Title}" />
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Category name" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind CategoryName}" />
+                    Text="Difficulty" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Difficulty}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Category description" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind CategoryDescription}" />
+                    Text="All day quest" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind AllDay}" />
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Quantity per unit" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind QuantityPerUnit}" />
+                    Text="Created On" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind CreatedOn}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Quantity" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Quantity}" />
+                    Text="Start time" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind StartTime}" />
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Unit price" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind UnitPrice}" />
+                    Text="End time" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind EndTime}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Discount" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Discount}" />
+                    Text="Status" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Status}" />
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Total" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Total}" />
+                    Text="Description" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Description}" />
 
             </StackPanel>
         </DataTemplate>
 
-        <templateSelectors:SampleDataTemplateSelector
+        <templateSelectors:CharacterDataTemplateSelector
             x:Key="TreeViewTemplateSelector"
-            CompanyTemplate="{StaticResource CompanyTemplate}"
-            OrderDetailTemplate="{StaticResource OrderDetailTemplate}"
-            OrderTemplate="{StaticResource OrderTemplate}" />
+            ArcTemplate="{StaticResource ArcTemplate}"
+            CharacterTemplate="{StaticResource CharacterTemplate}"
+            QuestTemplate="{StaticResource QuestTemplate}" />
 
-        <templateSelectors:SampleDataTemplateSelector
+        <templateSelectors:CharacterDataTemplateSelector
             x:Key="ContentTemplateSelector"
-            CompanyTemplate="{StaticResource CompanyContentTemplate}"
-            OrderDetailTemplate="{StaticResource OrderDetailContentTemplate}"
-            OrderTemplate="{StaticResource OrderContentTemplate}" />
+            ArcTemplate="{StaticResource ArcContentTemplate}"
+            CharacterTemplate="{StaticResource CharacterContentTemplate}"
+            QuestTemplate="{StaticResource QuestContentTemplate}" />
     </Page.Resources>
 
     <Grid x:Name="ContentArea" Margin="{StaticResource SmallLeftRightMargin}">

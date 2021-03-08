@@ -6,13 +6,179 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
-    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--
-                The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.
-            -->
+    <Viewbox MaxWidth="1800" MaxHeight="900">
+        <Grid>
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="30"
+                Text="Character Page" />
+            <Image
+                Opacity="0.5"
+                Source="../Assets/tavernBackground.jpg"
+                Stretch="Fill" />
+
+            <!--#region LeftPane-->
+            <Grid
+                Margin="50,50,910,50"
+                Background="LightYellow"
+                BorderBrush="DarkBlue"
+                BorderThickness="4"
+                CornerRadius="10">
+
+                <StackPanel
+                    Margin="45,25,45,450"
+                    BorderBrush="DarkBlue"
+                    BorderThickness="2">
+                    <TextBlock
+                        Width="430"
+                        Foreground="Black"
+                        Text="Name: Dwarf"
+                        TextWrapping="Wrap" />
+                    <Image
+                        Width="350"
+                        Height="320"
+                        Source="../Assets/dwarf.jpg" />
+                    <TextBlock
+                        Width="430"
+                        Foreground="Black"
+                        Text="Level: 1" />
+                    <ProgressBar
+                        Margin="0,12"
+                        Maximum="100"
+                        Value="50" />
+                </StackPanel>
+
+                <StackPanel
+                    Margin="45,440,45,40"
+                    Background="WhiteSmoke"
+                    BorderBrush="DarkBlue"
+                    BorderThickness="2"
+                    Spacing="5">
+                    <TextBlock
+                        Width="90"
+                        Margin="-300,10,0,0"
+                        FontSize="40"
+                        Foreground="Black"
+                        Text="STR: " />
+                    <Button
+                        Margin="160,-55,0,0"
+                        Content="+"
+                        Foreground="Black" />
+                    <TextBlock
+                        Width="90"
+                        Margin="-300,0,0,0"
+                        FontSize="40"
+                        Foreground="Black"
+                        Text="CON: " />
+                    <Button
+                        Margin="160,-55,0,0"
+                        Content="+"
+                        Foreground="Black" />
+                    <TextBlock
+                        Width="90"
+                        Margin="-300,0,0,0"
+                        FontSize="40"
+                        Foreground="Black"
+                        Text="DEX: " />
+                    <Button
+                        Margin="160,-55,0,0"
+                        Content="+"
+                        Foreground="Black" />
+                    <TextBlock
+                        Width="90"
+                        Margin="-300,0,0,0"
+                        FontSize="40"
+                        Foreground="Black"
+                        Text="WIS: " />
+                    <Button
+                        Margin="160,-55,0,0"
+                        Content="+"
+                        Foreground="Black" />
+                    <TextBlock
+                        Width="90"
+                        Margin="-300,0,0,0"
+                        FontSize="40"
+                        Foreground="Black"
+                        Text="CHS: " />
+                    <Button
+                        Margin="160,-55,0,0"
+                        Content="+"
+                        Foreground="Black" />
+                    <TextBlock
+                        Width="90"
+                        Margin="-300,0,0,0"
+                        FontSize="40"
+                        Foreground="Black"
+                        Text="INT: " />
+                    <Button
+                        Margin="160,-55,0,0"
+                        Content="+"
+                        Foreground="Black" />
+                </StackPanel>
+
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region RightPane-->
+            <Grid
+                Margin="625,50,35,500"
+                Background="DimGray"
+                BorderBrush="DarkBlue"
+                BorderThickness="4"
+                CornerRadius="10">
+                <TextBox
+                    Width="820"
+                    Height="350"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    CornerRadius="10"
+                    Text="Dwarf took 12 damage from Goblin"
+                    TextWrapping="Wrap" />
+                <TextBox
+                    Width="820"
+                    Height="55"
+                    Margin="0,365,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    CornerRadius="10"
+                    Text="Command..."
+                    TextWrapping="Wrap" />
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Ailments&Blessings-->
+            <Grid
+                Margin="625,500,450,50"
+                Background="IndianRed"
+                BorderBrush="DarkBlue"
+                BorderThickness="4"
+                CornerRadius="10">
+                <TextBlock
+                    Width="150"
+                    Margin="130,15,100,360"
+                    FontSize="32"
+                    Text="Ailments"
+                    TextWrapping="Wrap" />
+                <ListView Margin="15,65,15,10" />
+            </Grid>
+
+            <Grid
+                Margin="1070,500,35,50"
+                Background="PaleGreen"
+                BorderBrush="DarkBlue"
+                BorderThickness="4"
+                CornerRadius="10">
+                <TextBlock
+                    Margin="130,15,100,360"
+                    FontSize="32"
+                    Text="Blessings"
+                    TextWrapping="Wrap" />
+                <ListView Margin="15,65,15,10" />
+            </Grid>
+
+            <!--#endregion-->
+
         </Grid>
-    </Grid>
+    </Viewbox>
 </Page>

@@ -139,7 +139,7 @@
   </data>
   <data name="HomeDayTitle.Text" xml:space="preserve">
     <value>HomeDay</value>
-    <comment>Title for HomeDayPage</comment>
+    <comment>Name for HomeDayPage</comment>
   </data>
   <data name="TreeView_CollapseAllButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Collapse all</value>

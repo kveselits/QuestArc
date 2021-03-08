@@ -20,13 +20,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\NavHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ResourceExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Singleton.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\SampleCompany.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\SampleOrder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\SampleOrderDetail.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Character.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Arc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Quest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ActivationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\NavigationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SampleDataService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\SampleDataTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\CharacterDataTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CharacterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HomeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\InventoryViewModel.cs" />
@@ -119,6 +119,5 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\dwarf.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\tavernBackground.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogoSmall.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Properties\Default.rd.xml" />
   </ItemGroup>
 </Project>

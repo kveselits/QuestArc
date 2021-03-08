@@ -5,13 +5,13 @@ using Windows.UI.Xaml.Controls;
 
 namespace QuestArc.TemplateSelectors
 {
-    public class SampleDataTemplateSelector : DataTemplateSelector
+    public class CharacterDataTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate CompanyTemplate { get; set; }
+        public DataTemplate CharacterTemplate { get; set; }
 
-        public DataTemplate OrderTemplate { get; set; }
+        public DataTemplate ArcTemplate { get; set; }
 
-        public DataTemplate OrderDetailTemplate { get; set; }
+        public DataTemplate QuestTemplate { get; set; }
 
         protected override DataTemplate SelectTemplateCore(object item)
         {
@@ -27,12 +27,12 @@ namespace QuestArc.TemplateSelectors
         {
             switch (item)
             {
-                case SampleCompany company:
-                    return CompanyTemplate;
-                case SampleOrder order:
-                    return OrderTemplate;
-                case SampleOrderDetail orderDetail:
-                    return OrderDetailTemplate;
+                case Character character:
+                    return CharacterTemplate;
+                case Arc arc:
+                    return ArcTemplate;
+                case Quest quest:
+                    return QuestTemplate;
             }
 
             return null;

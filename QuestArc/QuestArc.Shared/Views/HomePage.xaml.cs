@@ -1,26 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
+using QuestArc.ViewModels;
+
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+
+using Windows.UI.Xaml.Navigation;
 
 namespace QuestArc.Views
 {
+    // For more info about the TreeView Control see
+    // https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tree-view
+    // For other samples, get the XAML Controls Gallery app http://aka.ms/XamlControlsGallery
     public sealed partial class HomePage : Page
     {
+        public HomeViewModel ViewModel { get; } = new HomeViewModel();
 
         Flyout flyout;
         public HomePage()
@@ -39,7 +35,7 @@ namespace QuestArc.Views
                     return typedChild;
                 }
             }
-            return null;
+            return default(T);
         }
 
         private async void OnFlyOutButtonClickAsync(object sender, RoutedEventArgs e)
@@ -54,8 +50,8 @@ namespace QuestArc.Views
         }
 
         private void CalendarView_OnCalendarViewDayItemChanging(
-                        CalendarView sender,
-                        CalendarViewDayItemChangingEventArgs args)
+            CalendarView sender,
+            CalendarViewDayItemChangingEventArgs args)
         {
             var textBlock = FindFirstChildOfType<TextBlock>(args.Item);
             if (textBlock != null)
@@ -73,6 +69,12 @@ namespace QuestArc.Views
             FrameworkElement element = sender as FrameworkElement;
             flyout = (Flyout)this.Resources["flyout"];
             flyout.ShowAt(element);
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            await ViewModel.LoadDataAsync();
         }
     }
 }

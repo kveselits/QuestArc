@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>69edbc93-c741-4808-b9ab-6a7374a528df</ProjectGuid>
+    <ProjectGuid>{69EDBC93-C741-4808-B9AB-6A7374A528DF}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -60,6 +60,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Mvvm">
+      <Version>7.0.0-preview5</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>6.1.0-build.207.gcac670e618</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.2-uno.81</Version>
+    </PackageReference>
     <PackageReference Include="Uno.UI" Version="3.5.1" />
     <PackageReference Include="Uno.UI.RemoteControl" Version="3.5.1" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.33" />

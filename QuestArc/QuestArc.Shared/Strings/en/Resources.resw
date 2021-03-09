@@ -117,7 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ApplicationName" xml:space="preserve">
+  <data name="AppDisplayName" xml:space="preserve">
     <value>QuestArc</value>
+    <comment>Application display name</comment>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>QuestArc</value>
+    <comment>Application description</comment>
+  </data>
+  <data name="Home_PivotItem1.Header" xml:space="preserve">  
+    <value>Item 1</value>
+    <comment>First Pivot item title for Home</comment>
+  </data>
+  <data name="Home_PivotItem2.Header" xml:space="preserve">
+    <value>Item 2</value>
+    <comment>Second Pivot item title for Home</comment>
+  </data>
+  <data name="Shell_Home.Content" xml:space="preserve">
+    <value>Home</value>
+    <comment>Navigation view item name for Home</comment>
+  </data>
+  <data name="HomeDayTitle.Text" xml:space="preserve">
+    <value>HomeDay</value>
+    <comment>Name for HomeDayPage</comment>
+  </data>
+  <data name="TreeView_CollapseAllButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Collapse all</value>
+    <comment>Tooltip for Collapse all button in TreeViewPages</comment>
+  </data>
+  <data name="TreeView_CollapseAllButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Collapse all</value>
+    <comment>Automation Name for Collapse all button in TreeViewPages</comment>
+  </data>
+  <data name="Shell_HomeDay.Content" xml:space="preserve">
+    <value>HomeDay</value>
+    <comment>Navigation view item name for HomeDay</comment>
+  </data>
+  <data name="Shell_Character.Content" xml:space="preserve">
+    <value>Character</value>
+    <comment>Navigation view item name for Character</comment>
+  </data>
+  <data name="Shell_Inventory.Content" xml:space="preserve">
+    <value>Inventory</value>
+    <comment>Navigation view item name for Inventory</comment>
+  </data>
+  <data name="Shell_QuestLog.Content" xml:space="preserve">
+    <value>QuestLog</value>
+    <comment>Navigation view item name for QuestLog</comment>
+  </data>
+  <data name="Shell_Map.Content" xml:space="preserve">
+    <value>Map</value>
+    <comment>Navigation view item name for Map</comment>
   </data>
 </root>

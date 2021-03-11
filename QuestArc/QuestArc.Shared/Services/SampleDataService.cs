@@ -39,43 +39,43 @@ namespace QuestArc.Services
                             StartTime = new DateTime(1997, 9, 22),
                             EndTime = new DateTime(1997, 9, 22),
                             Title = "Graduate College",
-                            Difficulty = Difficulty.Easy,
-                            Status = Status.Todo,
+                            Difficulty = "Easy",
+                            Status = "Todo",
                             SymbolCode = 57643, // Symbol Globe
                             Quests = new List<Quest>()
                             {
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 },
                                 new Quest()
                                 {
-                                    QuestId = 9,
+                                    Id = 9,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 },
                                 new Quest()
                                 {
-                                    QuestId = 30,
+                                    Id = 30,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 }
                             }
                         },
@@ -86,32 +86,32 @@ namespace QuestArc.Services
                             StartTime = new DateTime(1998, 2, 12),
                             EndTime = new DateTime(1998, 1, 21),
                             Title = "Graduate College",
-                            Difficulty = Difficulty.Easy,
-                            Status = Status.Todo,
+                            Difficulty = "Easy",
+                            Status = "Todo",
                             SymbolCode = 57737, // Symbol Audio
                             Quests = new List<Quest>()
                             {
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 },
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 }
                             }
                         },
@@ -122,32 +122,32 @@ namespace QuestArc.Services
                             StartTime = new DateTime(1998, 4, 27),
                             EndTime = new DateTime(1998, 3, 24),
                             Title = "Graduate College",
-                            Difficulty = Difficulty.Easy,
-                            Status = Status.Todo,
+                            Difficulty = "Easy",
+                            Status = "Todo",
                             SymbolCode = 57699, // Symbol Calendar
                             Quests = new List<Quest>()
                             {
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 },
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 }
                             }
                         }
@@ -171,43 +171,43 @@ namespace QuestArc.Services
                             StartTime = new DateTime(1997, 9, 5),
                             EndTime = new DateTime(1997, 8, 14),
                             Title = "Graduate College",
-                            Difficulty = Difficulty.Easy,
-                            Status = Status.Todo,
+                            Difficulty = "Easy",
+                            Status = "Todo",
                             SymbolCode = 57620, // Symbol Camera
                             Quests = new List<Quest>()
                             {
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 },
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 },
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 }
                             }
                         },
@@ -218,54 +218,54 @@ namespace QuestArc.Services
                             StartTime = new DateTime(1998, 4, 1),
                             EndTime = new DateTime(1998, 3, 11),
                             Title = "Graduate College",
-                            Difficulty = Difficulty.Easy,
-                            Status = Status.Todo,
+                            Difficulty = "Easy",
+                            Status = "Todo",
                             SymbolCode = 57633, // Symbol Clock
                             Quests = new List<Quest>()
                             {
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 },
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 },
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 },
                                 new Quest()
                                 {
-                                    QuestId = 28,
+                                    Id = 28,
                                     Title = "Generic Quest Name",
                                     CreatedOn = DateTime.Now,
                                     StartTime = DateTime.MinValue,
                                     EndTime = DateTime.MaxValue,
                                     Description = "Generic Quest Description",
-                                    Difficulty = Difficulty.Normal,
-                                    Status = Status.Underway
+                                    Difficulty = "Normal",
+                                    Status = "Underway"
                                 }
                             }
                         }

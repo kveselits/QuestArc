@@ -21,12 +21,13 @@ namespace QuestArc.Models
     // It is the model class we use to display data on pages like Grid, Chart, and Master Detail.
     public class Quest
     {
-       
-
-        
-
+        public Quest()
+        {
+            CreatedOn = DateTime.Now;
+        }
+  
         [PrimaryKey, AutoIncrement]
-        public long QuestId { get; set; }
+        public int Id { get; set; }
         [Indexed]
         public string Title { get; set; }
 
@@ -38,12 +39,12 @@ namespace QuestArc.Models
 
         public string Description { get; set; }
 
-        public Difficulty Difficulty { get; set; }
+        public string Difficulty { get; set; }
 
         public bool AllDay { get; set; }
 
-        public Status Status { get; set; }
+        public string Status { get; set; }
 
-        public string ShortDescription => $"Quest ID: {QuestId} - {Title}";
+        public string ShortDescription => $"Quest ID: {Id} - {Title}";
     }
 }

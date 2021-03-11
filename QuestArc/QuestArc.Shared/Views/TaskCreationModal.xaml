@@ -1,5 +1,5 @@
 ﻿<ContentDialog
-    x:Class="QuestArc.Views.ContentDialog1"
+    x:Class="QuestArc.Views.TaskCreationModal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:QuestArc.Views"
@@ -13,13 +13,19 @@
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <TextBox Name="titleTextBox" Header="Title"/>
-        <TextBox Name="passwordTextBox" Header="Description"/>
+        <TextBox Name="descriptionTextBox" Header="Description"/>
+        <DatePicker x:Name="startDatePicker" Header="Start Date"/>
         <TimePicker x:Name="startTimePicker" Header="Start Time"/>
+        <DatePicker x:Name="endDatePicker" Header="End Date"/>
         <TimePicker x:Name="endTimePicker" Header="End Time"/>
-
+        <ComboBox x:Name="difficultyPicker" Header="Difficulty" Height="44" Width="296" 
+                  ItemsSource="{x:Bind Difficulties}" DisplayMemberPath="Source"/>
+        <CheckBox x:Name="allDayPicker" Content="All Day"/>
         <TextBlock x:Name="errorTextBlock" Foreground="Red"/>
 
         <!-- Content body -->
+        <TextBlock Text="Current Quests:"></TextBlock>
+        <ListView x:Name="questList" />
         <TextBlock Name="body">
             <TextBlock.Text>
                 Create a new Quest

@@ -175,7 +175,7 @@
                     <TextBlock
                         Margin="{StaticResource SmallLeftMargin}"
                         Style="{StaticResource TitleTextBlockStyle}"
-                        Text="{x:Bind QuestId}" />
+                        Text="{x:Bind Id}" />
                 </StackPanel>
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"

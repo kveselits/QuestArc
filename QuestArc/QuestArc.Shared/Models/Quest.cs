@@ -1,4 +1,18 @@
-﻿using System;
+﻿using SQLite;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 namespace QuestArc.Models
 {
@@ -7,8 +21,14 @@ namespace QuestArc.Models
     // It is the model class we use to display data on pages like Grid, Chart, and Master Detail.
     public class Quest
     {
-        public long QuestId { get; set; }
-
+        public Quest()
+        {
+            CreatedOn = DateTime.Now;
+        }
+  
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        [Indexed]
         public string Title { get; set; }
 
         public DateTime CreatedOn { get; set; }
@@ -19,12 +39,12 @@ namespace QuestArc.Models
 
         public string Description { get; set; }
 
-        public Difficulty Difficulty { get; set; }
+        public string Difficulty { get; set; }
 
         public bool AllDay { get; set; }
 
-        public Status Status { get; set; }
+        public string Status { get; set; }
 
-        public string ShortDescription => $"Quest ID: {QuestId} - {Title}";
+        public string ShortDescription => $"Quest ID: {Id} - {Title}";
     }
 }

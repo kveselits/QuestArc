@@ -6,9 +6,6 @@ namespace QuestArc.Models
     // TODO WTS: Remove this class once your pages/features are using your data.
     // This is used by the SampleDataService.
     // It is the model class we use to display data on pages like Grid, Chart, and Master Detail.
-    public enum Difficulty { Easy, Normal, Hard }
-
-    public enum Status { Todo, Underway, Complete }
 
     public class Arc
     {
@@ -22,9 +19,9 @@ namespace QuestArc.Models
 
         public string Title { get; set; }
 
-        public Difficulty Difficulty { get; set; }
+        public string Difficulty { get; set; }
         
-        public Status Status { get; set; }
+        public string Status { get; set; }
 
         //TODO: What's this do?
         public char Symbol => (char)SymbolCode;

@@ -40,7 +40,7 @@ namespace QuestArc.Views
 
         private async void OnFlyOutButtonClickAsync(object sender, RoutedEventArgs e)
         {
-            ContentDialog1 dialog = new ContentDialog1();
+            TaskCreationModal dialog = new TaskCreationModal();
             await dialog.ShowAsync();
         }
 

@@ -52,8 +52,8 @@ namespace QuestArc.Views
 
             if (!exists)
             {
-                db.CreateTable<Character>();
-                db.CreateTable<Arc>();
+                //db.CreateTable<Character>();
+               // db.CreateTable<Arc>();
                 db.CreateTable<Quest>();
             }
 
@@ -101,7 +101,7 @@ namespace QuestArc.Views
                     EndTime = CombineDateAndTime(endDatePicker.Date.DateTime, endTimePicker.Time),
 
                     Description = descriptionTextBox.Text,
-                    Difficulty = difficultyPicker.SelectedItem.ToString(),
+                    Difficulty = difficultyPicker.SelectedItem?.ToString(),
                     AllDay = (bool)allDayPicker.IsChecked,
                     Status = "Todo"
                 };

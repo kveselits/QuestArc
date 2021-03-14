@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using QuestArc.Models;
+﻿using QuestArc.Models;
 using SQLite;
 using SQLiteNetExtensionsAsync.Extensions;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace QuestArc.Services
 {
@@ -28,10 +25,12 @@ namespace QuestArc.Services
             }
         }
 
+        #region Character
+
         public Task<List<Character>> GetCharactersAsync()
         {
             //Get all Characters.
-            return Database.Table<Character>().ToListAsync();
+            return Database.GetAllWithChildrenAsync<Character>(recursive: true);
         }
 
         public Task<Character> GetCharacterAsync(int id)
@@ -49,83 +48,86 @@ namespace QuestArc.Services
             else
             {
                 // Save a new Character.
-                return Database.InsertWithChildrenAsync(character, recursive:true);
+                return Database.InsertWithChildrenAsync(character, recursive: true);
             }
         }
 
-        public Task<int> DeleteCharacterAsync(Character character)
+        public Task DeleteCharacterAsync(Character character)
         {
             // Delete a Character.
-            return Database.DeleteAsync(character);
+            return Database.DeleteAsync(character, recursive: true);
         }
+
+        #endregion
+
+        #region Arc
 
         public Task<List<Arc>> GetArcsAsync()
         {
             //Get all Arcs.
-            return Database.Table<Arc>().ToListAsync();
+            return Database.GetAllWithChildrenAsync<Arc>(recursive: true);
         }
 
         public Task<Arc> GetArcAsync(int id)
         {
-            // Get a specific Arc.
-            return Database.Table<Arc>()
-                .Where(i => i.Id == id)
-                .FirstOrDefaultAsync();
+            return Database.GetWithChildrenAsync<Arc>(id, recursive: true);
         }
 
-        public Task<int> SaveArcAsync(Arc arc)
+        public Task SaveArcAsync(Arc arc)
         {
             if (arc.Id != 0)
             {
                 // Update an existing Arc.
-                return Database.UpdateAsync(arc);
+                return Database.UpdateWithChildrenAsync(arc);
             }
             else
             {
                 // Save a new Arc.
-                return Database.InsertAsync(arc);
+                return Database.InsertWithChildrenAsync(arc, recursive: true);
             }
         }
 
-        public Task<int> DeleteArcAsync(Arc arc)
+        public Task DeleteArcAsync(Arc arc)
         {
             // Delete a Arc.
-            return Database.DeleteAsync(arc);
-        }public Task<List<Quest>> GetQuestsAsync()
+            return Database.DeleteAsync(arc, recursive: true);
+        }
+
+        #endregion
+
+        #region Quest
+
+        public Task<List<Quest>> GetQuestsAsync()
         {
             //Get all Quests.
-            return Database.Table<Quest>().ToListAsync();
+            return Database.GetAllWithChildrenAsync<Quest>(recursive: true);
         }
 
         public Task<Quest> GetQuestAsync(int id)
         {
-            // Get a specific Quest.
-            return Database.Table<Quest>()
-                .Where(i => i.Id == id)
-                .FirstOrDefaultAsync();
+            return Database.GetWithChildrenAsync<Quest>(id, recursive: true);
         }
 
-        public Task<int> SaveQuestAsync(Quest quest)
+        public Task SaveQuestAsync(Quest quest)
         {
             if (quest.Id != 0)
             {
                 // Update an existing Quest.
-                return Database.UpdateAsync(quest);
+                return Database.UpdateWithChildrenAsync(quest);
             }
             else
             {
                 // Save a new Quest.
-                //Database.InsertAsync(quest);
-                //var arc = GetCharacters
-                //euro.Valuations = new List<Valuation> { valuation };
-                return (Task<int>)Database.InsertWithChildrenAsync(quest);
+                return Database.InsertWithChildrenAsync(quest, recursive: true);
             }
         }
 
-        public Task<int> DeleteQuestAsync(Quest quest)
+        public Task DeleteQuestAsync(Quest quest)
         {
             // Delete a Quest.
-            return Database.DeleteAsync(quest);
+            return Database.DeleteAsync(quest, recursive: true);
         }
+
+        #endregion
     }
 }

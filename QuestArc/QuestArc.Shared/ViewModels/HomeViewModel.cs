@@ -9,6 +9,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 using QuestArc.Models;
 using QuestArc.Services;
+using QuestArc.Views;
 using WinUI = Microsoft.UI.Xaml.Controls;
 
 namespace QuestArc.ViewModels
@@ -24,7 +25,7 @@ namespace QuestArc.ViewModels
             set => SetProperty(ref _selectedItem, value);
         }
 
-        public ObservableCollection<Character> SampleItems { get; } = new ObservableCollection<Character>();
+        public ObservableCollection<Character> Characters { get; } = new ObservableCollection<Character>();
 
         public ICommand ItemInvokedCommand => _itemInvokedCommand ?? (_itemInvokedCommand = new RelayCommand<WinUI.TreeViewItemInvokedEventArgs>(OnItemInvoked));
 
@@ -34,10 +35,10 @@ namespace QuestArc.ViewModels
 
         public async Task LoadDataAsync()
         {
-            var data = await SampleDataService.GetTreeViewDataAsync();
-            foreach (var item in data)
+            var characters = await App.Database.GetCharactersAsync();
+            foreach (var character in characters)
             {
-                SampleItems.Add(item);
+                Characters.Add(character);
             }
         }
 

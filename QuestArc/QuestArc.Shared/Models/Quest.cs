@@ -1,33 +1,26 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace QuestArc.Models
 {
-    // TODO WTS: Remove this class once your pages/features are using your data.
-    // This is used by the SampleDataService.
-    // It is the model class we use to display data on pages like Grid, Chart, and Master Detail.
+    // Model class we use to display data on pages like Grid, Chart, and Master Detail.
     public class Quest
     {
         public Quest()
         {
             CreatedOn = DateTime.Now;
+            Title = "Default Quest";
+            Difficulty = "Easy";
+            Status = "Todo";
         }
   
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
+        [ForeignKey(typeof(Arc))]
+        public int QuestId { get; set; }
+
         [Indexed]
         public string Title { get; set; }
 
@@ -44,6 +37,9 @@ namespace QuestArc.Models
         public bool AllDay { get; set; }
 
         public string Status { get; set; }
+
+        [ManyToOne] 
+        public Arc Arc { get; set; }
 
         public string ShortDescription => $"Quest ID: {Id} - {Title}";
     }

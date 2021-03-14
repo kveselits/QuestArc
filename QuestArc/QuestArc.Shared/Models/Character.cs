@@ -1,18 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace QuestArc.Models
 {
-    // This is used by the SampleDataService.
-    // It is the model class we use to display data on pages like Grid, Chart, and Master Detail.
+    // Model class we use to display data on pages like Grid, Chart, and Master Detail.
     
     public class Character
     {
+        public Character()
+        {
+            Name = "Default Character";
+            CreatedOn = DateTime.Now;
+            Arcs = new List<Arc>
+            {
+                new Arc()
+            };
+        }
+
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        public DateTime CreatedTime { get; set; }
-
+        [Indexed]
         public string Name { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public int Health { get; set; }
 
@@ -24,6 +37,7 @@ namespace QuestArc.Models
         
         public int Level { get; set; }
 
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public ICollection<Arc> Arcs { get; set; }
     }
 }

@@ -34,14 +34,13 @@ namespace QuestArc.Services
                     {
                         new Arc()
                         {
-                            ArcId = 10643,
-                            CreatedTime = new DateTime(1997, 8, 25),
+                            Id = 10643,
+                            CreatedOn = new DateTime(1997, 8, 25),
                             StartTime = new DateTime(1997, 9, 22),
                             EndTime = new DateTime(1997, 9, 22),
                             Title = "Graduate College",
                             Difficulty = "Easy",
                             Status = "Todo",
-                            SymbolCode = 57643, // Symbol Globe
                             Quests = new List<Quest>()
                             {
                                 new Quest()
@@ -81,14 +80,13 @@ namespace QuestArc.Services
                         },
                         new Arc()
                         {
-                            ArcId = 10835,
-                            CreatedTime = new DateTime(1998, 1, 15),
+                            Id = 10835,
+                            CreatedOn = new DateTime(1998, 1, 15),
                             StartTime = new DateTime(1998, 2, 12),
                             EndTime = new DateTime(1998, 1, 21),
                             Title = "Graduate College",
                             Difficulty = "Easy",
                             Status = "Todo",
-                            SymbolCode = 57737, // Symbol Audio
                             Quests = new List<Quest>()
                             {
                                 new Quest()
@@ -117,14 +115,13 @@ namespace QuestArc.Services
                         },
                         new Arc()
                         {
-                            ArcId = 10952,
-                            CreatedTime = new DateTime(1998, 3, 16),
+                            Id = 10952,
+                            CreatedOn = new DateTime(1998, 3, 16),
                             StartTime = new DateTime(1998, 4, 27),
                             EndTime = new DateTime(1998, 3, 24),
                             Title = "Graduate College",
                             Difficulty = "Easy",
                             Status = "Todo",
-                            SymbolCode = 57699, // Symbol Calendar
                             Quests = new List<Quest>()
                             {
                                 new Quest()
@@ -166,14 +163,13 @@ namespace QuestArc.Services
                     {
                         new Arc()
                         {
-                            ArcId = 10625,
-                            CreatedTime = new DateTime(1997, 8, 8),
+                            Id = 10625,
+                            CreatedOn = new DateTime(1997, 8, 8),
                             StartTime = new DateTime(1997, 9, 5),
                             EndTime = new DateTime(1997, 8, 14),
                             Title = "Graduate College",
                             Difficulty = "Easy",
                             Status = "Todo",
-                            SymbolCode = 57620, // Symbol Camera
                             Quests = new List<Quest>()
                             {
                                 new Quest()
@@ -213,14 +209,13 @@ namespace QuestArc.Services
                         },
                         new Arc()
                         {
-                            ArcId = 10926,
-                            CreatedTime = new DateTime(1998, 3, 4),
+                            Id = 10926,
+                            CreatedOn = new DateTime(1998, 3, 4),
                             StartTime = new DateTime(1998, 4, 1),
                             EndTime = new DateTime(1998, 3, 11),
                             Title = "Graduate College",
                             Difficulty = "Easy",
                             Status = "Todo",
-                            SymbolCode = 57633, // Symbol Clock
                             Quests = new List<Quest>()
                             {
                                 new Quest()

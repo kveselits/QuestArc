@@ -24,7 +24,6 @@
         <TextBlock x:Name="errorTextBlock" Foreground="Red"/>
 
         <!-- Content body -->
-        <TextBlock Text="Current Quests:"></TextBlock>
         <ListView x:Name="questList" />
         <TextBlock Name="body">
             <TextBlock.Text>

@@ -1,33 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace QuestArc.Models
 {
-    // TODO WTS: Remove this class once your pages/features are using your data.
-    // This is used by the SampleDataService.
-    // It is the model class we use to display data on pages like Grid, Chart, and Master Detail.
+    // Model class we use to display data on pages like Grid, Chart, and Master Detail.
 
     public class Arc
     {
-        public long ArcId { get; set; }
+        public Arc()
+        {
+            Title = "Default Arc";
+            CreatedOn = DateTime.Now;
+            Difficulty = "Easy";
+            Status = "Todo";
+            Quests = new List<Quest>
+            {
+                new Quest()
+            };
+        }
 
-        public DateTime CreatedTime { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        [ForeignKey(typeof(Character))]
+        public int ArcId { get; set; }
+
+        [Indexed]
+        public string Title { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public DateTime StartTime { get; set; }
 
         public DateTime EndTime { get; set; }
 
-        public string Title { get; set; }
-
         public string Difficulty { get; set; }
         
         public string Status { get; set; }
 
-        //TODO: What's this do?
-        public char Symbol => (char)SymbolCode;
+        [ManyToOne] 
+        public Character Character { get; set; }
 
-        public int SymbolCode { get; set; }
-
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public ICollection<Quest> Quests { get; set; }
 
         public override string ToString()
@@ -35,6 +51,6 @@ namespace QuestArc.Models
             return $"{Title} {Status}";
         }
 
-        public string ShortDescription => $"Arc ID: {ArcId}";
+        public string ShortDescription => $"Arc ID: {Id}";
     }
 }

@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\ActivationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\NavigationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SampleDataService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SQLiteDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\CharacterDataTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CharacterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HomeViewModel.cs" />

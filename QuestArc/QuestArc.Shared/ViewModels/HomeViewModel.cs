@@ -10,6 +10,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 using QuestArc.Models;
 using QuestArc.Services;
 using QuestArc.Views;
+using Uno.Extensions.Specialized;
 using WinUI = Microsoft.UI.Xaml.Controls;
 
 namespace QuestArc.ViewModels
@@ -35,10 +36,10 @@ namespace QuestArc.ViewModels
 
         public async Task LoadDataAsync()
         {
-            var characters = await App.Database.GetCharactersAsync();
-            foreach (var character in characters)
+            var dbCharacters = await App.Database.GetCharactersAsync();
+            foreach (var dbCharacter in dbCharacters)
             {
-                Characters.Add(character);
+                Characters.Add(dbCharacter);
             }
         }
 

@@ -145,11 +145,6 @@
                     Style="{StaticResource DetailSubTitleStyle}"
                     Text="Status" />
                 <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Status}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Symbol" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Symbol}" />
 
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"

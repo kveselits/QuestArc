@@ -1,8 +1,6 @@
 ﻿using QuestArc.Models;
-using SQLite;
 using System;
 using System.Collections.ObjectModel;
-using System.IO;
 using Windows.UI.Xaml.Controls;
 
 
@@ -40,7 +38,7 @@ namespace QuestArc.Views
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            // Ensure the user name and password fields aren't empty. If a required field
+            // Ensure the user title and description fields aren't empty. If a required field
             // is empty, set args.Cancel = true to keep the dialog open.
             if (string.IsNullOrEmpty(titleTextBox.Text))
             {
@@ -52,6 +50,7 @@ namespace QuestArc.Views
                 args.Cancel = true;
                 errorTextBlock.Text = "Description is required.";
             }
+
             var quest = new Quest
             {
                 Title = titleTextBox.Text,
@@ -63,7 +62,13 @@ namespace QuestArc.Views
                 AllDay = (bool)allDayPicker.IsChecked,
                 Status = "Todo"
             };
-            App.Database.SaveQuestAsync(quest);
+            //App.Database.SaveArcAsync(arc); //this will be needed when selecting a specific Arc
+
+            App.Database.SaveQuestAsync(quest, App.Database.DefaultArc);
+
+            /*var test = App.Database.Database.GetWithChildrenAsync<Character>(App.Database.CurrentCharacter.Id, recursive: true);
+            var test2 = App.Database.Database.GetAllWithChildrenAsync<Arc>();
+            var test3 = App.Database.Database.GetAllWithChildrenAsync<Quest>();*/
         }
 
         private static DateTime CombineDateAndTime(DateTime dateObj, TimeSpan timeObj)

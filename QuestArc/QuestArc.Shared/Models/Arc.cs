@@ -9,25 +9,12 @@ namespace QuestArc.Models
 
     public class Arc
     {
-        public Arc()
-        {
-            Title = "Default Arc";
-            CreatedOn = DateTime.Now;
-            Difficulty = "Easy";
-            Status = "Todo";
-            Quests = new List<Quest>
-            {
-                new Quest()
-            };
-        }
-
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
         [ForeignKey(typeof(Character))]
-        public int ArcId { get; set; }
+        public int CharacterId { get; set; }
 
-        [Indexed]
         public string Title { get; set; }
 
         public DateTime CreatedOn { get; set; }
@@ -40,11 +27,11 @@ namespace QuestArc.Models
         
         public string Status { get; set; }
 
-        [ManyToOne] 
+        [ManyToOne(CascadeOperations = CascadeOperation.All)]
         public Character Character { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public ICollection<Quest> Quests { get; set; }
+        public List<Quest> Quests { get; set; }
 
         public override string ToString()
         {

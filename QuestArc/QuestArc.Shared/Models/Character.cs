@@ -9,20 +9,9 @@ namespace QuestArc.Models
     
     public class Character
     {
-        public Character()
-        {
-            Name = "Default Character";
-            CreatedOn = DateTime.Now;
-            Arcs = new List<Arc>
-            {
-                new Arc()
-            };
-        }
-
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        [Indexed]
         public string Name { get; set; }
 
         public DateTime CreatedOn { get; set; }
@@ -38,6 +27,6 @@ namespace QuestArc.Models
         public int Level { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public ICollection<Arc> Arcs { get; set; }
+        public List<Arc> Arcs { get; set; }
     }
 }

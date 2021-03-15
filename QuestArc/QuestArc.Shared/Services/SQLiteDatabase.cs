@@ -1,7 +1,9 @@
 ﻿using QuestArc.Models;
 using SQLite;
 using SQLiteNetExtensionsAsync.Extensions;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace QuestArc.Services
@@ -9,6 +11,17 @@ namespace QuestArc.Services
     //TODO: Use generics to limit duplicate code
     public class SQLiteDatabase
     {
+        public  Character CurrentCharacter { get; } = new Character()
+        {
+            Name = "Default Character",
+            Arcs = new List<Arc>()
+        };
+
+        public Arc DefaultArc { get; } = new Arc()
+        {
+            Title = "Default Arc"
+        };
+
         public SQLiteAsyncConnection Database { get; }
 
         public SQLiteDatabase(string dbPath)
@@ -17,11 +30,12 @@ namespace QuestArc.Services
             Database.CreateTableAsync<Character>().Wait();
             Database.CreateTableAsync<Arc>().Wait();
             Database.CreateTableAsync<Quest>().Wait();
+            
+            SaveArcAsync(DefaultArc);
 
-            if (GetCharacterAsync(0).Result is null)
+            if (!GetCharactersAsync().Result.Any())
             {
-                Character defaultCharacter = new Character();
-                SaveCharacterAsync(defaultCharacter);
+                Database.InsertAsync(CurrentCharacter);
             }
         }
 
@@ -35,7 +49,7 @@ namespace QuestArc.Services
 
         public Task<Character> GetCharacterAsync(int id)
         {
-            return Database.GetWithChildrenAsync<Character>(id, recursive: true);
+            return Database.GetAsync<Character>(id);
         }
 
         public Task SaveCharacterAsync(Character character)
@@ -48,7 +62,7 @@ namespace QuestArc.Services
             else
             {
                 // Save a new Character.
-                return Database.InsertWithChildrenAsync(character, recursive: true);
+                return Database.InsertAsync(character);
             }
         }
 
@@ -83,7 +97,13 @@ namespace QuestArc.Services
             else
             {
                 // Save a new Arc.
-                return Database.InsertWithChildrenAsync(arc, recursive: true);
+                if (CurrentCharacter.Arcs==null)
+            {
+                CurrentCharacter.Arcs = new List<Arc>();
+            }
+                Database.InsertAsync(arc);
+                CurrentCharacter.Arcs.Add(arc);
+                return Database.UpdateWithChildrenAsync(CurrentCharacter);
             }
         }
 
@@ -95,6 +115,7 @@ namespace QuestArc.Services
 
         #endregion
 
+        
         #region Quest
 
         public Task<List<Quest>> GetQuestsAsync()
@@ -108,7 +129,7 @@ namespace QuestArc.Services
             return Database.GetWithChildrenAsync<Quest>(id, recursive: true);
         }
 
-        public Task SaveQuestAsync(Quest quest)
+        public Task SaveQuestAsync(Quest quest, Arc arc)
         {
             if (quest.Id != 0)
             {
@@ -118,7 +139,14 @@ namespace QuestArc.Services
             else
             {
                 // Save a new Quest.
-                return Database.InsertWithChildrenAsync(quest, recursive: true);
+                if (arc.Quests==null)
+            {
+                arc.Quests = new List<Quest>();
+            }
+                Database.InsertAsync(quest);
+                arc.Quests.Add(quest);
+                Database.UpdateWithChildrenAsync(arc);
+                return Database.UpdateWithChildrenAsync(CurrentCharacter);
             }
         }
 

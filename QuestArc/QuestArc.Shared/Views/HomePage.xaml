@@ -118,7 +118,7 @@
                         Margin="{StaticResource SmallLeftMargin}"
                         VerticalAlignment="Center"
                         Style="{StaticResource TitleTextBlockStyle}"
-                        Text="{x:Bind ArcId}" />
+                        Text="{x:Bind Id}" />
                 </StackPanel>
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
@@ -129,7 +129,7 @@
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
                     Text="Created on" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind CreatedTime}" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind CreatedOn}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
@@ -145,11 +145,6 @@
                     Style="{StaticResource DetailSubTitleStyle}"
                     Text="Status" />
                 <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Status}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Symbol" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Symbol}" />
 
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
@@ -568,7 +563,7 @@
                             Grid.Row="1"
                             CanReorderItems="False"
                             ItemTemplateSelector="{StaticResource TreeViewTemplateSelector}"
-                            ItemsSource="{x:Bind ViewModel.SampleItems}"
+                            ItemsSource="{x:Bind ViewModel.Characters}"
                             SelectionMode="Single">
                             <i:Interaction.Behaviors>
                                 <behaviors:TreeViewCollapseBehavior x:Name="collapseBehavior" />

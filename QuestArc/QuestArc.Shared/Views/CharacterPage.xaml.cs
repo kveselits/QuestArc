@@ -1,8 +1,9 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using QuestArc.ViewModels;
 
 using Windows.UI.Xaml.Controls;
+using QuestArc.Models;
 
 namespace QuestArc.Views
 {
@@ -12,6 +13,7 @@ namespace QuestArc.Views
 
         public CharacterPage()
         {
+            Character character = App.Database.GetCharacterAsync(1).Result;
             InitializeComponent();
         }
     }

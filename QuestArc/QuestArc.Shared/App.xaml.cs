@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.IO;
 using QuestArc.Services;
 
 using Windows.ApplicationModel.Activation;
@@ -9,6 +9,21 @@ namespace QuestArc
 {
     public sealed partial class App : Application
     {
+        static SQLiteDatabase _database;
+
+        // Create the database connection as a singleton.
+        public static SQLiteDatabase Database
+        {
+            get
+            {
+                if (_database == null)
+                {
+                    _database = new SQLiteDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "QuestArc.db3"));
+                }
+                return _database;
+            }
+        }
+
         private Lazy<ActivationService> _activationService;
 
         private ActivationService ActivationService

@@ -42,6 +42,7 @@ namespace QuestArc.Views
         {
             TaskCreationModal dialog = new TaskCreationModal();
             await dialog.ShowAsync();
+            await ViewModel.LoadDataAsync();
         }
 
         private void OnFlyoutCloseButtonClick(object sender, RoutedEventArgs e)

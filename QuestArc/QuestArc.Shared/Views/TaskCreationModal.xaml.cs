@@ -65,6 +65,8 @@ namespace QuestArc.Views
             //App.Database.SaveArcAsync(arc); //this will be needed when selecting a specific Arc
 
             App.Database.SaveQuestAsync(quest, App.Database.DefaultArc);
+            /*Quest getQuest = App.Database.GetQuestAsync(1).Result;
+            App.Database.DeleteQuestAsync(quest);*/
 
             /*var test = App.Database.Database.GetWithChildrenAsync<Character>(App.Database.CurrentCharacter.Id, recursive: true);
             var test2 = App.Database.Database.GetAllWithChildrenAsync<Arc>();

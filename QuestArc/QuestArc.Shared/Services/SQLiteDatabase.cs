@@ -1,8 +1,8 @@
 ﻿using QuestArc.Models;
 using SQLite;
 using SQLiteNetExtensionsAsync.Extensions;
-using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,7 +11,9 @@ namespace QuestArc.Services
     //TODO: Use generics to limit duplicate code
     public class SQLiteDatabase
     {
-        public  Character CurrentCharacter { get; } = new Character()
+        public ObservableCollection<Character> Characters { get; }
+
+        public Character CurrentCharacter { get; } = new Character()
         {
             Name = "Default Character",
             Arcs = new List<Arc>()
@@ -35,11 +37,16 @@ namespace QuestArc.Services
             {
                 Database.InsertAsync(CurrentCharacter);
             }
-
-            Database.InsertAsync(DefaultArc);
-            CurrentCharacter.Arcs.Add(DefaultArc);
-            Database.UpdateWithChildrenAsync(CurrentCharacter);
+            if (!GetArcsAsync().Result.Any())
+            {
+                Database.InsertAsync(DefaultArc);
+                CurrentCharacter.Arcs.Add(DefaultArc);
+                Database.UpdateWithChildrenAsync(CurrentCharacter);
+            }
+            Characters = new ObservableCollection<Character> { CurrentCharacter };
         }
+
+
 
         #region Character
 
@@ -63,7 +70,7 @@ namespace QuestArc.Services
             }
             else
             {
-                if (character.Arcs==null)
+                if (character.Arcs == null)
                 {
                     character.Arcs = new List<Arc>();
                 }
@@ -102,10 +109,10 @@ namespace QuestArc.Services
             else
             {
                 // Save a new Arc.
-                if (CurrentCharacter.Arcs==null)
-            {
-                CurrentCharacter.Arcs = new List<Arc>();
-            }
+                if (CurrentCharacter.Arcs == null)
+                {
+                    CurrentCharacter.Arcs = new List<Arc>();
+                }
                 Database.InsertAsync(arc);
                 CurrentCharacter.Arcs.Add(arc);
                 return Database.UpdateWithChildrenAsync(CurrentCharacter);
@@ -120,7 +127,6 @@ namespace QuestArc.Services
 
         #endregion
 
-        
         #region Quest
 
         public Task<List<Quest>> GetQuestsAsync()
@@ -144,10 +150,10 @@ namespace QuestArc.Services
             else
             {
                 // Save a new Quest.
-                if (arc.Quests==null)
-            {
-                arc.Quests = new List<Quest>();
-            }
+                if (arc.Quests == null)
+                {
+                    arc.Quests = new List<Quest>();
+                }
                 Database.InsertAsync(quest);
                 arc.Quests.Add(quest);
                 Database.UpdateWithChildrenAsync(arc);

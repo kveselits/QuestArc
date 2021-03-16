@@ -60,58 +60,117 @@
                         FontSize="40"
                         Foreground="Black"
                         Text="STR: " />
+                    <TextBlock
+                        x:Name="strLevelTextBlock"
+                        TextAlignment="Center"
+                        Width="50"
+                        Margin="-140,-55,0,0"
+                        FontSize="38"
+                        Foreground="Black"                    
+                        Text="0" 
+                        TextWrapping="Wrap"/>
                     <Button
-                        Margin="160,-55,0,0"
+                        Margin="200,-55,0,0"
                         Content="+"
                         Foreground="Black" />
+                    
                     <TextBlock
                         Width="90"
                         Margin="-300,0,0,0"
                         FontSize="40"
                         Foreground="Black"
                         Text="CON: " />
+                    <TextBlock
+                        x:Name="conLevelTextBlock"
+                        TextAlignment="Center"
+                        Width="50"
+                        Margin="-140,-55,0,0"
+                        FontSize="38"
+                        Foreground="Black"                    
+                        Text="0" 
+                        TextWrapping="Wrap"/>
                     <Button
-                        Margin="160,-55,0,0"
+                        Margin="200,-55,0,0"
                         Content="+"
                         Foreground="Black" />
+                    
                     <TextBlock
                         Width="90"
                         Margin="-300,0,0,0"
                         FontSize="40"
                         Foreground="Black"
                         Text="DEX: " />
+                    <TextBlock
+                        x:Name="dexLevelTextBlock"
+                        TextAlignment="Center"
+                        Width="50"
+                        Margin="-140,-55,0,0"
+                        FontSize="38"
+                        Foreground="Black"                    
+                        Text="0" 
+                        TextWrapping="Wrap"/>
                     <Button
-                        Margin="160,-55,0,0"
+                        Margin="200,-55,0,0"
                         Content="+"
                         Foreground="Black" />
+                    
                     <TextBlock
                         Width="90"
                         Margin="-300,0,0,0"
                         FontSize="40"
                         Foreground="Black"
                         Text="WIS: " />
+                    <TextBlock
+                        x:Name="wisLevelTextBlock"
+                        TextAlignment="Center"
+                        Width="50"
+                        Margin="-140,-55,0,0"
+                        FontSize="38"
+                        Foreground="Black"                    
+                        Text="0" 
+                        TextWrapping="Wrap"/>
                     <Button
-                        Margin="160,-55,0,0"
+                        Margin="200,-55,0,0"
                         Content="+"
                         Foreground="Black" />
+                    
                     <TextBlock
                         Width="90"
                         Margin="-300,0,0,0"
                         FontSize="40"
                         Foreground="Black"
-                        Text="CHS: " />
+                        Text="CHA: " />
+                    <TextBlock
+                        x:Name="chaLevelTextBlock"
+                        TextAlignment="Center"
+                        Width="50"
+                        Margin="-140,-55,0,0"
+                        FontSize="38"
+                        Foreground="Black"                    
+                        Text="0" 
+                        TextWrapping="Wrap"/>
                     <Button
-                        Margin="160,-55,0,0"
+                        Margin="200,-55,0,0"
                         Content="+"
                         Foreground="Black" />
+                    
                     <TextBlock
                         Width="90"
                         Margin="-300,0,0,0"
                         FontSize="40"
                         Foreground="Black"
                         Text="INT: " />
+                    <TextBlock 
+                        x:Name="intLevelTextBlock"
+                        TextAlignment="Center"
+                        Width="50"
+                        Margin="-140,-55,0,0"
+                        FontSize="38"
+                        Foreground="Black"                    
+                        Text="0" 
+                        TextWrapping="Wrap"/>
                     <Button
-                        Margin="160,-55,0,0"
+                        Margin="200,-55,0,0"
                         Content="+"
                         Foreground="Black" />
                 </StackPanel>

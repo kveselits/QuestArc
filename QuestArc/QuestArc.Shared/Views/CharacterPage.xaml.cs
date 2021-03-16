@@ -14,7 +14,13 @@ namespace QuestArc.Views
         public CharacterPage()
         {
             Character character = App.Database.GetCharacterAsync(1).Result;
+            UpdateCharacter(character);
             InitializeComponent();
+        }
+
+        private void UpdateCharacter(Character character)
+        {
+            
         }
     }
 }

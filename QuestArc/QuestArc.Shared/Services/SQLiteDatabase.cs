@@ -30,13 +30,15 @@ namespace QuestArc.Services
             Database.CreateTableAsync<Character>().Wait();
             Database.CreateTableAsync<Arc>().Wait();
             Database.CreateTableAsync<Quest>().Wait();
-            
-            SaveArcAsync(DefaultArc);
 
             if (!GetCharactersAsync().Result.Any())
             {
                 Database.InsertAsync(CurrentCharacter);
             }
+
+            Database.InsertAsync(DefaultArc);
+            CurrentCharacter.Arcs.Add(DefaultArc);
+            Database.UpdateWithChildrenAsync(CurrentCharacter);
         }
 
         #region Character
@@ -61,7 +63,10 @@ namespace QuestArc.Services
             }
             else
             {
-                // Save a new Character.
+                if (character.Arcs==null)
+                {
+                    character.Arcs = new List<Arc>();
+                }
                 return Database.InsertAsync(character);
             }
         }

@@ -13,6 +13,29 @@
                 The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.
             -->
+
+            <Viewbox MaxWidth="900" MaxHeight="1800">
+                <Grid>
+                    <TextBlock Text="Quest Log Page" HorizontalAlignment="Center" FontSize="30"/>
+                    <Image MaxWidth="1900" MaxHeight="1900" Source="../Assets/tavernBackground.jpg" Stretch="Fill" Opacity="0.5"></Image>
+
+                    <!--#region Jobs Pane-->
+                    <Grid Margin="50,50,975,50" Background="PaleGoldenrod" CornerRadius="10" BorderBrush="DarkBlue" BorderThickness="4">
+                        <ListView>
+                            <TextBlock Text="Jobs" FontSize="30" TextWrapping="Wrap"/>
+
+                        </ListView>
+                    </Grid>
+
+                    <!--#region Search Pane-->
+                    <Grid Margin="975,50,50,50" Background="LightGray" CornerRadius="10" BorderBrush="DarkBlue" BorderThickness="4">
+                        <ListView>
+                            <TextBlock Text="Logbook" FontSize="30" TextWrapping="Wrap"/>
+
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </Viewbox>
         </Grid>
     </Grid>
 </Page>

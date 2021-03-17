@@ -26,7 +26,8 @@ namespace QuestArc.ViewModels
             set => SetProperty(ref _selectedItem, value);
         }
 
-        public ObservableCollection<Character> Characters { get; } = new ObservableCollection<Character>();
+        public ObservableCollection<Character> Characters { get; } = App.Database.Characters;
+
 
         public ICommand ItemInvokedCommand => _itemInvokedCommand ?? (_itemInvokedCommand = new RelayCommand<WinUI.TreeViewItemInvokedEventArgs>(OnItemInvoked));
 
@@ -34,15 +35,7 @@ namespace QuestArc.ViewModels
         {
         }
 
-        public async Task LoadDataAsync()
-        {
-            var dbCharacters = await App.Database.GetCharactersAsync();
-            foreach (var dbCharacter in dbCharacters)
-            {
-                Characters.Add(dbCharacter);
-            }
-        }
-
+       
         private void OnItemInvoked(WinUI.TreeViewItemInvokedEventArgs args)
             => SelectedItem = args.InvokedItem;
     }

@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Media;
 
 
 using Windows.UI.Xaml.Navigation;
+using QuestArc.Models;
 
 namespace QuestArc.Views
 {
@@ -42,7 +43,6 @@ namespace QuestArc.Views
         {
             TaskCreationModal dialog = new TaskCreationModal();
             await dialog.ShowAsync();
-            await ViewModel.LoadDataAsync();
         }
 
         private void OnFlyoutCloseButtonClick(object sender, RoutedEventArgs e)
@@ -75,7 +75,6 @@ namespace QuestArc.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            await ViewModel.LoadDataAsync();
         }
     }
 }

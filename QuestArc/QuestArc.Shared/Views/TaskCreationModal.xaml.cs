@@ -29,8 +29,6 @@ namespace QuestArc.Views
             Difficulties.Add("Hard");
 
             this.InitializeComponent();
-
-            
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -64,15 +62,9 @@ namespace QuestArc.Views
                 AllDay = (bool)allDayPicker.IsChecked,
                 Status = "Todo"
             };
-            //App.Database.SaveArcAsync(arc); //this will be needed when selecting a specific Arc
 
             App.Database.SaveQuestAsync(quest, App.Database.DefaultArc);
-            /*Quest getQuest = App.Database.GetQuestAsync(1).Result;
-            App.Database.DeleteQuestAsync(quest);*/
-
-            /*var test = App.Database.Database.GetWithChildrenAsync<Character>(App.Database.CurrentCharacter.Id, recursive: true);
-            var test2 = App.Database.Database.GetAllWithChildrenAsync<Arc>();
-            var test3 = App.Database.Database.GetAllWithChildrenAsync<Quest>();*/
+   
         }
 
         private static DateTime CombineDateAndTime(DateTime dateObj, TimeSpan timeObj)

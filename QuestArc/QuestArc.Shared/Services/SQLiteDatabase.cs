@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using QuestArc.ViewModels;
+using System;
 
 namespace QuestArc.Services
 {
@@ -39,14 +40,17 @@ namespace QuestArc.Services
             }
             else
             {
-                CurrentCharacter = Database.GetWithChildrenAsync<Character>(1).Result;
+                CurrentCharacter = GetCharacterAsync(1).Result;
             }
 
             if (!GetArcsAsync().Result.Any())
             {
                 Quest defaultQuest = new Quest()
                 {
-                    Title = "Default Quest"
+                    Title = "Default Quest",
+                    Description ="This is an example quest that can be safely deleted",
+                    StartTime = DateTime.Now,
+                    EndTime = DateTime.Now.AddDays(1)
                 };
 
                 DefaultArc = new Arc()
@@ -60,7 +64,7 @@ namespace QuestArc.Services
             }
             else
             {
-                DefaultArc = Database.GetWithChildrenAsync<Arc>(1).Result;
+                DefaultArc = GetArcAsync(1).Result;
             }
             
         }
@@ -75,7 +79,7 @@ namespace QuestArc.Services
 
         public Task<Character> GetCharacterAsync(int id)
         {
-            return Database.GetWithChildrenAsync<Character>(id);
+            return Database.GetWithChildrenAsync<Character>(id, recursive: true);
         }
 
         public Task SaveCharacterAsync(Character character)
@@ -91,7 +95,7 @@ namespace QuestArc.Services
                 {
                     character.Arcs = new List<Arc>();
                 }
-                return Database.InsertAsync(character);
+                return Database.InsertWithChildrenAsync(character, recursive:true);
             }
         }
 

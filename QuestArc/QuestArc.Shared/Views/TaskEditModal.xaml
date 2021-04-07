@@ -5,11 +5,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:QuestArc.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="TITLE"
+    Title="Edit Quest"
     PrimaryButtonClick="TaskEditModal_PrimaryButtonClick"
-    PrimaryButtonText="Button1"
+    PrimaryButtonText="Close"
     SecondaryButtonClick="TaskEditModal_SecondaryButtonClick"
-    SecondaryButtonText="Button2"
+    SecondaryButtonText="Save Quest"
     mc:Ignorable="d">
 
     <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -21,25 +21,42 @@
             Name="descriptionTextBox"
             Header="Description"
             Text="{x:Bind Quest.Description}" />
-        <DatePicker x:Name="startDatePicker" Header="Start Date" />
-        <TimePicker x:Name="startTimePicker" Header="Start Time" />
-        <DatePicker x:Name="endDatePicker" Header="End Date" />
-        <TimePicker x:Name="endTimePicker" Header="End Time" />
+        <DatePicker
+            x:Name="startDatePicker"
+            Date="{x:Bind Quest.StartTime.Date}"
+            Header="Start Date" />
+        <TimePicker
+            x:Name="startTimePicker"
+            Header="Start Time"
+            Time="{x:Bind Quest.EndTime.Date.TimeOfDay}" />
+        <DatePicker
+            x:Name="endDatePicker"
+            Date="{x:Bind Quest.EndTime.Date}"
+            Header="End Date" />
+        <TimePicker
+            x:Name="endTimePicker"
+            Header="End Time"
+            Time="{x:Bind Quest.EndTime.Date.TimeOfDay}" />
         <ComboBox
             x:Name="difficultyPicker"
             Width="296"
             Height="44"
             DisplayMemberPath="Source"
             Header="Difficulty"
-            ItemsSource="{x:Bind Difficulties}" />
+            ItemsSource="{x:Bind Difficulties}"
+            Text="{x:Bind Quest.Difficulty}" />
         <ComboBox
             x:Name="statusPicker"
             Width="296"
             Height="44"
             DisplayMemberPath="Source"
             Header="Status"
-            ItemsSource="{x:Bind Statuses}" />
-        <CheckBox x:Name="allDayPicker" Content="All Day" />
+            ItemsSource="{x:Bind Statuses}"
+            Text="{x:Bind Quest.Status}" />
+        <CheckBox
+            x:Name="allDayPicker"
+            Content="All Day"
+            IsChecked="{x:Bind Quest.AllDay}" />
         <TextBlock x:Name="errorTextBlock" Foreground="Red" />
 
         <!--  Content body  -->

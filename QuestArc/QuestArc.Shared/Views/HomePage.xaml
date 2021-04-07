@@ -165,6 +165,10 @@
 
         <DataTemplate x:Key="QuestContentTemplate" x:DataType="model:Quest">
             <StackPanel>
+                <Button
+                    Click="OnEditButtonClickAsync"
+                    Content="Edit Quest"
+                    Tag="{Binding Id}" />
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Quest ID" />
                     <TextBlock
@@ -247,355 +251,331 @@
                 </Grid>
             </PivotItem>
 
-            <!-- Week -->
+            <!--  Week  -->
             <PivotItem x:Uid="Home_Week" Header="Week">
                 <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                     <Grid MinWidth="850" MinHeight="500">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="220*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="220*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="220*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="220*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="220*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="220*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="220*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="220*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="220*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="220*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="220*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="220*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="220*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="220*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="30*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30*"/>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="60*"/>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="500*"/>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="360*"/>
+                            <RowDefinition Height="30*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="60*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="500*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="360*" />
                         </Grid.RowDefinitions>
 
                         <Frame
-                            Background="Gray"
-                            BorderThickness="3" 
-                            BorderBrush="Black"
-                            Grid.Column="1"
                             Grid.Row="1"
-                            Grid.ColumnSpan="29"
                             Grid.RowSpan="7"
-                            />
+                            Grid.Column="1"
+                            Grid.ColumnSpan="29"
+                            Background="Gray"
+                            BorderBrush="Black"
+                            BorderThickness="3" />
 
-                        <TextBlock 
-                            Text="Home Week Page" 
-                            Grid.Column="2"
+                        <TextBlock
                             Grid.Row="0"
-                            Grid.ColumnSpan="26"
                             Grid.RowSpan="1"
-                            FontSize="14"
-                            FontWeight="Normal"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="26"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            TextWrapping="Wrap" 
                             FontFamily="Global User Interface"
-                            />
-
-                        <!-- Monday -->
-                        <StackPanel 
-                            Background="LightGray"
-                            BorderThickness="2" 
-                            BorderBrush="Black"
-                            Grid.Column="2"
-                            Grid.Row="2"
-                            Grid.ColumnSpan="3"
-                            Grid.RowSpan="5"  
-                            />
-                        <Button
-                            Content="Monday" 
-                            Grid.Column="3"
-                            Grid.Row="3"
-                            Grid.ColumnSpan="1"
-                            Grid.RowSpan="1"
                             FontSize="14"
-                            FontWeight="ExtraBold"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            FontFamily="Global User Interface"
-                            BorderThickness="1" 
-                            BorderBrush="Black"
-                            />
-                        <ListBox 
-                            Background="White"
-                            Grid.Column="3"
-                            Grid.Row="5"
-                            Grid.ColumnSpan="1"
-                            Grid.RowSpan="1"
                             FontWeight="Normal"
-                            FontFamily="Global User Interface" 
-                            FontSize="12"
-                            BorderThickness="1" 
-                            BorderBrush="Black"
-                            />
+                            Text="Home Week Page"
+                            TextWrapping="Wrap" />
 
-                        <!-- Tuesday -->
-                        <StackPanel 
-                            Background="LightGray"
-                            BorderThickness="2" 
-                            BorderBrush="Black"
-                            Grid.Column="6"
+                        <!--  Monday  -->
+                        <StackPanel
                             Grid.Row="2"
-                            Grid.ColumnSpan="3"
                             Grid.RowSpan="5"
-                            />
-                        <Button 
-                            Content="Tuesday" 
-                            Grid.Column="7"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="3"
+                            Background="LightGray"
+                            BorderBrush="Black"
+                            BorderThickness="2" />
+                        <Button
                             Grid.Row="3"
-                            Grid.ColumnSpan="1"
                             Grid.RowSpan="1"
-                            FontSize="14"
-                            FontWeight="ExtraBold"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            Content="Monday"
                             FontFamily="Global User Interface"
-                            BorderThickness="1" 
-                            BorderBrush="Black"
-                            />
-                        <ListBox 
-                            Background="White"
-                            Grid.Column="7"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+                        <ListBox
                             Grid.Row="5"
-                            Grid.ColumnSpan="1"
                             Grid.RowSpan="1"
-                            FontWeight="Normal"
-                            FontFamily="Global User Interface" 
-                            FontSize="12"
-                            BorderThickness="1" 
-                            BorderBrush="Black"  
-                            />
-
-                        <!-- Wednesday -->
-                        <StackPanel 
-                            Background="LightGray"
-                            BorderThickness="2" 
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            Background="White"
                             BorderBrush="Black"
+                            BorderThickness="1"
+                            FontFamily="Global User Interface"
+                            FontSize="12"
+                            FontWeight="Normal" />
+
+                        <!--  Tuesday  -->
+                        <StackPanel
+                            Grid.Row="2"
+                            Grid.RowSpan="5"
+                            Grid.Column="6"
+                            Grid.ColumnSpan="3"
+                            Background="LightGray"
+                            BorderBrush="Black"
+                            BorderThickness="2" />
+                        <Button
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="7"
+                            Grid.ColumnSpan="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            Content="Tuesday"
+                            FontFamily="Global User Interface"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+                        <ListBox
+                            Grid.Row="5"
+                            Grid.RowSpan="1"
+                            Grid.Column="7"
+                            Grid.ColumnSpan="1"
+                            Background="White"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            FontFamily="Global User Interface"
+                            FontSize="12"
+                            FontWeight="Normal" />
+
+                        <!--  Wednesday  -->
+                        <StackPanel
+                            Grid.Row="2"
+                            Grid.RowSpan="5"
                             Grid.Column="10"
-                            Grid.Row="2"
                             Grid.ColumnSpan="3"
-                            Grid.RowSpan="5" 
-                            />
+                            Background="LightGray"
+                            BorderBrush="Black"
+                            BorderThickness="2" />
                         <Button
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="11"
+                            Grid.ColumnSpan="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            BorderBrush="Black"
+                            BorderThickness="1"
                             Content="Wednesday"
-                            Grid.Column="11"
-                            Grid.Row="3"
-                            Grid.ColumnSpan="1"
-                            Grid.RowSpan="1"
-                            FontSize="14"
-                            FontWeight="ExtraBold"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
                             FontFamily="Global User Interface"
-                            BorderThickness="1" 
-                            BorderBrush="Black"
-                            />
-                        <ListBox 
-                            Background="White"
-                            Grid.Column="11"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+                        <ListBox
                             Grid.Row="5"
-                            Grid.ColumnSpan="1"
                             Grid.RowSpan="1"
-                            FontWeight="Normal"
-                            FontFamily="Global User Interface" 
+                            Grid.Column="11"
+                            Grid.ColumnSpan="1"
+                            Background="White"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            FontFamily="Global User Interface"
                             FontSize="12"
-                            BorderThickness="1" 
-                            BorderBrush="Black"
-                            />
+                            FontWeight="Normal" />
 
-                        <!-- Thursday -->
-                        <StackPanel 
-                            Background="LightGray"
-                            BorderThickness="2" 
-                            BorderBrush="Black"
+                        <!--  Thursday  -->
+                        <StackPanel
+                            Grid.Row="2"
+                            Grid.RowSpan="5"
                             Grid.Column="14"
-                            Grid.Row="2"
                             Grid.ColumnSpan="3"
-                            Grid.RowSpan="5"  
-                            />
-                        <Button 
-                            Content="Thursday" 
-                            Grid.Column="15"
+                            Background="LightGray"
+                            BorderBrush="Black"
+                            BorderThickness="2" />
+                        <Button
                             Grid.Row="3"
-                            Grid.ColumnSpan="1"
                             Grid.RowSpan="1"
-                            FontSize="14"
-                            FontWeight="ExtraBold"
+                            Grid.Column="15"
+                            Grid.ColumnSpan="1"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            Content="Thursday"
                             FontFamily="Global User Interface"
-                            BorderThickness="1" 
-                            BorderBrush="Black"
-                            />
-                        <ListBox 
-                            Background="White"
-                            Grid.Column="15"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+                        <ListBox
                             Grid.Row="5"
-                            Grid.ColumnSpan="1"
                             Grid.RowSpan="1"
-                            FontWeight="Normal"
-                            FontFamily="Global User Interface" 
-                            FontSize="12"
-                            BorderThickness="1" 
-                            BorderBrush="Black"   
-                            />
-
-                        <!-- Friday -->
-                        <StackPanel 
-                            Background="LightGray"
-                            BorderThickness="2" 
+                            Grid.Column="15"
+                            Grid.ColumnSpan="1"
+                            Background="White"
                             BorderBrush="Black"
+                            BorderThickness="1"
+                            FontFamily="Global User Interface"
+                            FontSize="12"
+                            FontWeight="Normal" />
+
+                        <!--  Friday  -->
+                        <StackPanel
+                            Grid.Row="2"
+                            Grid.RowSpan="5"
                             Grid.Column="18"
-                            Grid.Row="2"
                             Grid.ColumnSpan="3"
-                            Grid.RowSpan="5" 
-                            />
+                            Background="LightGray"
+                            BorderBrush="Black"
+                            BorderThickness="2" />
                         <Button
-                            Content="Friday" 
-                            Grid.Column="19"
                             Grid.Row="3"
-                            Grid.ColumnSpan="1"
                             Grid.RowSpan="1"
-                            FontSize="14"
-                            FontWeight="ExtraBold"
+                            Grid.Column="19"
+                            Grid.ColumnSpan="1"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            Content="Friday"
                             FontFamily="Global User Interface"
-                            BorderThickness="1" 
-                            BorderBrush="Black"
-                            />
-                        <ListBox 
-                            Background="White"
-                            Grid.Column="19"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+                        <ListBox
                             Grid.Row="5"
-                            Grid.ColumnSpan="1"
                             Grid.RowSpan="1"
-                            FontWeight="Normal"
-                            FontFamily="Global User Interface" 
-                            FontSize="12"
-                            BorderThickness="1" 
-                            BorderBrush="Black"  
-                            />
-
-                        <!-- Saturday -->
-                        <StackPanel 
-                            Background="LightGray"
-                            BorderThickness="2" 
+                            Grid.Column="19"
+                            Grid.ColumnSpan="1"
+                            Background="White"
                             BorderBrush="Black"
+                            BorderThickness="1"
+                            FontFamily="Global User Interface"
+                            FontSize="12"
+                            FontWeight="Normal" />
+
+                        <!--  Saturday  -->
+                        <StackPanel
+                            Grid.Row="2"
+                            Grid.RowSpan="5"
                             Grid.Column="22"
-                            Grid.Row="2"
                             Grid.ColumnSpan="3"
-                            Grid.RowSpan="5" 
-                            />
-                        <Button
-                            Content="Saturday" 
-                            Grid.Column="23"
-                            Grid.Row="3"
-                            Grid.ColumnSpan="1"
-                            Grid.RowSpan="1"
-                            FontSize="14"
-                            FontWeight="ExtraBold"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            FontFamily="Global User Interface"
-                            BorderThickness="1" 
-                            BorderBrush="Black"
-                            />
-                        <ListBox 
-                            Background="White"
-                            Grid.Column="23"
-                            Grid.Row="5"
-                            Grid.ColumnSpan="1"
-                            Grid.RowSpan="1"
-                            FontWeight="Normal"
-                            FontFamily="Global User Interface" 
-                            FontSize="12"
-                            BorderThickness="1" 
-                            BorderBrush="Black"
-                            />
-
-                        <!-- Sunday -->
-                        <StackPanel 
                             Background="LightGray"
-                            BorderThickness="2" 
                             BorderBrush="Black"
-                            Grid.Column="26"
-                            Grid.Row="2"
-                            Grid.ColumnSpan="3"
-                            Grid.RowSpan="5"  
-                            />
+                            BorderThickness="2" />
                         <Button
-                            Content="Sunday" 
-                            Grid.Column="27"
                             Grid.Row="3"
-                            Grid.ColumnSpan="1"
                             Grid.RowSpan="1"
-                            FontSize="14"
-                            FontWeight="ExtraBold"
+                            Grid.Column="23"
+                            Grid.ColumnSpan="1"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
-                            FontFamily="Global User Interface"
-                            BorderThickness="1" 
                             BorderBrush="Black"
-                            />
-                        <ListBox 
-                            Background="White"
-                            Grid.Column="27"
+                            BorderThickness="1"
+                            Content="Saturday"
+                            FontFamily="Global User Interface"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+                        <ListBox
                             Grid.Row="5"
-                            Grid.ColumnSpan="1"
                             Grid.RowSpan="1"
-                            FontWeight="Normal"
-                            FontFamily="Global User Interface" 
+                            Grid.Column="23"
+                            Grid.ColumnSpan="1"
+                            Background="White"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            FontFamily="Global User Interface"
                             FontSize="12"
-                            BorderThickness="1" 
-                            BorderBrush="Black"  
-                            />
-                        
+                            FontWeight="Normal" />
+
+                        <!--  Sunday  -->
+                        <StackPanel
+                            Grid.Row="2"
+                            Grid.RowSpan="5"
+                            Grid.Column="26"
+                            Grid.ColumnSpan="3"
+                            Background="LightGray"
+                            BorderBrush="Black"
+                            BorderThickness="2" />
                         <Button
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="27"
+                            Grid.ColumnSpan="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            Content="Sunday"
+                            FontFamily="Global User Interface"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+                        <ListBox
+                            Grid.Row="5"
+                            Grid.RowSpan="1"
+                            Grid.Column="27"
+                            Grid.ColumnSpan="1"
+                            Background="White"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            FontFamily="Global User Interface"
+                            FontSize="12"
+                            FontWeight="Normal" />
+
+                        <Button
+                            Grid.Row="8"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            BorderBrush="Black"
+                            BorderThickness="2"
                             Click="OnFlyOutButtonClickAsync"
                             Content="Add Quest"
-                            Grid.Column="1"
-                            Grid.Row="8"
-                            Grid.ColumnSpan="3"
-                            FontWeight="ExtraBold"
                             FontFamily="Global User Interface"
                             FontSize="14"
-                            BorderThickness="2"
-                            BorderBrush="Black"
-                        />
+                            FontWeight="ExtraBold" />
                     </Grid>
                 </Grid>
             </PivotItem>
-            <!-- EndWeek -->
-            
+            <!--  EndWeek  -->
+
             <PivotItem x:Uid="Home_Day" Header="Day">
                 <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                     <Grid.ColumnDefinitions>
@@ -615,11 +595,11 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock
+                            <!--<TextBlock
                                 x:Uid="HomeDayTitle"
                                 Margin="{StaticResource SmallLeftMargin}"
                                 VerticalAlignment="Center"
-                                Style="{StaticResource ListTitleStyle}" />
+                                Style="{StaticResource ListTitleStyle}" />-->
                             <Button
                                 x:Uid="TreeView_CollapseAllButton"
                                 Grid.Column="1"
@@ -646,6 +626,10 @@
                                 </ic:EventTriggerBehavior>
                             </i:Interaction.Behaviors>
                         </winui:TreeView>
+                        <Button
+                            Grid.Row="0"
+                            Click="OnFlyOutButtonClickAsync"
+                            Content="Add Quest" />
                     </Grid>
 
                     <ScrollViewer Grid.Column="1" Padding="{StaticResource DetailPageMargin}">

@@ -13,16 +13,9 @@ namespace QuestArc.Services
     {
         public ObservableCollection<Character> Characters { get; }
 
-        public Character CurrentCharacter { get; } = new Character()
-        {
-            Name = "Default Character",
-            Arcs = new List<Arc>()
-        };
+        public Character CurrentCharacter { get; }
 
-        public Arc DefaultArc { get; } = new Arc()
-        {
-            Title = "Default Arc"
-        };
+        public Arc DefaultArc { get; }
 
         public SQLiteAsyncConnection Database { get; }
 
@@ -35,18 +28,33 @@ namespace QuestArc.Services
 
             if (!GetCharactersAsync().Result.Any())
             {
-                Database.InsertAsync(CurrentCharacter);
+                CurrentCharacter = new Character()
+                {
+                    Name = "Default Character",
+                    Arcs = new List<Arc>()
+                };
+                Database.InsertWithChildrenAsync(CurrentCharacter);
             }
+            else
+            {
+                CurrentCharacter = GetCharacterAsync(1).Result;
+            }
+
             if (!GetArcsAsync().Result.Any())
             {
-                Database.InsertAsync(DefaultArc);
+                DefaultArc = new Arc()
+                {
+                    Title = "Default Arc"
+                };
                 CurrentCharacter.Arcs.Add(DefaultArc);
                 Database.UpdateWithChildrenAsync(CurrentCharacter);
             }
+            else
+            {
+                DefaultArc = Database.GetAsync<Arc>(1).Result;
+            }
             Characters = new ObservableCollection<Character> { CurrentCharacter };
         }
-
-
 
         #region Character
 
@@ -58,7 +66,7 @@ namespace QuestArc.Services
 
         public Task<Character> GetCharacterAsync(int id)
         {
-            return Database.GetAsync<Character>(id);
+            return Database.GetWithChildrenAsync<Character>(id);
         }
 
         public Task SaveCharacterAsync(Character character)
@@ -145,6 +153,10 @@ namespace QuestArc.Services
             if (quest.Id != 0)
             {
                 // Update an existing Quest.
+
+                Database.UpdateWithChildrenAsync(quest);
+                Characters.RemoveAt(0);
+                Characters.Insert(0, Database.GetAsync<Character>(1).Result);
                 return Database.UpdateWithChildrenAsync(quest);
             }
             else
@@ -157,7 +169,7 @@ namespace QuestArc.Services
                 Database.InsertAsync(quest);
                 arc.Quests.Add(quest);
                 Database.UpdateWithChildrenAsync(arc);
-                return Database.UpdateWithChildrenAsync(CurrentCharacter);
+                return Database.UpdateWithChildrenAsync(Database.GetWithChildrenAsync<Character>(1).Result);
             }
         }
 

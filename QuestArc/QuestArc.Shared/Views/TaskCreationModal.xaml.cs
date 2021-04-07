@@ -64,7 +64,7 @@ namespace QuestArc.Views
             };
             //App.Database.SaveArcAsync(arc); //this will be needed when selecting a specific Arc
 
-            App.Database.SaveQuestAsync(quest, App.Database.DefaultArc);
+            App.Database.SaveQuestAsync(quest, App.Database.GetArcAsync(1).Result);
             /*Quest getQuest = App.Database.GetQuestAsync(1).Result;
             App.Database.DeleteQuestAsync(quest);*/
 

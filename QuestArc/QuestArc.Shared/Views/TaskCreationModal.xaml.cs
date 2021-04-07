@@ -2,7 +2,8 @@
 using System;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Controls;
-
+using System.Collections.Generic;
+using Windows.UI;
 
 namespace QuestArc.Views
 {

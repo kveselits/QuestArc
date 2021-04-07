@@ -30,11 +30,25 @@ namespace QuestArc.Models
 
         public int Strength { get => strength; set => SetProperty(ref strength, value); }
 
+        public int Constitution { get; set; }
+
+        public int Dexterity { get; set; }
+
+        public int Wisdom { get; set; }
+
+        public int Charisma { get; set; }
+
+        public int Intelligence { get => intelligence; set => SetProperty(ref intelligence, value); }
+
+        public int Level { get => level; set => SetProperty(ref level, value); }
+
         public int Stamina { get => stamina; set => SetProperty(ref stamina, value); }
 
         public int Intelligence { get => intelligence; set => SetProperty(ref intelligence, value); }
 
         public int Level { get => level; set => SetProperty(ref level, value); }
+
+        // Something for attribute point storage
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Arc> Arcs { get => arcs; set => SetProperty(ref arcs, value); }

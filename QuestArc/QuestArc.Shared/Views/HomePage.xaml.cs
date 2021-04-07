@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Media;
 
 using Windows.UI.Xaml.Navigation;
 using QuestArc.Models;
+using QuestArc.Services;
 
 namespace QuestArc.Views
 {
@@ -18,8 +19,10 @@ namespace QuestArc.Views
     public sealed partial class HomePage : Page
     {
         public HomeViewModel ViewModel { get; } = new HomeViewModel();
-
+        
         Flyout flyout;
+        
+
         public HomePage()
         {
             InitializeComponent();

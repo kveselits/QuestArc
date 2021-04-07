@@ -1,23 +1,26 @@
-﻿using QuestArc.Models;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using QuestArc.Models;
 using SQLite;
 using SQLiteNetExtensionsAsync.Extensions;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using QuestArc.ViewModels;
 
 namespace QuestArc.Services
 {
     //TODO: Use generics to limit duplicate code
-    public class SQLiteDatabase
+    public class SQLiteDatabase : ObservableObject
     {
-        public ObservableCollection<Character> Characters { get; }
-
-        public Character CurrentCharacter { get; }
-
-        public Arc DefaultArc { get; }
+        private Character currentCharacter;
+        private Arc defaultArc;
 
         public SQLiteAsyncConnection Database { get; }
+
+        public Character CurrentCharacter { get => currentCharacter; set => SetProperty(ref currentCharacter, value); }
+
+        public Arc DefaultArc { get => defaultArc; set => SetProperty(ref defaultArc, value); }
 
         public SQLiteDatabase(string dbPath)
         {
@@ -33,27 +36,33 @@ namespace QuestArc.Services
                     Name = "Default Character",
                     Arcs = new List<Arc>()
                 };
-                Database.InsertWithChildrenAsync(CurrentCharacter);
             }
             else
             {
-                CurrentCharacter = GetCharacterAsync(1).Result;
+                CurrentCharacter = Database.GetWithChildrenAsync<Character>(1).Result;
             }
 
             if (!GetArcsAsync().Result.Any())
             {
+                Quest defaultQuest = new Quest()
+                {
+                    Title = "Default Quest"
+                };
+
                 DefaultArc = new Arc()
                 {
-                    Title = "Default Arc"
+                    Title = "Default Arc",
+                    Quests = new List<Quest>()
                 };
+                DefaultArc.Quests.Add(defaultQuest);
                 CurrentCharacter.Arcs.Add(DefaultArc);
-                Database.UpdateWithChildrenAsync(CurrentCharacter);
+                Database.InsertWithChildrenAsync(CurrentCharacter, recursive:true);
             }
             else
             {
-                DefaultArc = Database.GetAsync<Arc>(1).Result;
+                DefaultArc = Database.GetWithChildrenAsync<Arc>(1).Result;
             }
-            Characters = new ObservableCollection<Character> { CurrentCharacter };
+            
         }
 
         #region Character
@@ -155,8 +164,8 @@ namespace QuestArc.Services
                 // Update an existing Quest.
 
                 Database.UpdateWithChildrenAsync(quest);
-                Characters.RemoveAt(0);
-                Characters.Insert(0, Database.GetAsync<Character>(1).Result);
+                /*HomeViewModel.Characters.RemoveAt(0);
+                HomeViewModel.Characters.Insert(0, Database.GetAsync<Character>(1).Result);*/
                 return Database.UpdateWithChildrenAsync(quest);
             }
             else
@@ -169,7 +178,7 @@ namespace QuestArc.Services
                 Database.InsertAsync(quest);
                 arc.Quests.Add(quest);
                 Database.UpdateWithChildrenAsync(arc);
-                return Database.UpdateWithChildrenAsync(Database.GetWithChildrenAsync<Character>(1).Result);
+                return Database.UpdateWithChildrenAsync(CurrentCharacter);
             }
         }
 

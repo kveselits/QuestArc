@@ -23,12 +23,13 @@ namespace QuestArc.Views
         public TaskCreationModal()
         {
             Difficulties = new ObservableCollection<string>();
-
-            this.InitializeComponent();
-
             Difficulties.Add("Easy");
             Difficulties.Add("Normal");
             Difficulties.Add("Hard");
+
+            this.InitializeComponent();
+
+            
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -64,7 +65,7 @@ namespace QuestArc.Views
             };
             //App.Database.SaveArcAsync(arc); //this will be needed when selecting a specific Arc
 
-            App.Database.SaveQuestAsync(quest, App.Database.GetArcAsync(1).Result);
+            App.Database.SaveQuestAsync(quest, App.Database.DefaultArc);
             /*Quest getQuest = App.Database.GetQuestAsync(1).Result;
             App.Database.DeleteQuestAsync(quest);*/
 

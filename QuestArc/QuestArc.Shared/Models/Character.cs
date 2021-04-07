@@ -44,10 +44,6 @@ namespace QuestArc.Models
 
         public int Stamina { get => stamina; set => SetProperty(ref stamina, value); }
 
-        public int Intelligence { get => intelligence; set => SetProperty(ref intelligence, value); }
-
-        public int Level { get => level; set => SetProperty(ref level, value); }
-
         // Something for attribute point storage
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]

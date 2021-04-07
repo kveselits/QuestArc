@@ -11,11 +11,26 @@
     xmlns:model="using:QuestArc.Models"
     xmlns:templateSelectors="using:QuestArc.TemplateSelectors"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
-    behaviors:NavigationViewHeaderBehavior.HeaderMode="Never"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
     <Page.Resources>
+        <Style x:Key="DayColorBlock" TargetType="CalendarViewDayItem" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CalendarViewDayItem">
+                        <ItemsControl ItemsSource="{Binding Colors}" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" MinWidth="10">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle Opacity=".6" Margin="0,1" MinHeight="4" Fill="{Binding Converter={StaticResource ColorToBrushConv}}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Flyout x:Key="flyout">
             <Flyout.FlyoutPresenterStyle>
                 <Style TargetType="FlyoutPresenter">
@@ -27,23 +42,22 @@
             </Flyout.FlyoutPresenterStyle>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <TextBlock
-                    Grid.Row="0"
-                    Text="This is some text in a flyout."
-                    TextWrapping="Wrap" />
-                <Button
-                    Grid.Row="1"
-                    HorizontalAlignment="Right"
-                    Click="OnFlyOutButtonClickAsync"
-                    Content="Add New Task" />
-                <Button
-                    Grid.Row="1"
-                    HorizontalAlignment="Left"
+
+                <TextBlock x:Name="flyoutText" Grid.Row="0" />
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <Button
+                    HorizontalAlignment="Stretch"
                     Click="OnFlyoutCloseButtonClick"
                     Content="Close" />
+                    <Button
+                    HorizontalAlignment="Stretch"
+                    Click="OnFlyOutButtonClickAsync"
+                    Content="Add New Task" />
+
+                </StackPanel>
             </Grid>
         </Flyout>
 
@@ -237,14 +251,12 @@
                 </DataTemplate>
             </Pivot.HeaderTemplate>
             <PivotItem x:Uid="Home_Month" Header="Month">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                    <CalendarView
-                        x:Name="calendarView"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        CalendarViewDayItemChanging="CalendarView_OnCalendarViewDayItemChanging" />
-
-                </Grid>
+                <CalendarView x:Name="calendarView" 
+			    Margin="12" CalendarViewDayItemChanging="CalendarView_OnCalendarViewDayItemChanging"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                CalendarViewDayItemStyle="{StaticResource DayColorBlock}">
+                </CalendarView>
             </PivotItem>
 
             <!-- Week -->
@@ -578,7 +590,7 @@
                             BorderThickness="1" 
                             BorderBrush="Black"  
                             />
-                        
+
                         <Button
                             Click="OnFlyOutButtonClickAsync"
                             Content="Add Quest"
@@ -595,7 +607,7 @@
                 </Grid>
             </PivotItem>
             <!-- EndWeek -->
-            
+
             <PivotItem x:Uid="Home_Day" Header="Day">
                 <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                     <Grid.ColumnDefinitions>
@@ -669,8 +681,6 @@
                                 </VisualState.StateTriggers>
                                 <VisualState.Setters>
                                     <Setter Target="header.Margin" Value="0,0,0,0" />
-                                    <Setter Target="treeViewColumn.Width" Value="350" />
-                                    <Setter Target="treeViewColumn.MaxWidth" Value="500" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>

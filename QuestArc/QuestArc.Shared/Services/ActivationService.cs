@@ -36,6 +36,21 @@ namespace QuestArc.Services
                 // take into account that the splash screen is shown while this code runs.
                 await InitializeAsync();
 
+#if DEBUG
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    // this.DebugSettings.EnableFrameRateCounter = true;
+                }
+#endif
+
+#if NET5_0 && WINDOWS
+            var window = new Window();
+            window.Activate();
+#else
+                var window = Windows.UI.Xaml.Window.Current;
+#endif
+                //var rootFrame = window.Content as Frame;
+
                 // Do not repeat app initialization when the Window already has content,
                 // just ensure that the window is active
                 if (Window.Current.Content == null)

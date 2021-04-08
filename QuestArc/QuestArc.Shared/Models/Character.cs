@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
@@ -16,7 +17,7 @@ namespace QuestArc.Models
         private int stamina;
         private int intelligence;
         private int level;
-        private List<Arc> arcs;
+        private ObservableCollection<Arc> arcs;
         private DateTime createdOn;
 
         [PrimaryKey, AutoIncrement]
@@ -47,6 +48,6 @@ namespace QuestArc.Models
         // Something for attribute point storage
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Arc> Arcs { get => arcs; set => SetProperty(ref arcs, value); }
+        public ObservableCollection<Arc> Arcs { get => arcs; set => SetProperty(ref arcs, value); }
     }
 }

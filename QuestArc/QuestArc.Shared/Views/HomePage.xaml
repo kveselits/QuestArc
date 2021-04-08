@@ -15,14 +15,22 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Style x:Key="DayColorBlock" TargetType="CalendarViewDayItem" >
+        <Style x:Key="DayColorBlock" TargetType="CalendarViewDayItem">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="CalendarViewDayItem">
-                        <ItemsControl ItemsSource="{Binding Colors}" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" MinWidth="10">
+                        <ItemsControl
+                            MinWidth="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Bottom"
+                            ItemsSource="{Binding Colors}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Rectangle Opacity=".6" Margin="0,1" MinHeight="4" Fill="{Binding Converter={StaticResource ColorToBrushConv}}"/>
+                                    <Rectangle
+                                        MinHeight="4"
+                                        Margin="0,1"
+                                        Fill="{Binding Converter={StaticResource ColorToBrushConv}}"
+                                        Opacity=".6" />
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
@@ -49,13 +57,13 @@
                 <TextBlock x:Name="flyoutText" Grid.Row="0" />
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
                     <Button
-                    HorizontalAlignment="Stretch"
-                    Click="OnFlyoutCloseButtonClick"
-                    Content="Close" />
+                        HorizontalAlignment="Stretch"
+                        Click="OnFlyoutCloseButtonClick"
+                        Content="Close" />
                     <Button
-                    HorizontalAlignment="Stretch"
-                    Click="OnFlyOutButtonClickAsync"
-                    Content="Add New Task" />
+                        HorizontalAlignment="Stretch"
+                        Click="OnFlyOutButtonClickAsync"
+                        Content="Add New Task" />
 
                 </StackPanel>
             </Grid>
@@ -270,12 +278,13 @@
                 </DataTemplate>
             </Pivot.HeaderTemplate>
             <PivotItem x:Uid="Home_Month" Header="Month">
-                <CalendarView x:Name="calendarView" 
-			    Margin="12" CalendarViewDayItemChanging="CalendarView_OnCalendarViewDayItemChanging"
-                HorizontalAlignment="Stretch" 
-                VerticalAlignment="Stretch" 
-                CalendarViewDayItemStyle="{StaticResource DayColorBlock}">
-                </CalendarView>
+                <CalendarView
+                    x:Name="calendarView"
+                    Margin="12"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    CalendarViewDayItemChanging="CalendarView_OnCalendarViewDayItemChanging"
+                    CalendarViewDayItemStyle="{StaticResource DayColorBlock}" />
             </PivotItem>
 
             <!--  Week  -->
@@ -644,7 +653,7 @@
                             Grid.Row="1"
                             CanReorderItems="False"
                             ItemTemplateSelector="{StaticResource TreeViewTemplateSelector}"
-                            ItemsSource="{x:Bind ViewModel.Characters}"
+                            ItemsSource="{x:Bind ViewModel.Db.CurrentCharacter.Arcs}"
                             SelectionMode="Single">
                             <i:Interaction.Behaviors>
                                 <behaviors:TreeViewCollapseBehavior x:Name="collapseBehavior" />

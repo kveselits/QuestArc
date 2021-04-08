@@ -35,7 +35,7 @@ namespace QuestArc.Services
                 CurrentCharacter = new Character()
                 {
                     Name = "Default Character",
-                    Arcs = new List<Arc>()
+                    Arcs = new ObservableCollection<Arc>()
                 };
             }
             else
@@ -56,7 +56,7 @@ namespace QuestArc.Services
                 DefaultArc = new Arc()
                 {
                     Title = "Default Arc",
-                    Quests = new List<Quest>()
+                    Quests = new ObservableCollection<Quest>()
                 };
                 DefaultArc.Quests.Add(defaultQuest);
                 CurrentCharacter.Arcs.Add(DefaultArc);
@@ -64,9 +64,7 @@ namespace QuestArc.Services
             }
             else
             {
-                DefaultArc = GetArcAsync(1).Result;
             }
-            
         }
 
         #region Character
@@ -93,7 +91,7 @@ namespace QuestArc.Services
             {
                 if (character.Arcs == null)
                 {
-                    character.Arcs = new List<Arc>();
+                    character.Arcs = new ObservableCollection<Arc>();
                 }
                 return Database.InsertWithChildrenAsync(character, recursive:true);
             }
@@ -132,7 +130,7 @@ namespace QuestArc.Services
                 // Save a new Arc.
                 if (CurrentCharacter.Arcs == null)
                 {
-                    CurrentCharacter.Arcs = new List<Arc>();
+                    CurrentCharacter.Arcs = new ObservableCollection<Arc>();
                 }
                 Database.InsertAsync(arc);
                 CurrentCharacter.Arcs.Add(arc);
@@ -165,11 +163,7 @@ namespace QuestArc.Services
         {
             if (quest.Id != 0)
             {
-                // Update an existing Quest.
-
-                Database.UpdateWithChildrenAsync(quest);
-                /*HomeViewModel.Characters.RemoveAt(0);
-                HomeViewModel.Characters.Insert(0, Database.GetAsync<Character>(1).Result);*/
+                // Update an existing Quest
                 return Database.UpdateWithChildrenAsync(quest);
             }
             else
@@ -177,12 +171,12 @@ namespace QuestArc.Services
                 // Save a new Quest.
                 if (arc.Quests == null)
                 {
-                    arc.Quests = new List<Quest>();
+                    arc.Quests = new ObservableCollection<Quest>();
                 }
                 Database.InsertAsync(quest);
                 arc.Quests.Add(quest);
-                Database.UpdateWithChildrenAsync(arc);
-                return Database.UpdateWithChildrenAsync(CurrentCharacter);
+                SaveArcAsync(arc);
+                return SaveCharacterAsync(CurrentCharacter);
             }
         }
 

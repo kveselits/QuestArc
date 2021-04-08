@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
@@ -17,7 +18,7 @@ namespace QuestArc.Models
         private string difficulty;
         private string status;
         private Character character;
-        private List<Quest> quests;
+        private ObservableCollection<Quest> quests;
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -41,7 +42,7 @@ namespace QuestArc.Models
         public Character Character { get => character; set => SetProperty(ref character, value); }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Quest> Quests { get => quests; set => SetProperty(ref quests, value); }
+        public ObservableCollection<Quest> Quests { get => quests; set => SetProperty(ref quests, value); }
 
         public override string ToString()
         {

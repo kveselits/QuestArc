@@ -63,7 +63,7 @@ namespace QuestArc.Views
                 Status = "Todo"
             };
 
-            App.Database.SaveQuestAsync(quest, App.Database.DefaultArc);
+            App.Database.SaveQuestAsync(quest, App.Database.CurrentCharacter.Arcs[0]);
    
         }
 

@@ -29,11 +29,13 @@ namespace QuestArc.ViewModels
         private ObservableCollection<Character> characters;
         public ObservableCollection<Character> Characters { get => characters; set => SetProperty(ref characters, value); }
 
+        public SQLiteDatabase Db = App.Database;
+
         public ICommand ItemInvokedCommand => _itemInvokedCommand ?? (_itemInvokedCommand = new RelayCommand<WinUI.TreeViewItemInvokedEventArgs>(OnItemInvoked));
 
         public HomeViewModel()
         {
-            Characters = new ObservableCollection<Character> { App.Database.CurrentCharacter };
+            //Characters = new ObservableCollection<Character> { App.Database.CurrentCharacter };
         }
 
        

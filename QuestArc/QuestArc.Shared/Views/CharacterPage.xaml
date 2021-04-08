@@ -32,7 +32,7 @@
                     <TextBlock x:Name="CharNameBlock"
                         Width="430"
                         Foreground="Black"
-                        Text="{x:Bind viewName, FallbackValue=NoBind}"
+                        Text="{Binding viewName, FallbackValue=NoBind}"
                         FontSize="28"
                         FontWeight="Bold"
                         TextAlignment="Center"
@@ -45,10 +45,10 @@
                         FontSize="24"
                         Width="430"
                         Foreground="Black"
-                        Text="{x:Bind viewLevel, FallbackValue=42}" />
+                        Text="{Binding ViewModel.viewLevel, FallbackValue=42}" />
                     <ProgressBar x:Name="healthProgBar"
                         Maximum="100"
-                        Value="{x:Bind viewHealth, FallbackValue=50}" 
+                        Value="{Binding ViewModel.viewHealth, FallbackValue=50}" 
                         Height="20" />
                     <ProgressBar x:Name="CharProgBar"
                         Maximum="100"
@@ -78,7 +78,7 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{x:Bind viewStr, FallbackValue=NoBind}" 
+                        Text="{Binding viewStr, FallbackValue=NoBind}" 
                         TextWrapping="Wrap"/>
 
                     <Button
@@ -102,7 +102,7 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{x:Bind viewCon, FallbackValue=NoBind}" 
+                        Text="{Binding viewCon, FallbackValue=NoBind}" 
                         TextWrapping="Wrap"/>
                     
                     <Button
@@ -126,10 +126,11 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{x:Bind viewDex, FallbackValue=NoBind}" 
+                        Text="{Binding viewDex, FallbackValue=NoBind}" 
                         TextWrapping="Wrap"/>
 
                     <Button
+                        Click="DexButton_Pressed"
                         Margin="200,-55,0,0"
                         Content="+"
                         Foreground="Black"
@@ -150,7 +151,7 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{x:Bind viewWis, FallbackValue=NoBind}" 
+                        Text="{Binding viewWis, FallbackValue=NoBind}" 
                         TextWrapping="Wrap"/>
                     
                     <Button
@@ -173,7 +174,7 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{x:Bind viewCha, FallbackValue=NoBind}" 
+                        Text="{Binding viewCha, FallbackValue=NoBind}" 
                         TextWrapping="Wrap"/>
                     
                     <Button
@@ -196,7 +197,7 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{x:Bind viewInt, FallbackValue=NoBind}" 
+                        Text="{Binding viewInt, FallbackValue=NoBind}" 
                         TextWrapping="Wrap"/>
                     
                     <Button

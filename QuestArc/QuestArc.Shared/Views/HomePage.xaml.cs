@@ -15,6 +15,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Data;
 using Microsoft.Data.Sqlite;
+using QuestArc.Services;
 
 namespace QuestArc.Views
 {
@@ -28,6 +29,8 @@ namespace QuestArc.Views
         public string Title1 { get; set; } = "There are no quest today";
 
         Flyout flyout;
+        
+
         public HomePage()
         {
             InitializeComponent();
@@ -50,6 +53,13 @@ namespace QuestArc.Views
         private async void OnFlyOutButtonClickAsync(object sender, RoutedEventArgs e)
         {
             TaskCreationModal dialog = new TaskCreationModal();
+            await dialog.ShowAsync();
+        }
+
+        private async void OnEditButtonClickAsync(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag;
+            TaskEditModal dialog = new TaskEditModal((int)id);
             await dialog.ShowAsync();
         }
 

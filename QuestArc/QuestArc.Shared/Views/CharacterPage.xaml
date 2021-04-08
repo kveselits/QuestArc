@@ -45,10 +45,10 @@
                         FontSize="24"
                         Width="430"
                         Foreground="Black"
-                        Text="{Binding ViewModel.viewLevel, FallbackValue=42}" />
+                        Text="{Binding viewLevel, FallbackValue=42}" />
                     <ProgressBar x:Name="healthProgBar"
                         Maximum="100"
-                        Value="{Binding ViewModel.viewHealth, FallbackValue=50}" 
+                        Value="{Binding viewHealth, FallbackValue=50}" 
                         Height="20" />
                     <ProgressBar x:Name="CharProgBar"
                         Maximum="100"

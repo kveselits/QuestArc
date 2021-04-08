@@ -15,13 +15,10 @@ namespace QuestArc.Services
     public class SQLiteDatabase : ObservableObject
     {
         private Character currentCharacter;
-        private Arc defaultArc;
 
         public SQLiteAsyncConnection Database { get; }
 
         public Character CurrentCharacter { get => currentCharacter; set => SetProperty(ref currentCharacter, value); }
-
-        public Arc DefaultArc { get => defaultArc; set => SetProperty(ref defaultArc, value); }
 
         public SQLiteDatabase(string dbPath)
         {
@@ -53,13 +50,13 @@ namespace QuestArc.Services
                     EndTime = DateTime.Now.AddDays(1)
                 };
 
-                DefaultArc = new Arc()
+                Arc defaultArc = new Arc()
                 {
                     Title = "Default Arc",
                     Quests = new ObservableCollection<Quest>()
                 };
-                DefaultArc.Quests.Add(defaultQuest);
-                CurrentCharacter.Arcs.Add(DefaultArc);
+                defaultArc.Quests.Add(defaultQuest);
+                CurrentCharacter.Arcs.Add(defaultArc);
                 Database.InsertWithChildrenAsync(CurrentCharacter, recursive:true);
             }
             else

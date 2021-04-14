@@ -78,7 +78,7 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{Binding viewStr, FallbackValue=NoBind}" 
+                        Text="{Binding viewStr, FallbackValue=-1}" 
                         TextWrapping="Wrap"/>
 
                     <Button
@@ -102,7 +102,7 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{Binding viewCon, FallbackValue=NoBind}" 
+                        Text="{Binding viewCon, FallbackValue=-1}" 
                         TextWrapping="Wrap"/>
                     
                     <Button
@@ -126,7 +126,7 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{Binding viewDex, FallbackValue=NoBind}" 
+                        Text="{Binding viewDex, FallbackValue=-1}" 
                         TextWrapping="Wrap"/>
 
                     <Button
@@ -151,10 +151,11 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{Binding viewWis, FallbackValue=NoBind}" 
+                        Text="{Binding viewWis, FallbackValue=-1}" 
                         TextWrapping="Wrap"/>
                     
                     <Button
+                        Click="WisButton_Pressed"
                         Margin="200,-55,0,0"
                         Content="+"
                         Foreground="Black" />
@@ -174,10 +175,11 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{Binding viewCha, FallbackValue=NoBind}" 
+                        Text="{Binding viewCha, FallbackValue=-1}" 
                         TextWrapping="Wrap"/>
                     
                     <Button
+                        Click="ChaButton_Pressed"
                         Margin="200,-55,0,0"
                         Content="+"
                         Foreground="Black" />
@@ -197,10 +199,11 @@
                         Margin="-140,-55,0,0"
                         FontSize="38"
                         Foreground="Black"                    
-                        Text="{Binding viewInt, FallbackValue=NoBind}" 
+                        Text="{Binding viewInt, FallbackValue=-1}" 
                         TextWrapping="Wrap"/>
                     
                     <Button
+                        Click="IntButton_Pressed"
                         Margin="200,-55,0,0"
                         Content="+"
                         Foreground="Black"/>

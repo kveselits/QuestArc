@@ -19,7 +19,8 @@ namespace QuestArc.Views
             InitializeComponent();
             DataContext = ViewModel;
         }
-        public async void StrButton_Pressed(object sender, RoutedEventArgs e)
+
+        private async void StrButton_Pressed(object sender, RoutedEventArgs e)
         {
             ViewModel.viewStr += 1;
             ViewModel.CharacterRef.Strength += 1;
@@ -38,7 +39,27 @@ namespace QuestArc.Views
             ViewModel.viewDex += 1;
             ViewModel.CharacterRef.Dexterity += 1;
             await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
+        }
 
+        private async void WisButton_Pressed(object sender, RoutedEventArgs e)
+        {
+            ViewModel.viewWis += 1;
+            ViewModel.CharacterRef.Wisdom += 1;
+            await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
+        }
+
+        private async void ChaButton_Pressed(object sender, RoutedEventArgs e)
+        {
+            ViewModel.viewCha += 1;
+            ViewModel.CharacterRef.Charisma += 1;
+            await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
+        }
+
+        private async void IntButton_Pressed(object sender, RoutedEventArgs e)
+        {
+            ViewModel.viewInt += 1;
+            ViewModel.CharacterRef.Intelligence += 1;
+            await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
         }
     }
 }

@@ -43,7 +43,6 @@
                         TextWrapping="Wrap"/>
 
             <Button
-                        Click="StrButton_Pressed"
                         Margin="120,-55,0,0"
                         Content="+"
                         Foreground="Black" />
@@ -67,7 +66,6 @@
                         TextWrapping="Wrap"/>
 
             <Button
-                        Click="ConButton_Pressed"
                         Margin="120,-55,0,0"
                         Content="+"
                         Foreground="Black" />
@@ -91,7 +89,6 @@
                         TextWrapping="Wrap"/>
 
             <Button
-                        Click="DexButton_Pressed"
                         Margin="120,-55,0,0"
                         Content="+"
                         Foreground="Black"
@@ -116,7 +113,6 @@
                         TextWrapping="Wrap"/>
 
             <Button
-                        Click="WisButton_Pressed"
                         Margin="120,-55,0,0"
                         Content="+"
                         Foreground="Black" />
@@ -140,7 +136,6 @@
                         TextWrapping="Wrap"/>
 
             <Button
-                        Click="ChaButton_Pressed"
                         Margin="120,-55,0,0"
                         Content="+"
                         Foreground="Black" />
@@ -164,7 +159,6 @@
                         TextWrapping="Wrap"/>
 
             <Button
-                        Click="IntButton_Pressed"
                         Margin="120,-55,0,0"
                         Content="+"
                         Foreground="Black"/>

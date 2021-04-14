@@ -21,6 +21,7 @@ namespace QuestArc.Views
     {
         public CharCreationModal()
         {
+
             this.InitializeComponent();
         }
 

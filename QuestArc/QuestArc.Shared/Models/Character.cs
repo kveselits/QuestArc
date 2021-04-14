@@ -14,6 +14,10 @@ namespace QuestArc.Models
         private string name;
         private int health;
         private int strength;
+        private int constitution;
+        private int dexterity;
+        private int wisdom;
+        private int charisma;
         private int stamina;
         private int intelligence;
         private int level;
@@ -31,13 +35,13 @@ namespace QuestArc.Models
 
         public int Strength { get => strength; set => SetProperty(ref strength, value); }
 
-        public int Constitution { get; set; }
+        public int Constitution { get => constitution; set => SetProperty(ref constitution, value); }
 
-        public int Dexterity { get; set; }
+        public int Dexterity { get => dexterity; set => SetProperty(ref dexterity, value); }
 
-        public int Wisdom { get; set; }
+        public int Wisdom { get => wisdom; set => SetProperty(ref wisdom, value); }
 
-        public int Charisma { get; set; }
+        public int Charisma { get => charisma; set => SetProperty(ref charisma, value); }
 
         public int Intelligence { get => intelligence; set => SetProperty(ref intelligence, value); }
 

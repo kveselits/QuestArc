@@ -180,7 +180,7 @@ namespace QuestArc.Services
         public Task DeleteQuestAsync(Quest quest)
         {
             // Delete a Quest.
-            return Database.DeleteAsync(quest, recursive: true);
+            return Database.DeleteAsync(quest);
         }
 
         #endregion

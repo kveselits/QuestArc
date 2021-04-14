@@ -41,7 +41,7 @@ namespace QuestArc.Views
             await App.Database.SaveCharacterAsync(CharacterRef);
         }
 
-        private async void dexButton_pressed(object sender, RoutedEventArgs e)
+        private async void DexButton_pressed(object sender, RoutedEventArgs e)
         {
             viewDex = viewDex + 1;
             await App.Database.SaveCharacterAsync(CharacterRef);

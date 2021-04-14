@@ -24,8 +24,6 @@ namespace QuestArc.Views
     public sealed partial class HomePage : Page
     {
         public HomeViewModel ViewModel { get; } = new HomeViewModel();
-        public List<string> Title = new List<string> { "There are no Quests today" };
-        public string Title1 { get; set; } = "There are no quest today";
         public Dictionary<string, string> dateMap = new Dictionary<string, string>();
         string newDate;
 
@@ -103,8 +101,6 @@ namespace QuestArc.Views
                     while (reader.Read())
                     {
                         string title = null;
-             //           string[] startTimeShort = reader["StartTime"].ToString().Split('T');
-                        //string date = startTimeShort[0];
                         if (!newDate.Equals(null))
                         {
                             title = reader["Title"].ToString();

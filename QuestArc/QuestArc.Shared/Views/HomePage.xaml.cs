@@ -25,8 +25,8 @@ namespace QuestArc.Views
     public sealed partial class HomePage : Page
     {
         public HomeViewModel ViewModel { get; } = new HomeViewModel();
-        public List<string> Title = new List<string>{"There are no Quests today" };
-        public string Title1 { get; set; } = "There are no quest today";
+        public Dictionary<string, string> dateMap = new Dictionary<string, string>();
+        string newDate;
 
         Flyout flyout;
         
@@ -87,10 +87,23 @@ namespace QuestArc.Views
             }
 
             var item = args.Item;
-            
+
             List<string> columnData = new List<string>();
 
-            string sqlQuery = "SELECT StartTime FROM Quest";
+            string[] dates = args.Item.Date.ToString().Split('/', ' ');
+            if (dates[0].Length == 1)
+            {
+                dates[0] = "0" + dates[0];
+            }
+
+            if (dates[1].Length == 1)
+            {
+                dates[1] = "0" + dates[1];
+            }
+
+            newDate = dates[2] + "-" + dates[0] + "-" + dates[1];
+
+            string sqlQuery = "SELECT Title FROM Quest WHERE StartTime LIKE '%" + newDate + "%'";
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "QuestArc.db3");
             using (var dbConnection = (IDbConnection)new SqliteConnection("Data Source = " + path))
             {
@@ -104,55 +117,71 @@ namespace QuestArc.Views
                     //Read first result set
                     while (reader.Read())
                     {
-                        columnData.Add(reader["StartTime"].ToString());
-                        Title.Add(reader["StartTime"].ToString());
+                        string title = null;
+                        if (!newDate.Equals(null))
+                        {
+                            title = reader["Title"].ToString();
+                        }
+
+                        if (!dateMap.ContainsKey(newDate))
+                        {
+                            dateMap.Add(newDate, title);
+                        }
+                        else
+                        {
+                            if (!title.Equals(null) || !title.Equals(""))
+                            {
+                                dateMap[newDate] += "\n" + title;
+                            }
+                        }
                     }
 
-                }
-
-                foreach (string quest in columnData)
-                {
-                    string[] dates = args.Item.Date.ToString().Split('/', ' ');
-                    if(dates[0].Length == 1)
+                    foreach (string date in dateMap.Keys)
                     {
-                        dates[0] = "0" + dates[0];
-                    }
-
-                    if(dates[1].Length == 1)
-                    {
-                        dates[1] = "0" + dates[1];
-                    }
-
-                    string newDate = dates[2] + "-" + dates[0] + "-" + dates[1];
-                    if (quest.Contains(newDate))
-                    {
-                        Title1 = newDate; //string.Join(", ", ((List<string>)Title).ToArray());
-
-                        List<Color> densityColors = new List<Color>
+                        
+                        if (date.Contains(newDate))
+                        {
+                            List<Color> densityColors = new List<Color>
                         {
                             Colors.Red
                         };
-                        args.Item.SetDensityColors(densityColors);
-                        // Render basic day items.
-                        if (args.Phase == 0)
-                        {
-                            // Register callback for next phase.
-                            args.Item.DataContext = newDate;
-                        }
+                            args.Item.SetDensityColors(densityColors);
 
+                        }
                     }
                 }
             }
             item.PointerPressed += Item_PointerPressed;
         }
 
-            private void Item_PointerPressed(object sender, PointerRoutedEventArgs e)
+        private void Item_PointerPressed(Object sender, PointerRoutedEventArgs e)
+        {
+            Item_PointerPressedHelper((CalendarViewDayItem)sender, e);
+        }
+
+        private void Item_PointerPressedHelper(CalendarViewDayItem sender, PointerRoutedEventArgs e)
+        {
+            FrameworkElement element = sender as FrameworkElement;
+            flyout = (Flyout)this.Resources["flyout"];
+
+            string[] dates = sender.Date.ToString().Split('/', ' ');
+            if(dates[1].Length == 1)
             {
-                FrameworkElement element = sender as FrameworkElement;
-                flyout = (Flyout)this.Resources["flyout"];
-                flyoutText.Text = Title1;
-                flyout.ShowAt(element);
+                dates[1] = "0" + dates[1];
             }
+            if (dates[0].Length == 1)
+            {
+                dates[0] = "0" + dates[0];
+            }
+            string date = dates[2] + "-" + dates[0] + "-" + dates[1];
+            if (dateMap.ContainsKey(date)) {
+                flyoutText.Text = dateMap[date];
+            } else
+            {
+                flyoutText.Text = "No Quests Today";
+            }
+            flyout.ShowAt(element);
+        }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {

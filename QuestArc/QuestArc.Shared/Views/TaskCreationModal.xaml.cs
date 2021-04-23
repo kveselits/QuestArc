@@ -19,6 +19,18 @@ namespace QuestArc.Views
             get { return Description; }
             set { Description = value; }
         }
+
+        public DatePicker StartDate {
+            get { return startDatePicker; }
+            set { StartDate = value; }
+        }
+
+        public DatePicker EndDate
+        {
+            get { return endDatePicker; }
+            set { EndDate = value; }
+        }
+
         public ObservableCollection<string> Difficulties { get; set; }
 
         public TaskCreationModal()

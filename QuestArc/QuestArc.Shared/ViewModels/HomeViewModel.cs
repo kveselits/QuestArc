@@ -26,23 +26,19 @@ namespace QuestArc.ViewModels
             set => SetProperty(ref _selectedItem, value);
         }
 
-        public ObservableCollection<Character> Characters { get; } = new ObservableCollection<Character>();
+        private ObservableCollection<Character> characters;
+        public ObservableCollection<Character> Characters { get => characters; set => SetProperty(ref characters, value); }
+
+        public SQLiteDatabase Db = App.Database;
 
         public ICommand ItemInvokedCommand => _itemInvokedCommand ?? (_itemInvokedCommand = new RelayCommand<WinUI.TreeViewItemInvokedEventArgs>(OnItemInvoked));
 
         public HomeViewModel()
         {
+            //Characters = new ObservableCollection<Character> { App.Database.CurrentCharacter };
         }
 
-        public async Task LoadDataAsync()
-        {
-            var dbCharacters = await App.Database.GetCharactersAsync();
-            foreach (var dbCharacter in dbCharacters)
-            {
-                Characters.Add(dbCharacter);
-            }
-        }
-
+       
         private void OnItemInvoked(WinUI.TreeViewItemInvokedEventArgs args)
             => SelectedItem = args.InvokedItem;
     }

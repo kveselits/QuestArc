@@ -52,10 +52,15 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock x:Name="flyoutText" Grid.Row="0" />
-                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button x:Name="GoToDayButton"
+                    Grid.Row="1"
+                    HorizontalAlignment="Stretch"
+                    Content="Go to Day"/>
+                <TextBlock x:Name="flyoutText" Grid.Row="0" PointerPressed="Item_PointerPressed"/>
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
                     <Button
                         HorizontalAlignment="Stretch"
                         Click="OnFlyoutCloseButtonClick"

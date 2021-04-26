@@ -211,6 +211,10 @@
                     Click="OnEditButtonClickAsync"
                     Content="Edit Quest"
                     Tag="{Binding Id}" />
+                <Button
+                    Click="OnDeleteButtonClickAsync"
+                    Content="Delete Quest"
+                    Tag="{Binding Id}" />
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Quest ID" />
                     <TextBlock

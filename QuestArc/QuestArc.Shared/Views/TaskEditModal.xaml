@@ -39,17 +39,11 @@
             Time="{x:Bind Quest.EndTime.Date.TimeOfDay}" />
         <ComboBox
             x:Name="difficultyPicker"
-            Width="296"
-            Height="44"
-            DisplayMemberPath="Source"
             Header="Difficulty"
             ItemsSource="{x:Bind Difficulties}"
             Text="{x:Bind Quest.Difficulty}" />
         <ComboBox
             x:Name="statusPicker"
-            Width="296"
-            Height="44"
-            DisplayMemberPath="Source"
             Header="Status"
             ItemsSource="{x:Bind Statuses}"
             Text="{x:Bind Quest.Status}" />

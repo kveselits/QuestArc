@@ -71,6 +71,13 @@ namespace QuestArc.Views
             await dialog.ShowAsync();
         }
 
+        private async void OnDeleteButtonClickAsync(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag;
+            TaskDeleteModal dialog = new TaskDeleteModal((int)id);
+            await dialog.ShowAsync();
+        }
+
         private void OnFlyoutCloseButtonClick(object sender, RoutedEventArgs e)
         {
             flyout.Hide();

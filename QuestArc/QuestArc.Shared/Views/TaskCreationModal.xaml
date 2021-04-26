@@ -9,7 +9,9 @@
     PrimaryButtonText="Cancel"
     SecondaryButtonText="Create"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+    PrimaryButtonText="Cancel"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    SecondaryButtonText="Create">
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <TextBox Name="titleTextBox" Header="Title"/>
@@ -18,12 +20,12 @@
         <TimePicker x:Name="startTimePicker" Header="Start Time"/>
         <DatePicker x:Name="endDatePicker" x:FieldModifier="public" Header="End Date"/>
         <TimePicker x:Name="endTimePicker" Header="End Time"/>
-        <ComboBox x:Name="difficultyPicker" Header="Difficulty" Height="44" Width="296" 
-                  ItemsSource="{x:Bind Difficulties}" DisplayMemberPath="Source"/>
+        <ComboBox x:Name="difficultyPicker" Header="Difficulty"
+                  ItemsSource="{x:Bind Difficulties}"/>
         <CheckBox x:Name="allDayPicker" Content="All Day"/>
         <TextBlock x:Name="errorTextBlock" Foreground="Red"/>
 
-        <!-- Content body -->
+        <!--  Content body  -->
         <ListView x:Name="questList" />
         <TextBlock Name="body">
             <TextBlock.Text>

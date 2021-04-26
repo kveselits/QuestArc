@@ -35,12 +35,11 @@ namespace QuestArc.Views
 
         public TaskCreationModal()
         {
+            this.InitializeComponent();
             Difficulties = new ObservableCollection<string>();
             Difficulties.Add("Easy");
             Difficulties.Add("Normal");
             Difficulties.Add("Hard");
-
-            this.InitializeComponent();
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

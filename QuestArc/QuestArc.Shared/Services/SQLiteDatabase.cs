@@ -161,6 +161,7 @@ namespace QuestArc.Services
             if (quest.Id != 0)
             {
                 // Update an existing Quest
+                
                 return Database.UpdateWithChildrenAsync(quest);
             }
             else
@@ -180,7 +181,17 @@ namespace QuestArc.Services
         public Task DeleteQuestAsync(Quest quest)
         {
             // Delete a Quest.
-            return Database.DeleteAsync(quest, recursive: true);
+            return Database.DeleteAsync(quest);
+        }
+
+        public ObservableCollection<Quest> GetQuestsOnDateAsync(DateTime date)
+        {
+            /* Get all Quests on a specific date.
+            Equivalent to string sqlQuery = "SELECT Title FROM Quest WHERE EndTime LIKE '%" + date + "%'"*/
+
+            var Quests = GetQuestsAsync().Result.Where(t => t.EndTime.Date >= date)
+                            .OrderBy(t => t.EndTime);
+            return (ObservableCollection<Quest>)Quests;
         }
 
         #endregion

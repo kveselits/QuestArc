@@ -151,9 +151,9 @@ namespace QuestArc.Services
             return Database.GetAllWithChildrenAsync<Quest>(recursive: true);
         }
 
-        public Task<Quest> GetQuestAsync(int id)
+        public Quest GetQuestAsync(int id)
         {
-            return Database.GetWithChildrenAsync<Quest>(id, recursive: true);
+            return Database.GetWithChildrenAsync<Quest>(id, recursive: true).Result;
         }
 
         public Task SaveQuestAsync(Quest quest, Arc arc)

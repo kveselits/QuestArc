@@ -59,7 +59,7 @@ namespace QuestArc.Views
             Statuses.Add("Complete");
             this.InitializeComponent();
             this._id = id;
-            Quest = App.Database.GetQuestAsync(this._id).Result;
+            Quest = App.Database.GetQuestAsync(this._id);
         }
 
         private void TaskEditModal_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

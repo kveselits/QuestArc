@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using QuestArc.ViewModels;
+using QuestArc.Views;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 using Windows.UI.Xaml.Navigation;
 using System.Collections.Generic;
+using System.Collections;
 using Windows.UI;
 using QuestArc.Models;
 using System.Data.SqlClient;
@@ -25,8 +27,11 @@ namespace QuestArc.Views
     public sealed partial class HomePage : Page
     {
         public HomeViewModel ViewModel { get; } = new HomeViewModel();
-        public Dictionary<string, string> dateMap = new Dictionary<string, string>();
+        public Dictionary<string, ArrayList> dateMap = new Dictionary<string, ArrayList>();
         string newDate;
+        int year;
+        int month;
+        int day;
 
         Flyout flyout;
         
@@ -53,6 +58,9 @@ namespace QuestArc.Views
         private async void OnFlyOutButtonClickAsync(object sender, RoutedEventArgs e)
         {
             TaskCreationModal dialog = new TaskCreationModal();
+            dialog.StartDate.Date = new DateTime(year, month, day);
+            dialog.EndDate.Date = new DateTime(year, month, day);
+
             await dialog.ShowAsync();
         }
 
@@ -72,6 +80,7 @@ namespace QuestArc.Views
             CalendarView sender,
             CalendarViewDayItemChangingEventArgs args)
         {
+            int count = 0;
             var textBlock = FindFirstChildOfType<TextBlock>(args.Item);
             if (textBlock != null)
             {
@@ -96,7 +105,7 @@ namespace QuestArc.Views
 
             newDate = dates[2] + "-" + dates[0] + "-" + dates[1];
 
-            string sqlQuery = "SELECT Title FROM Quest WHERE StartTime LIKE '%" + newDate + "%'";
+            string sqlQuery = "SELECT Title, StartTime, Status, Difficulty FROM Quest WHERE StartTime LIKE '%" + newDate + "%'";
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "QuestArc.db3");
             using (var dbConnection = (IDbConnection)new SqliteConnection("Data Source = " + path))
             {
@@ -107,41 +116,47 @@ namespace QuestArc.Views
                     dbcmd.CommandText = sqlQuery;
                     IDataReader reader = dbcmd.ExecuteReader();
 
+                    if (dateMap.ContainsKey(newDate))
+                    {
+                        dateMap[newDate][0] = "";
+                    }
+
                     //Read first result set
                     while (reader.Read())
                     {
-                        string title = null;
-                        if (!newDate.Equals(null))
-                        {
-                            title = reader["Title"].ToString();
-                        }
+                        string title = reader["Title"].ToString();
+                        string startTime = reader["StartTime"].ToString().Split('T', '.')[1];
+                        string status = reader["Status"].ToString();
+                        string difficulty = reader["Difficulty"].ToString();
 
                         if (!dateMap.ContainsKey(newDate))
                         {
-                            dateMap.Add(newDate, title);
+                            dateMap.Add(newDate, new ArrayList() { title + "\n  " + startTime + "\n  " + status, difficulty });
+                            count++;
                         }
                         else
                         {
                             if (!title.Equals(null) || !title.Equals(""))
                             {
-                                dateMap[newDate] += "\n" + title;
+                                dateMap[newDate][0] += ("\n" + title + "\n  " + startTime + "\n  " + status);
+                                count++;
                             }
                         }
                     }
 
+                    List<Color> densityColors = new List<Color>();
                     foreach (string date in dateMap.Keys)
                     {
                         
                         if (date.Contains(newDate))
                         {
-                            List<Color> densityColors = new List<Color>
-                        {
-                            Colors.Red
-                        };
-                            args.Item.SetDensityColors(densityColors);
-
+                            for (int i = 0; i < count; i++)
+                            {
+                                densityColors.Add(Colors.Red);
+                            }
                         }
                     }
+                    args.Item.SetDensityColors(densityColors);
                 }
             }
             item.PointerPressed += Item_PointerPressed;
@@ -167,11 +182,18 @@ namespace QuestArc.Views
                 dates[0] = "0" + dates[0];
             }
             string date = dates[2] + "-" + dates[0] + "-" + dates[1];
+
+            year = int.Parse(dates[2]);
+            month = int.Parse(dates[0]);
+            day = int.Parse(dates[1]);
+
             if (dateMap.ContainsKey(date)) {
-                flyoutText.Text = dateMap[date];
+                flyoutText.Text = (string)dateMap[date][0];
+                GoToDayButton.Visibility = Visibility.Visible;
             } else
             {
                 flyoutText.Text = "No Quests Today";
+                GoToDayButton.Visibility = Visibility.Collapsed;
             }
             flyout.ShowAt(element);
         }

@@ -31,7 +31,7 @@
                     <TextBox x:Name="searchBar" PlaceholderText="Search..." FontSize="36" Margin="975,50,50,1773" BorderBrush="DarkBlue" BorderThickness="4"></TextBox>
                     <Grid Margin="975,132,50,50" Background="LightGray" CornerRadius="10" BorderBrush="DarkBlue" BorderThickness="4">
                         <TextBlock Text="Logbook" FontSize="30" TextWrapping="Wrap"/>
-                        <ListView ItemsSource="{x:Bind ViewModel.Db.CurrentCharacter.Arcs[0].Quests}" Margin="8,65,8,8" FontSize="100">
+                        <ListView>
 
                         </ListView>
                     </Grid>

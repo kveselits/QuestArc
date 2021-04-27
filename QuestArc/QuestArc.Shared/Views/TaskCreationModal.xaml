@@ -7,9 +7,7 @@
     x:Name="NewTaskCreation"
     Title="Create A New Quest"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    PrimaryButtonText="Cancel"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
-    SecondaryButtonText="Create">
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
     <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <TextBox Name="titleTextBox" Header="Title" />

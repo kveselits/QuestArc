@@ -55,11 +55,16 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="GoToDayButton"
+                <Button
+                    x:Name="GoToDayButton"
                     Grid.Row="1"
                     HorizontalAlignment="Stretch"
-                    Content="Go to Day"/>
-                <TextBlock x:Name="flyoutText" Grid.Row="0" PointerPressed="Item_PointerPressed"/>
+                    Click="OnGoToDayButtonClickAsync"
+                    Content="Go to Day" />
+                <TextBlock
+                    x:Name="flyoutText"
+                    Grid.Row="0"
+                    PointerPressed="Item_PointerPressed" />
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
                     <Button
                         HorizontalAlignment="Stretch"
@@ -68,7 +73,7 @@
                     <Button
                         HorizontalAlignment="Stretch"
                         Click="OnFlyOutButtonClickAsync"
-                        Content="Add New Task" />
+                        Content="Add New Quest" />
 
                 </StackPanel>
             </Grid>
@@ -621,7 +626,10 @@
             </PivotItem>
             <!--  EndWeek  -->
 
-            <PivotItem x:Uid="Home_Day" Header="Day">
+            <PivotItem
+                x:Name="DayPivot"
+                x:Uid="Home_Day"
+                Header="Day">
                 <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
@@ -662,7 +670,7 @@
                             Grid.Row="1"
                             CanReorderItems="False"
                             ItemTemplateSelector="{StaticResource TreeViewTemplateSelector}"
-                            ItemsSource="{x:Bind ViewModel.Db.CurrentCharacter.Arcs}"
+                            ItemsSource="{x:Bind ViewModel.Db.CurrentCharacter.TempQuests}"
                             SelectionMode="Single">
                             <i:Interaction.Behaviors>
                                 <behaviors:TreeViewCollapseBehavior x:Name="collapseBehavior" />
@@ -675,6 +683,7 @@
                             Grid.Row="0"
                             Click="OnFlyOutButtonClickAsync"
                             Content="Add Quest" />
+                        <TextBlock Text="{x:Bind ViewModel.SelectedDay}" FontStyle="" FontSize="18" HorizontalAlignment="Center"></TextBlock>
                     </Grid>
 
                     <ScrollViewer Grid.Column="1" Padding="{StaticResource DetailPageMargin}">

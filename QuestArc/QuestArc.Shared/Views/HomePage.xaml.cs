@@ -18,6 +18,8 @@ using System.IO;
 using System.Data;
 using Microsoft.Data.Sqlite;
 using QuestArc.Services;
+using System.Collections.ObjectModel;
+using QuestArc.Helpers;
 
 namespace QuestArc.Views
 {
@@ -27,6 +29,7 @@ namespace QuestArc.Views
     public sealed partial class HomePage : Page
     {
         public HomeViewModel ViewModel { get; } = new HomeViewModel();
+
         public Dictionary<string, ArrayList> dateMap = new Dictionary<string, ArrayList>();
         string newDate;
         int year;
@@ -62,6 +65,16 @@ namespace QuestArc.Views
             dialog.EndDate.Date = new DateTime(year, month, day);
 
             await dialog.ShowAsync();
+        }
+
+        private void OnGoToDayButtonClickAsync(object sender, RoutedEventArgs e)
+        {
+            DateTime endTime = new DateTime(year, month, day);
+            App.Database.SaveQuestsAsync(App.Database.GetQuestsOnDateAsync(endTime));
+            ViewModel.Db.CurrentCharacter.TempQuests = App.Database.GetQuestsOnDateAsync(endTime);
+            string shortString = endTime.ToShortDateString();
+            ViewModel.SelectedDay = shortString;
+            Items.SelectedItem = DayPivot;
         }
 
         private async void OnEditButtonClickAsync(object sender, RoutedEventArgs e)

@@ -72,6 +72,16 @@ namespace QuestArc.Services
             return Database.GetAllWithChildrenAsync<Character>(recursive: true);
         }
 
+        internal Task SaveQuestsAsync(ObservableCollection<Quest> quests)
+        {
+            foreach(Quest quest in quests)
+            {
+                return Database.UpdateWithChildrenAsync(quest);
+            }
+            return Database.UpdateWithChildrenAsync(quests);
+
+        }
+
         public Task<Character> GetCharacterAsync(int id)
         {
             return Database.GetWithChildrenAsync<Character>(id, recursive: true);
@@ -189,9 +199,10 @@ namespace QuestArc.Services
             /* Get all Quests on a specific date.
             Equivalent to string sqlQuery = "SELECT Title FROM Quest WHERE EndTime LIKE '%" + date + "%'"*/
 
-            var Quests = GetQuestsAsync().Result.Where(t => t.EndTime.Date >= date)
+            var results = GetQuestsAsync().Result.Where(t => t.EndTime.Date >= date)
                             .OrderBy(t => t.EndTime);
-            return (ObservableCollection<Quest>)Quests;
+            ObservableCollection<Quest> quests = new ObservableCollection<Quest>(results);
+            return quests;
         }
 
         #endregion

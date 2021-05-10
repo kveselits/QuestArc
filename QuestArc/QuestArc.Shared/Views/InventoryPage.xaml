@@ -5,14 +5,134 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Style="{StaticResource PageStyle}"
-    mc:Ignorable="d">
-    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--
-                The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.
-            -->
-        </Grid>
-    </Grid>
+    mc:Ignorable="d"
+    xmlns:behaviors="using:QuestArc.Behaviors"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:model="using:QuestArc.Models"
+    xmlns:templateSelectors="using:QuestArc.TemplateSelectors"
+    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
+    xmlns:local1="using:QuestArc.Views"
+    xmlns:local2="using:QuestArc.Helpers"
+    xmlns:local3="using:QuestArc.ViewModels">
+
+    <Page.Resources>
+        <DataTemplate x:Key="TextTemplate" x:DataType="local2:Class1">
+            <StackPanel Width="240" Orientation="Horizontal">
+                <TextBlock Margin="8,0,0,0" Text="{x:Bind Title}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ItemContentTemplate" x:DataType="local2:Class1">
+            <StackPanel Orientation="Vertical">
+                <TextBlock
+                    Margin="{StaticResource MediumTopMargin}"
+                    Style="{StaticResource DetailSubTitleStyle}"
+                    Text="Quest title" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Title}" />
+                <TextBlock
+                    Margin="{StaticResource MediumTopMargin}"
+                    Style="{StaticResource DetailSubTitleStyle}"
+                    Text="Dexterity" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Dexterity}" />
+                <TextBlock
+                    Margin="{StaticResource MediumTopMargin}"
+                    Style="{StaticResource DetailSubTitleStyle}"
+                    Text="Strength" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Strength}" />
+                <TextBlock
+                    Margin="{StaticResource MediumTopMargin}"
+                    Style="{StaticResource DetailSubTitleStyle}"
+                    Text="Weight" />
+                <TextBlock IsTextSelectionEnabled="True" SelectionHighlightColor="White" Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Weight}" />
+                <TextBlock
+                    Margin="{StaticResource MediumTopMargin}"
+                    Style="{StaticResource DetailSubTitleStyle}"
+                    Text="Description" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Description}" />
+            </StackPanel>
+        </DataTemplate>
+
+    </Page.Resources>
+
+    <Pivot>
+        <PivotItem Header="Weapons">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                        
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListView
+    x:Name="ContentGridView"
+    ItemsSource="{x:Bind Items}"
+    ItemTemplate="{StaticResource TextTemplate}"
+    IsItemClickEnabled="True"
+    CanDragItems="True"
+    AllowDrop="True"
+    CanReorderItems="True"
+    SelectionMode="Single"
+    SelectionChanged="ContentListView_ItemClick"
+    FlowDirection="LeftToRight"
+                    Grid.Column="0">
+                </ListView>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition>
+                            
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70">
+
+                        </ColumnDefinition>
+
+                        <ColumnDefinition Width="70">
+
+                        </ColumnDefinition>
+
+                        <ColumnDefinition Width="70">
+
+                        </ColumnDefinition>
+
+                        <ColumnDefinition Width="*">
+
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <ScrollViewer Grid.RowSpan="2" Grid.ColumnSpan="4" Padding="{StaticResource DetailPageMargin}">
+                        <ContentControl Content="{x:Bind SelectedItem}" ContentTemplate="{StaticResource ItemContentTemplate}" />
+                    </ScrollViewer>
+
+                    <Button Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="Equip" Width="70">
+                        
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Content="Drop" Width="70">
+
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Content="Upgrade?" Width="70">
+
+                    </Button>
+                </Grid>
+            </Grid>
+
+        </PivotItem>
+
+        <PivotItem Header="Armor">
+
+        </PivotItem>
+
+        <PivotItem Header="Potions">
+
+        </PivotItem>
+    </Pivot>
 </Page>

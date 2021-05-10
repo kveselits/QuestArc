@@ -17,6 +17,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\NavigationViewHeaderBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\NavigationViewHeaderMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\TreeViewCollapseBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Class1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InventoryPageBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\NavHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ResourceExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Singleton.cs" />

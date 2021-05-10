@@ -64,6 +64,13 @@ namespace QuestArc.Views
             await dialog.ShowAsync();
         }
 
+        private async void NonCalendarOnFlyOutButtonClickAsync(object sender, RoutedEventArgs e)
+        {
+            TaskCreationModal dialog = new TaskCreationModal();
+
+            await dialog.ShowAsync();
+        }
+
         private async void OnEditButtonClickAsync(object sender, RoutedEventArgs e)
         {
             var id = ((Button)sender).Tag;

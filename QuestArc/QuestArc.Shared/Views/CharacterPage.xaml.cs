@@ -22,6 +22,12 @@ namespace QuestArc.Views
 
         private async void StrButton_Pressed(object sender, RoutedEventArgs e)
         {
+            /*if (ViewModel.CharacterRef.UnallocatedPoints > 0)
+            {
+                ViewModel.viewStr += 1;
+                ViewModel.CharacterRef.Strength += 1;
+                await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
+            }*/
             ViewModel.viewStr += 1;
             ViewModel.CharacterRef.Strength += 1;
             await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);

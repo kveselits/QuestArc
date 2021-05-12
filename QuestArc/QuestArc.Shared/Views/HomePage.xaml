@@ -683,7 +683,7 @@
                             Grid.Row="0"
                             Click="OnFlyOutButtonClickAsync"
                             Content="Add Quest" />
-                        <TextBlock Text="{x:Bind ViewModel.SelectedDay}" FontStyle="" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="{x:Bind ViewModel.SelectedDay}" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Grid>
 
                     <ScrollViewer Grid.Column="1" Padding="{StaticResource DetailPageMargin}">

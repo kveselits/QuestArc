@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
-
-using QuestArc.Models;
 using QuestArc.Services;
-using QuestArc.Views;
-using Uno.Extensions.Specialized;
 using WinUI = Microsoft.UI.Xaml.Controls;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace QuestArc.ViewModels
 {
@@ -27,20 +18,16 @@ namespace QuestArc.ViewModels
             set => SetProperty(ref _selectedItem, value);
         }
 
-        private ObservableCollection<Character> characters;
-        public ObservableCollection<Character> Characters { get => characters; set => SetProperty(ref characters, value); }
-
         public SQLiteDatabase Db = App.Database;
 
-        public ICommand ItemInvokedCommand => _itemInvokedCommand ?? (_itemInvokedCommand = new RelayCommand<Windows.UI.Xaml.Controls.ItemClickEventArgs>(OnItemInvoked));
+        public ICommand ItemInvokedCommand => _itemInvokedCommand ?? (_itemInvokedCommand = new RelayCommand<WinUI.TreeViewItemInvokedEventArgs>(OnItemInvoked));
 
         public InventoryViewModel()
         {
-            //Characters = new ObservableCollection<Character> { App.Database.CurrentCharacter };
         }
 
 
-        private void OnItemInvoked(Windows.UI.Xaml.Controls.ItemClickEventArgs args)
-            => SelectedItem = args;
+        private void OnItemInvoked(WinUI.TreeViewItemInvokedEventArgs args)
+            => SelectedItem = args.InvokedItem;
     }
 }

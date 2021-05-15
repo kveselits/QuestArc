@@ -13,6 +13,8 @@ namespace QuestArc.TemplateSelectors
 
         public DataTemplate QuestTemplate { get; set; }
 
+        public DataTemplate ItemTemplate { get; set; }
+
         protected override DataTemplate SelectTemplateCore(object item)
         {
             return GetTemplate(item) ?? base.SelectTemplateCore(item);
@@ -23,9 +25,9 @@ namespace QuestArc.TemplateSelectors
             return GetTemplate(item) ?? base.SelectTemplateCore(item, container);
         }
 
-        private DataTemplate GetTemplate(object item)
+        private DataTemplate GetTemplate(object element)
         {
-            switch (item)
+            switch (element)
             {
                 case Character character:
                     return CharacterTemplate;
@@ -33,6 +35,8 @@ namespace QuestArc.TemplateSelectors
                     return ArcTemplate;
                 case Quest quest:
                     return QuestTemplate;
+                case Item item:
+                    return ItemTemplate;
             }
 
             return null;

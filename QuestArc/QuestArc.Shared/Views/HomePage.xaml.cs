@@ -1,23 +1,18 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using QuestArc.ViewModels;
-using QuestArc.Views;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using System.Threading.Tasks;
 
 using Windows.UI.Xaml.Navigation;
 using System.Collections.Generic;
 using System.Collections;
 using Windows.UI;
-using QuestArc.Models;
-using System.Data.SqlClient;
 using System.IO;
 using System.Data;
 using Microsoft.Data.Sqlite;
-using QuestArc.Services;
 
 namespace QuestArc.Views
 {
@@ -27,11 +22,12 @@ namespace QuestArc.Views
     public sealed partial class HomePage : Page
     {
         public HomeViewModel ViewModel { get; } = new HomeViewModel();
+
         public Dictionary<string, ArrayList> dateMap = new Dictionary<string, ArrayList>();
         string newDate;
-        int year;
-        int month;
-        int day;
+        int year = DateTime.Now.Date.Year;
+        int month = DateTime.Now.Date.Month;
+        int day = DateTime.Now.Date.Day;
 
         Flyout flyout;
         
@@ -69,6 +65,16 @@ namespace QuestArc.Views
             TaskCreationModal dialog = new TaskCreationModal();
 
             await dialog.ShowAsync();
+        }
+
+        private void OnGoToDayButtonClickAsync(object sender, RoutedEventArgs e)
+        {
+            DateTime endTime = new DateTime(year, month, day);
+            App.Database.SaveQuestsAsync(App.Database.GetQuestsOnDateAsync(endTime));
+            ViewModel.Db.CurrentCharacter.TempQuests = App.Database.GetQuestsOnDateAsync(endTime);
+            string shortString = endTime.ToShortDateString();
+            ViewModel.SelectedDay = shortString;
+            Items.SelectedItem = DayPivot;
         }
 
         private async void OnEditButtonClickAsync(object sender, RoutedEventArgs e)

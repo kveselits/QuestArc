@@ -16,6 +16,14 @@ namespace QuestArc.Services
     {
         private Character currentCharacter;
 
+        public Quest defaultQuest { get; set; } = new Quest()
+        {
+            Title = "Default Quest",
+            Description = "This is an example quest that can be safely deleted",
+            StartTime = DateTime.Now,
+            EndTime = DateTime.Now.AddDays(1)
+        };
+
         public SQLiteAsyncConnection Database { get; }
 
         public Character CurrentCharacter { get => currentCharacter; set => SetProperty(ref currentCharacter, value); }
@@ -42,13 +50,7 @@ namespace QuestArc.Services
 
             if (!GetArcsAsync().Result.Any())
             {
-                Quest defaultQuest = new Quest()
-                {
-                    Title = "Default Quest",
-                    Description ="This is an example quest that can be safely deleted",
-                    StartTime = DateTime.Now,
-                    EndTime = DateTime.Now.AddDays(1)
-                };
+                
 
                 Arc defaultArc = new Arc()
                 {
@@ -62,6 +64,7 @@ namespace QuestArc.Services
             else
             {
             }
+            CurrentCharacter.TempQuests.Add(defaultQuest);
         }
 
         #region Character

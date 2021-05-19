@@ -10,8 +10,8 @@ namespace QuestArc.Models
     public class Item : ObservableObject
     {
         private Character character;
-        private string itemName;
-        private string itemDescription;
+        private string title;
+        private string description;
         private int itemLevel;
         private int baseDamage;
         private int health;
@@ -23,6 +23,7 @@ namespace QuestArc.Models
         private int wisdom;
         private int intelligence;
         private int charisma;
+        private int weight;
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -30,8 +31,8 @@ namespace QuestArc.Models
         [ForeignKey(typeof(Character))]
         public int CharacterId { get; set; }
 
-        public string ItemName { get => itemName; set => SetProperty(ref itemName, value); }
-        public string ItemDescription { get => itemDescription; set => SetProperty(ref itemDescription, value); }
+        public string Title { get => title; set => SetProperty(ref title, value); }
+        public string Description { get => description; set => SetProperty(ref description, value); }
         public int ItemLevel { get => itemLevel; set => SetProperty(ref itemLevel, value); }
         public int BaseDamage { get => baseDamage; set => SetProperty(ref baseDamage, value); }
         public int Health { get => health; set => SetProperty(ref health, value); }
@@ -43,6 +44,7 @@ namespace QuestArc.Models
         public int Wisdom { get => wisdom; set => SetProperty(ref wisdom, value); }
         public int Intelligence { get => intelligence; set => SetProperty(ref intelligence, value); }
         public int Charisma { get => charisma; set => SetProperty(ref charisma, value); }
+        public int Weight { get => weight; set => SetProperty(ref weight, value); }
 
         public Item()
         {
@@ -50,14 +52,15 @@ namespace QuestArc.Models
 
         public Item(string itemName)
         {
-            this.ItemName = itemName;
+            this.title = itemName;
         }
 
-        public Item(string itemName, string itemDescription, int itemLevel, int baseDamage, int health, int mana, int strength, 
+        public Item(string title
+            , string description, int itemLevel, int baseDamage, int health, int mana, int strength, 
             int stamina, int constitution, int dexterity, int wisdom, int intelligence, int charisma)
         {
-            this.ItemName = itemName;
-            this.ItemDescription = itemDescription;
+            this.title = title;
+            this.Description = description;
             this.ItemLevel = itemLevel;
             this.BaseDamage = baseDamage;
             this.Health = health;

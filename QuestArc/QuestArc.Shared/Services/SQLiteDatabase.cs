@@ -15,6 +15,7 @@ namespace QuestArc.Services
     public class SQLiteDatabase : ObservableObject
     {
         private Character currentCharacter;
+        private ObservableCollection<Character> characters;
 
         public Quest defaultQuest { get; set; } = new Quest()
         {
@@ -28,20 +29,26 @@ namespace QuestArc.Services
 
         public Character CurrentCharacter { get => currentCharacter; set => SetProperty(ref currentCharacter, value); }
 
+        public ObservableCollection<Character> Characters { get => characters; set => SetProperty(ref characters, value); }
+
         public SQLiteDatabase(string dbPath)
         {
             Database = new SQLiteAsyncConnection(dbPath, false);
             Database.CreateTableAsync<Character>().Wait();
             Database.CreateTableAsync<Arc>().Wait();
             Database.CreateTableAsync<Quest>().Wait();
+            Database.CreateTableAsync<Item>().Wait();
 
             if (!GetCharactersAsync().Result.Any())
             {
                 CurrentCharacter = new Character()
                 {
                     Name = "Default Character",
-                    Arcs = new ObservableCollection<Arc>()
+                    Arcs = new ObservableCollection<Arc>(),
+                    Items = new ObservableCollection<Item>()
                 };
+
+                
             }
             else
             {
@@ -57,13 +64,37 @@ namespace QuestArc.Services
                     Title = "Default Arc",
                     Quests = new ObservableCollection<Quest>()
                 };
+
                 defaultArc.Quests.Add(defaultQuest);
                 CurrentCharacter.Arcs.Add(defaultArc);
                 Database.InsertWithChildrenAsync(CurrentCharacter, recursive:true);
             }
+            if (!GetItemsAsync().Result.Any())
+            {
+                Item defaultItem = new Item()
+                {
+                    Title = "Default Item",
+                    Strength = 1,
+                    Dexterity = 1,
+                    Description = "Test Item"
+                };
+                Item defaultItem2 = new Item()
+                {
+                    Title = "Default Item 2",
+                    Strength = 1,
+                    Dexterity = 1,
+                    Description = "Test Item2"
+                };
+
+                CurrentCharacter.Items.Add(defaultItem);
+                CurrentCharacter.Items.Add(defaultItem2);
+                Database.UpdateWithChildrenAsync(CurrentCharacter);
+            }
             else
             {
             }
+            Characters = new ObservableCollection<Character>();
+            Characters.Add(CurrentCharacter);
             CurrentCharacter.TempQuests.Add(defaultQuest);
         }
 
@@ -208,6 +239,46 @@ namespace QuestArc.Services
             return quests;
         }
 
+        #endregion
+
+        #region Item
+        public Task<List<Item>> GetItemsAsync()
+        {
+            //Get all Items.
+            return Database.GetAllWithChildrenAsync<Item>(recursive: true);
+        }
+
+        public Task<Item> GetItemAsync(int id)
+        {
+            return Database.GetWithChildrenAsync<Item>(id, recursive: true);
+        }
+
+        public Task SaveItemAsync(Item item, Character character)
+        {
+            if (item.Id != 0)
+            {
+                // Update an existing Item
+
+                return Database.UpdateWithChildrenAsync(item);
+            }
+            else
+            {
+                // Save a new Item.
+                if (character.Items == null)
+                {
+                    character.Items = new ObservableCollection<Item>();
+                }
+                Database.InsertAsync(item);
+                character.Items.Add(item);
+                return SaveCharacterAsync(CurrentCharacter);
+            }
+        }
+
+        public Task DeleteItemAsync(Item item)
+        {
+            // Delete a Item.
+            return Database.DeleteAsync(item);
+        }
         #endregion
     }
 }

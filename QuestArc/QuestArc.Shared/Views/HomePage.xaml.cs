@@ -60,6 +60,13 @@ namespace QuestArc.Views
             await dialog.ShowAsync();
         }
 
+        private async void NonCalendarOnFlyOutButtonClickAsync(object sender, RoutedEventArgs e)
+        {
+            TaskCreationModal dialog = new TaskCreationModal();
+
+            await dialog.ShowAsync();
+        }
+
         private void OnGoToDayButtonClickAsync(object sender, RoutedEventArgs e)
         {
             DateTime endTime = new DateTime(year, month, day);

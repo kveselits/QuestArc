@@ -1,25 +1,18 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using QuestArc.ViewModels;
-using QuestArc.Views;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using System.Threading.Tasks;
 
 using Windows.UI.Xaml.Navigation;
 using System.Collections.Generic;
 using System.Collections;
 using Windows.UI;
-using QuestArc.Models;
-using System.Data.SqlClient;
 using System.IO;
 using System.Data;
 using Microsoft.Data.Sqlite;
-using QuestArc.Services;
-using System.Collections.ObjectModel;
-using QuestArc.Helpers;
 
 namespace QuestArc.Views
 {

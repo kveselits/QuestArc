@@ -27,6 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestArc.Skia.Tizen", "Ques
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		QuestArc\QuestArc.Shared\QuestArc.Shared.projitems*{0e4088bb-ae70-4901-8330-831f335d7428}*SharedItemsImports = 5
+		QuestArc\QuestArc.Shared\QuestArc.Shared.projitems*{4ea17a35-3c91-4d67-b96c-2e97a3c4bc52}*SharedItemsImports = 5
+		QuestArc\QuestArc.Shared\QuestArc.Shared.projitems*{57653fe5-7395-48c4-ad55-d072fbc08e32}*SharedItemsImports = 5
+		QuestArc\QuestArc.Shared\QuestArc.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13
+		QuestArc\QuestArc.Shared\QuestArc.Shared.projitems*{63a2efac-3b4f-4b7c-9eee-30d5842ef6fb}*SharedItemsImports = 5
 		QuestArc\QuestArc.Shared\QuestArc.Shared.projitems*{69edbc93-c741-4808-b9ab-6a7374a528df}*SharedItemsImports = 4
 		QuestArc\QuestArc.Shared\QuestArc.Shared.projitems*{6e631f93-c620-4894-9b62-8078121c87a8}*SharedItemsImports = 4
 		QuestArc\QuestArc.Shared\QuestArc.Shared.projitems*{da5faa64-a9a5-460c-ab72-3a2aa5ec7b2b}*SharedItemsImports = 4

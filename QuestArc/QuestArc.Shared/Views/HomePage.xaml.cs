@@ -25,9 +25,9 @@ namespace QuestArc.Views
 
         public Dictionary<string, ArrayList> dateMap = new Dictionary<string, ArrayList>();
         string newDate;
-        int year;
-        int month;
-        int day;
+        int year = DateTime.Now.Date.Year;
+        int month = DateTime.Now.Date.Month;
+        int day = DateTime.Now.Date.Day;
 
         Flyout flyout;
         

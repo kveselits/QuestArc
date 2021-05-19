@@ -21,6 +21,7 @@ namespace QuestArc.Models
         private int stamina;
         private int intelligence;
         private int level;
+        private ObservableCollection<Item> items;
         private ObservableCollection<Arc> arcs;
         private DateTime createdOn;
 
@@ -53,5 +54,8 @@ namespace QuestArc.Models
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public ObservableCollection<Arc> Arcs { get => arcs; set => SetProperty(ref arcs, value); }
+
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public ObservableCollection<Item> Items { get => items; set => SetProperty(ref items, value); }
     }
 }

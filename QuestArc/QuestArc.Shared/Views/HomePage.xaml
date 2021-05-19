@@ -55,11 +55,15 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="GoToDayButton"
+                <Button
+                    x:Name="GoToDayButton"
                     Grid.Row="1"
                     HorizontalAlignment="Stretch"
-                    Content="Go to Day"/>
-                <TextBlock x:Name="flyoutText" Grid.Row="0" PointerPressed="Item_PointerPressed"/>
+                    Content="Go to Day" />
+                <TextBlock
+                    x:Name="flyoutText"
+                    Grid.Row="0"
+                    PointerPressed="Item_PointerPressed" />
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
                     <Button
                         HorizontalAlignment="Stretch"
@@ -611,7 +615,7 @@
                             Grid.ColumnSpan="3"
                             BorderBrush="Black"
                             BorderThickness="2"
-                            Click="OnFlyOutButtonClickAsync"
+                            Click="NonCalendarOnFlyOutButtonClickAsync"
                             Content="Add Quest"
                             FontFamily="Global User Interface"
                             FontSize="14"

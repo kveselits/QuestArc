@@ -59,6 +59,7 @@
                     x:Name="GoToDayButton"
                     Grid.Row="1"
                     HorizontalAlignment="Stretch"
+                    Click="OnGoToDayButtonClickAsync"
                     Content="Go to Day" />
                 <TextBlock
                     x:Name="flyoutText"
@@ -72,7 +73,7 @@
                     <Button
                         HorizontalAlignment="Stretch"
                         Click="OnFlyOutButtonClickAsync"
-                        Content="Add New Task" />
+                        Content="Add New Quest" />
 
                 </StackPanel>
             </Grid>
@@ -625,7 +626,10 @@
             </PivotItem>
             <!--  EndWeek  -->
 
-            <PivotItem x:Uid="Home_Day" Header="Day">
+            <PivotItem
+                x:Name="DayPivot"
+                x:Uid="Home_Day"
+                Header="Day">
                 <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
@@ -666,7 +670,7 @@
                             Grid.Row="1"
                             CanReorderItems="False"
                             ItemTemplateSelector="{StaticResource TreeViewTemplateSelector}"
-                            ItemsSource="{x:Bind ViewModel.Db.CurrentCharacter.Arcs}"
+                            ItemsSource="{x:Bind ViewModel.Db.CurrentCharacter.TempQuests}"
                             SelectionMode="Single">
                             <i:Interaction.Behaviors>
                                 <behaviors:TreeViewCollapseBehavior x:Name="collapseBehavior" />
@@ -679,6 +683,7 @@
                             Grid.Row="0"
                             Click="OnFlyOutButtonClickAsync"
                             Content="Add Quest" />
+                        <TextBlock Text="{x:Bind ViewModel.SelectedDay}" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Grid>
 
                     <ScrollViewer Grid.Column="1" Padding="{StaticResource DetailPageMargin}">

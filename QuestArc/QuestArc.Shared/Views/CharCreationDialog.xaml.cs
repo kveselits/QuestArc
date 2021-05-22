@@ -17,20 +17,29 @@ using Windows.UI.Xaml.Navigation;
 
 namespace QuestArc.Views
 {
-    public sealed partial class CharCreationModal : ContentDialog
+    public sealed partial class CharCreationDialog : ContentDialog
     {
-        public CharCreationModal()
+        public CharCreationDialog()
         {
-
             this.InitializeComponent();
+            int plusStr = 0;
+            int plusCon = 0;
+            int plusDex = 0;
+            int plusWis = 0;
+            int plusCha = 0;
+            int plusInt = 0;
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            // CANCEL BUTTON
+            return;
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            // CREATE BUTTON
+            return;
         }
     }
 }

@@ -15,9 +15,24 @@ namespace QuestArc.Views
 
         public CharacterPage()
         {
-            
             InitializeComponent();
             DataContext = ViewModel;
+
+            // When CharacterPage is drawn immediately start a new Character prompt.
+            // Will need to check if it's been done before so as not to create new characters everytime.
+            NewCharacterInit();
+        }
+
+        private async void NewCharacterInit()
+        {
+            CharCreationDialog NewCharDialog = new CharCreationDialog();
+            await NewCharDialog.ShowAsync();
+        }
+
+        private async void DoBattle_Pressed(object sender, RoutedEventArgs e)
+        {
+            BattleSimulator sim = new BattleSimulator();
+            sim.RandomBattle();
         }
 
         private async void StrButton_Pressed(object sender, RoutedEventArgs e)

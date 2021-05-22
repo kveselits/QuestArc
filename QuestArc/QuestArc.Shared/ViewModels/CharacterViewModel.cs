@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using QuestArc.Models;
+using QuestArc.Views;
 using Windows.UI.Xaml;
 
 namespace QuestArc.ViewModels

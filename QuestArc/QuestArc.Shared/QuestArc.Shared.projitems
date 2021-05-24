@@ -38,8 +38,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\CharacterPage.xaml.cs">
       <DependentUpon>CharacterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\CharCreationDialog.xaml.cs">
-      <DependentUpon>CharCreationDialog.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CharacterCreationDialog.xaml.cs">
+      <DependentUpon>CharacterCreationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\CombatDialog.xaml.cs">
       <DependentUpon>CombatDialog.xaml</DependentUpon>
@@ -104,7 +104,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\CharCreationDialog.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\CharacterCreationDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

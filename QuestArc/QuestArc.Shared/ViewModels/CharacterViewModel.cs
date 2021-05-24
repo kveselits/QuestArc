@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using QuestArc.Models;
-using QuestArc.Views;
-using Windows.UI.Xaml;
 
 namespace QuestArc.ViewModels
 {
     public class CharacterViewModel : ObservableObject
     {
-        public Character CharacterRef { get; set;}
+        public Character CharacterRef { get; set; }
         public CharacterViewModel()
         {
             Character character = App.Database.GetCharacterAsync(1).Result;
@@ -23,6 +20,7 @@ namespace QuestArc.ViewModels
             this._viewCha = character.Charisma;
             this._viewInt = character.Intelligence;
             this.numLevel = character.Level;
+            this._viewUnallocatedPoints = character.UnallocatedPoints;
             this._viewLevel = "Level: " + Convert.ToString(this.numLevel);
         }
 
@@ -31,6 +29,13 @@ namespace QuestArc.ViewModels
         {
             get => _viewName;
             set => SetProperty(ref _viewName, value);
+        }
+
+        private int _viewUnallocatedPoints;
+        public int viewUnallocatedPoints
+        {
+            get => _viewUnallocatedPoints;
+            set => SetProperty(ref _viewUnallocatedPoints, value);
         }
 
         private int _viewHealth;

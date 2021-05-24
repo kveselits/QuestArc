@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using QuestArc.ViewModels;
 
 using Windows.UI.Xaml.Controls;
 using QuestArc.Models;
 using Windows.UI.Xaml;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace QuestArc.Views
 {
@@ -19,68 +19,33 @@ namespace QuestArc.Views
             DataContext = ViewModel;
 
             // When CharacterPage is drawn immediately start a new Character prompt.
-            // Will need to check if it's been done before so as not to create new characters everytime.
-            NewCharacterInit();
+            // [Done] Will need to check if it's been done before so as not to create new characters everytime.
+            Character currentCharacter = App.Database.CurrentCharacter;
+
+            if (!currentCharacter.Initialized)
+            {
+                NewCharacterInit();
+                
+            }
         }
 
         private async void NewCharacterInit()
         {
-            CharCreationDialog NewCharDialog = new CharCreationDialog();
+            CharacterCreationDialog NewCharDialog = new CharacterCreationDialog(ViewModel);
             await NewCharDialog.ShowAsync();
         }
 
         private async void DoBattle_Pressed(object sender, RoutedEventArgs e)
         {
             BattleSimulator sim = new BattleSimulator();
-            sim.RandomBattle();
+            await sim.RandomBattle();
         }
 
-        private async void StrButton_Pressed(object sender, RoutedEventArgs e)
+        private async void LevelUpButton_Pressed(object sender, RoutedEventArgs e)
         {
-            /*if (ViewModel.CharacterRef.UnallocatedPoints > 0)
-            {
-                ViewModel.viewStr += 1;
-                ViewModel.CharacterRef.Strength += 1;
-                await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
-            }*/
-            ViewModel.viewStr += 1;
-            ViewModel.CharacterRef.Strength += 1;
-            await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
-        }
+            CharacterCreationDialog dialog = new CharacterCreationDialog(ViewModel);
 
-        private async void ConButton_Pressed(object sender, RoutedEventArgs e)
-        {
-            ViewModel.viewCon += 1;
-            ViewModel.CharacterRef.Constitution += 1;
-            await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
-        }
-
-        private async void DexButton_Pressed(object sender, RoutedEventArgs e)
-        {
-            ViewModel.viewDex += 1;
-            ViewModel.CharacterRef.Dexterity += 1;
-            await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
-        }
-
-        private async void WisButton_Pressed(object sender, RoutedEventArgs e)
-        {
-            ViewModel.viewWis += 1;
-            ViewModel.CharacterRef.Wisdom += 1;
-            await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
-        }
-
-        private async void ChaButton_Pressed(object sender, RoutedEventArgs e)
-        {
-            ViewModel.viewCha += 1;
-            ViewModel.CharacterRef.Charisma += 1;
-            await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
-        }
-
-        private async void IntButton_Pressed(object sender, RoutedEventArgs e)
-        {
-            ViewModel.viewInt += 1;
-            ViewModel.CharacterRef.Intelligence += 1;
-            await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
+            await dialog.ShowAsync();
         }
     }
 }

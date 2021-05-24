@@ -9,7 +9,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 using QuestArc.Helpers;
 using QuestArc.Services;
-
+using QuestArc.Views;
 using Windows.System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;

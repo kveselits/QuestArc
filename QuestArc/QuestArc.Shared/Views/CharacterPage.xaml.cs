@@ -25,7 +25,6 @@ namespace QuestArc.Views
             if (!currentCharacter.Initialized)
             {
                 NewCharacterInit();
-                
             }
         }
 

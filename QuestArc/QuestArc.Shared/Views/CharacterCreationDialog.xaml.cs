@@ -107,8 +107,9 @@ namespace QuestArc.Views
             await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
         }
 
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private async void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            ViewModel.viewName = charNameTextBox.Text;
             Character newCharacter = new Character()
             {
                 Name = ViewModel.viewName,
@@ -120,14 +121,18 @@ namespace QuestArc.Views
                 Dexterity = ViewModel.viewDex,
                 Wisdom = ViewModel.viewWis,
                 Charisma = ViewModel.viewCha,
-                Intelligence = ViewModel.viewInt
+                Intelligence = ViewModel.viewInt,
+                Initialized = true
 
             };
             App.Database.CurrentCharacter = newCharacter;
-            this.Hide();
+            App.Database.CurrentCharacter.Initialized = true;
+            await App.Database.SaveCharacterAsync(App.Database.CurrentCharacter);
+
+            Hide();
         }
 
-        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             this.Hide();
         }

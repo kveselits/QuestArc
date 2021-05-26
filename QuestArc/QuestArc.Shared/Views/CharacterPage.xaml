@@ -29,31 +29,36 @@
                     Margin="45,25,45,450"
                     BorderBrush="DarkBlue"
                     BorderThickness="2">
-                    <TextBlock x:Name="CharNameBlock"
+                    <TextBlock
+                        x:Name="CharNameBlock"
                         Width="430"
-                        Foreground="Black"
-                        Text="{Binding viewName, FallbackValue=NoBind}"
+                        Height="52"
                         FontSize="28"
                         FontWeight="Bold"
+                        Foreground="Black"
+                        Text="{Binding viewName, FallbackValue=NoBind}"
                         TextAlignment="Center"
-                        TextWrapping="Wrap" Height="52" />
+                        TextWrapping="Wrap" />
                     <Image
                         Width="330"
                         Height="300"
                         Source="../Assets/dwarf.jpg" />
-                    <TextBlock x:Name="CharLevelBlock"
-                        FontSize="24"
+                    <TextBlock
+                        x:Name="CharLevelBlock"
                         Width="430"
+                        FontSize="24"
                         Foreground="Black"
                         Text="{Binding viewLevel, FallbackValue=42}" />
-                    <ProgressBar x:Name="healthProgBar"
+                    <ProgressBar
+                        x:Name="healthProgBar"
+                        Height="20"
                         Maximum="100"
-                        Value="{Binding viewHealth, FallbackValue=50}" 
-                        Height="20" />
-                    <ProgressBar x:Name="CharProgBar"
+                        Value="{Binding viewHealth, FallbackValue=50}" />
+                    <ProgressBar
+                        x:Name="CharProgBar"
+                        Height="8"
                         Maximum="100"
-                        Value="50"
-                        Height="8" />
+                        Value="50" />
                 </StackPanel>
 
                 <StackPanel
@@ -63,8 +68,8 @@
                     BorderThickness="2"
                     Spacing="5">
 
-                    
-                    <!-- STRENGTH -->
+
+                    <!--  STRENGTH  -->
                     <TextBlock
                         Width="90"
                         Margin="-300,10,0,0"
@@ -73,22 +78,16 @@
                         Text="STR: " />
                     <TextBlock
                         x:Name="strLevelTextBlock"
-                        TextAlignment="Center"
                         Width="50"
                         Margin="-140,-55,0,0"
                         FontSize="38"
-                        Foreground="Black"                    
-                        Text="{Binding viewStr, FallbackValue=-1}" 
-                        TextWrapping="Wrap"/>
+                        Foreground="Black"
+                        Text="{Binding viewStr, FallbackValue=-1}"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
 
-                    <Button
-                        Click="StrButton_Pressed"
-                        Margin="200,-55,0,0"
-                        Content="+"
-                        Foreground="Black" />
 
-                    
-                    <!-- CONSTITUTION -->
+                    <!--  CONSTITUTION  -->
                     <TextBlock
                         Width="90"
                         Margin="-300,0,0,0"
@@ -97,22 +96,17 @@
                         Text="CON: " />
                     <TextBlock
                         x:Name="conLevelTextBlock"
-                        TextAlignment="Center"
                         Width="50"
                         Margin="-140,-55,0,0"
                         FontSize="38"
-                        Foreground="Black"                    
-                        Text="{Binding viewCon, FallbackValue=-1}" 
-                        TextWrapping="Wrap"/>
-                    
-                    <Button
-                        Click="ConButton_Pressed"
-                        Margin="200,-55,0,0"
-                        Content="+"
-                        Foreground="Black" />
+                        Foreground="Black"
+                        Text="{Binding viewCon, FallbackValue=-1}"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
 
-                    
-                    <!-- DEXTERITY -->
+
+
+                    <!--  DEXTERITY  -->
                     <TextBlock
                         Width="90"
                         Margin="-300,0,0,0"
@@ -121,23 +115,17 @@
                         Text="DEX: " />
                     <TextBlock
                         x:Name="dexLevelTextBlock"
-                        TextAlignment="Center"
                         Width="50"
                         Margin="-140,-55,0,0"
                         FontSize="38"
-                        Foreground="Black"                    
-                        Text="{Binding viewDex, FallbackValue=-1}" 
-                        TextWrapping="Wrap"/>
-
-                    <Button
-                        Click="DexButton_Pressed"
-                        Margin="200,-55,0,0"
-                        Content="+"
                         Foreground="Black"
-                        />
+                        Text="{Binding viewDex, FallbackValue=-1}"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
 
 
-                    <!-- WISDOM -->
+
+                    <!--  WISDOM  -->
                     <TextBlock
                         Width="90"
                         Margin="-300,0,0,0"
@@ -146,22 +134,18 @@
                         Text="WIS: " />
                     <TextBlock
                         x:Name="wisLevelTextBlock"
-                        TextAlignment="Center"
                         Width="50"
                         Margin="-140,-55,0,0"
                         FontSize="38"
-                        Foreground="Black"                    
-                        Text="{Binding viewWis, FallbackValue=-1}" 
-                        TextWrapping="Wrap"/>
-                    
-                    <Button
-                        Click="WisButton_Pressed"
-                        Margin="200,-55,0,0"
-                        Content="+"
-                        Foreground="Black" />
+                        Foreground="Black"
+                        Text="{Binding viewWis, FallbackValue=-1}"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
 
 
-                    <!-- CHARISMA -->
+
+
+                    <!--  CHARISMA  -->
                     <TextBlock
                         Width="90"
                         Margin="-300,0,0,0"
@@ -170,43 +154,39 @@
                         Text="CHA: " />
                     <TextBlock
                         x:Name="chaLevelTextBlock"
-                        TextAlignment="Center"
                         Width="50"
                         Margin="-140,-55,0,0"
                         FontSize="38"
-                        Foreground="Black"                    
-                        Text="{Binding viewCha, FallbackValue=-1}" 
-                        TextWrapping="Wrap"/>
-                    
-                    <Button
-                        Click="ChaButton_Pressed"
-                        Margin="200,-55,0,0"
-                        Content="+"
-                        Foreground="Black" />
+                        Foreground="Black"
+                        Text="{Binding viewCha, FallbackValue=-1}"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
 
 
-                    <!-- INTELLIGENCE -->
+
+
+                    <!--  INTELLIGENCE  -->
                     <TextBlock
                         Width="90"
                         Margin="-300,0,0,0"
                         FontSize="40"
                         Foreground="Black"
                         Text="INT: " />
-                    <TextBlock 
+                    <TextBlock
                         x:Name="intLevelTextBlock"
-                        TextAlignment="Center"
                         Width="50"
                         Margin="-140,-55,0,0"
                         FontSize="38"
-                        Foreground="Black"                    
-                        Text="{Binding viewInt, FallbackValue=-1}" 
-                        TextWrapping="Wrap"/>
-                    
+                        Foreground="Black"
+                        Text="{Binding viewInt, FallbackValue=-1}"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+
                     <Button
-                        Click="IntButton_Pressed"
                         Margin="200,-55,0,0"
-                        Content="+"
-                        Foreground="Black"/>
+                        Click="LevelUpButton_Pressed"
+                        Content="Level Up"
+                        Foreground="Black" />
                 </StackPanel>
 
             </Grid>
@@ -236,12 +216,12 @@
                         VerticalAlignment="Top"
                         CornerRadius="10"
                         PlaceholderText="Command..."
-                        TextWrapping="Wrap"/>
+                        TextWrapping="Wrap" />
                     <Button
                         Width="820"
                         Height="55"
-                        Content="Do Battle!"
-                        Click="DoBattle_Pressed"/>
+                        Click="DoBattle_Pressed"
+                        Content="Do Battle!" />
                 </StackPanel>
             </Grid>
             <!--#endregion-->
@@ -259,10 +239,7 @@
                     FontSize="32"
                     Text="Ailments"
                     TextWrapping="Wrap" />
-                <ListView
-                    x:Name="ailmentListView"
-                    Margin="28,73,28,18"
-                    />
+                <ListView x:Name="ailmentListView" Margin="28,73,28,18" />
             </Grid>
 
             <Grid
@@ -276,10 +253,7 @@
                     FontSize="32"
                     Text="Blessings"
                     TextWrapping="Wrap" />
-                <ListView 
-                    x:Name="blessingListView"
-                    Margin="28,73,28,18" 
-                    />
+                <ListView x:Name="blessingListView" Margin="28,73,28,18" />
             </Grid>
 
             <!--#endregion-->

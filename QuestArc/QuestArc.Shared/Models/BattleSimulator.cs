@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using QuestArc.Views;
 
 namespace QuestArc.Models
@@ -30,7 +31,7 @@ namespace QuestArc.Models
          * */
 
 
-        public async void RandomBattle()
+        public async Task RandomBattle()
         {
             // Get Character stats for view: Name, Level, HP, Damage
             Character SimCharacter = App.Database.GetCharacterAsync(1).Result;

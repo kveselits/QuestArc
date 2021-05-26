@@ -45,7 +45,9 @@ namespace QuestArc.Services
                 {
                     Name = "Default Character",
                     Arcs = new ObservableCollection<Arc>(),
-                    Items = new ObservableCollection<Item>()
+                    Items = new ObservableCollection<Item>(),
+                    TempQuests = new ObservableCollection<Quest>(),
+                    TempArcs = new ObservableCollection<Arc>()
                 };
 
                 

@@ -2,37 +2,55 @@
     x:Class="QuestArc.Views.CombatDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:QuestArc.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:QuestArc.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     Title="Battle Simulator"
-    PrimaryButtonText="Run"
-    SecondaryButtonText="Fight"
+    Width="1263"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick" Width="1263">
+    PrimaryButtonText="Run"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    SecondaryButtonText="Fight"
+    mc:Ignorable="d">
 
     <Grid>
         <Image
-                Opacity="0.5"
-                Source="../Assets/tavernBackground.jpg"
-                Stretch="Fill" Margin="0,0,-333,0" />
+            Margin="0,0,-333,0"
+            Opacity="0.5"
+            Source="../Assets/tavernBackground.jpg"
+            Stretch="Fill" />
 
         <!--#region LeftPane-->
         <StackPanel
-                Margin="10,50,257,230"
-                Background="LightYellow"
-                BorderBrush="DarkBlue"
-                BorderThickness="4"
-                CornerRadius="10">
+            Margin="10,50,257,230"
+            Background="LightYellow"
+            BorderBrush="DarkBlue"
+            BorderThickness="4"
+            CornerRadius="10">
 
-            <TextBlock Text="Character Name" TextWrapping="Wrap" FontSize="14px" Height="20" Width="215"/>
+            <TextBlock
+                Width="215"
+                Height="20"
+                FontSize="14px"
+                Text="Character Name"
+                TextWrapping="Wrap" />
             <Image Source="../Assets/dwarf.jpg" />
 
-            <TextBlock Text="Health" TextWrapping="Wrap" FontSize="8px" Height="12"/>
-            <ProgressBar Height="20" Value="100" Foreground="Firebrick"/>
+            <TextBlock
+                Height="12"
+                FontSize="8px"
+                Text="Health"
+                TextWrapping="Wrap" />
+            <ProgressBar
+                Height="20"
+                Foreground="Firebrick"
+                Value="100" />
 
-            <TextBlock Text="Weapon Damage" TextWrapping="Wrap" FontSize="8px" Height="12"/>
+            <TextBlock
+                Height="12"
+                FontSize="8px"
+                Text="Weapon Damage"
+                TextWrapping="Wrap" />
 
 
         </StackPanel>
@@ -47,13 +65,29 @@
             CornerRadius="10">
 
             <StackPanel>
-                <TextBlock Text="Monster Name" TextWrapping="Wrap" FontSize="14px" Height="20" Width="215"/>
-                <Image Source="../Assets/Goblin.jpg" Height="212"/>
+                <TextBlock
+                    Width="215"
+                    Height="20"
+                    FontSize="14px"
+                    Text="Monster Name"
+                    TextWrapping="Wrap" />
+                <Image Height="212" Source="../Assets/Goblin.jpg" />
 
-                <TextBlock Text="Health" TextWrapping="Wrap" FontSize="8px" Height="12"/>
-                <ProgressBar Height="20" Value="100" Foreground="Firebrick"/>
+                <TextBlock
+                    Height="12"
+                    FontSize="8px"
+                    Text="Health"
+                    TextWrapping="Wrap" />
+                <ProgressBar
+                    Height="20"
+                    Foreground="Firebrick"
+                    Value="100" />
 
-                <TextBlock Text="Damage" TextWrapping="Wrap" FontSize="8px" Height="12"/>
+                <TextBlock
+                    Height="12"
+                    FontSize="8px"
+                    Text="Damage"
+                    TextWrapping="Wrap" />
             </StackPanel>
         </Grid>
         <!--#endregion-->

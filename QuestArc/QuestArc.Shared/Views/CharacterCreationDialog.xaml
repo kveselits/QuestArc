@@ -1,0 +1,181 @@
+﻿<ContentDialog
+    x:Class="QuestArc.Views.CharacterCreationDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:QuestArc.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Character Creation"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    PrimaryButtonText="Cancel"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    SecondaryButtonText="Create"
+    mc:Ignorable="d">
+
+    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <TextBox Name="charNameTextBox" Header="Character Name" />
+
+
+
+        <!--#region Character Stats Panel-->
+        <StackPanel
+            Width="159"
+            Margin="0,20,0,0"
+            Background="WhiteSmoke"
+            BorderBrush="Black"
+            BorderThickness="1"
+            Spacing="5">
+
+            <TextBlock
+                Width="60"
+                Margin="-75,10,0,0"
+                FontSize="30"
+                Foreground="Black"
+                Text="{Binding viewUnallocatedPoints, FallbackValue=0}" />
+
+            <TextBlock
+                Width="60"
+                Margin="-75,10,0,0"
+                FontSize="30"
+                Foreground="Black"
+                Text="STR: " />
+            <TextBlock
+                x:Name="strLevelTextBlock"
+                Width="30"
+                Margin="25,-40,0,0"
+                FontSize="20"
+                Foreground="Black"
+                Text="{Binding viewStr, FallbackValue=0}"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+            <Button
+                Margin="120,-55,0,0"
+                Click="StrButton_Pressed"
+                Content="+"
+                Foreground="Black" />
+
+
+            <!--  CONSTITUTION  -->
+            <TextBlock
+                Width="70"
+                Margin="-75,0,0,0"
+                FontSize="30"
+                Foreground="Black"
+                Text="CON: " />
+            <TextBlock
+                x:Name="conLevelTextBlock"
+                Width="30"
+                Margin="25,-40,0,0"
+                FontSize="20"
+                Foreground="Black"
+                Text="{Binding viewCon, FallbackValue=0}"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+            <Button
+                Margin="120,-55,0,0"
+                Click="ConButton_Pressed"
+                Content="+"
+                Foreground="Black" />
+
+
+            <!--  DEXTERITY  -->
+            <TextBlock
+                Width="70"
+                Margin="-75,0,0,0"
+                FontSize="30"
+                Foreground="Black"
+                Text="DEX: " />
+            <TextBlock
+                x:Name="dexLevelTextBlock"
+                Width="30"
+                Margin="25,-40,0,0"
+                FontSize="20"
+                Foreground="Black"
+                Text="{Binding viewDex, FallbackValue=0}"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+            <Button
+                Margin="120,-55,0,0"
+                Click="DexButton_Pressed"
+                Content="+"
+                Foreground="Black" />
+
+
+            <!--  WISDOM  -->
+            <TextBlock
+                Width="70"
+                Margin="-75,0,0,0"
+                FontSize="30"
+                Foreground="Black"
+                Text="WIS: " />
+            <TextBlock
+                x:Name="wisLevelTextBlock"
+                Width="30"
+                Margin="25,-40,0,0"
+                FontSize="20"
+                Foreground="Black"
+                Text="{Binding viewWis, FallbackValue=0}"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+            <Button
+                Margin="120,-55,0,0"
+                Click="WisButton_Pressed"
+                Content="+"
+                Foreground="Black" />
+
+
+            <!--  CHARISMA  -->
+            <TextBlock
+                Width="70"
+                Margin="-75,0,0,0"
+                FontSize="30"
+                Foreground="Black"
+                Text="CHA: " />
+            <TextBlock
+                x:Name="chaLevelTextBlock"
+                Width="30"
+                Margin="25,-40,0,0"
+                FontSize="20"
+                Foreground="Black"
+                Text="{Binding viewCha, FallbackValue=0}"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+            <Button
+                Margin="120,-55,0,0"
+                Click="ChaButton_Pressed"
+                Content="+"
+                Foreground="Black" />
+
+
+            <!--  INTELLIGENCE  -->
+            <TextBlock
+                Width="70"
+                Margin="-75,0,0,0"
+                FontSize="30"
+                Foreground="Black"
+                Text="INT: " />
+            <TextBlock
+                x:Name="intLevelTextBlock"
+                Width="30"
+                Margin="25,-40,0,0"
+                FontSize="20"
+                Foreground="Black"
+                Text="{Binding viewInt, FallbackValue=0}"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+            <Button
+                Margin="120,-55,0,0"
+                Click="IntButton_Pressed"
+                Content="+"
+                Foreground="Black" />
+        </StackPanel>
+
+        <TextBlock x:Name="errorTextBlock" Foreground="Red" />
+    </StackPanel>
+</ContentDialog>

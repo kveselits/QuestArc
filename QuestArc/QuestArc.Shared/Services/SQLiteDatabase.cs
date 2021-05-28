@@ -69,30 +69,7 @@ namespace QuestArc.Services
                 CurrentCharacter.Arcs.Add(defaultArc);
                 Database.InsertWithChildrenAsync(CurrentCharacter, recursive:true);
             }
-            if (!GetItemsAsync().Result.Any())
-            {
-                Item defaultItem = new Item()
-                {
-                    Title = "Default Item",
-                    Strength = 1,
-                    Dexterity = 1,
-                    Description = "Test Item"
-                };
-                Item defaultItem2 = new Item()
-                {
-                    Title = "Default Item 2",
-                    Strength = 1,
-                    Dexterity = 1,
-                    Description = "Test Item2"
-                };
 
-                CurrentCharacter.Items.Add(defaultItem);
-                CurrentCharacter.Items.Add(defaultItem2);
-                Database.UpdateWithChildrenAsync(CurrentCharacter);
-            }
-            else
-            {
-            }
             Characters = new ObservableCollection<Character>();
             Characters.Add(CurrentCharacter);
             CurrentCharacter.TempQuests.Add(defaultQuest);
@@ -251,6 +228,11 @@ namespace QuestArc.Services
         public Task<Item> GetItemAsync(int id)
         {
             return Database.GetWithChildrenAsync<Item>(id, recursive: true);
+        }
+
+        public Task UpdateItemAsync(Item item)
+        {
+            return Database.UpdateWithChildrenAsync(item);
         }
 
         public Task SaveItemAsync(Item item, Character character)

@@ -24,6 +24,8 @@ namespace QuestArc.Models
         private int intelligence;
         private int charisma;
         private int weight;
+        private ItemType type;
+        private Boolean equipped;
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -45,6 +47,8 @@ namespace QuestArc.Models
         public int Intelligence { get => intelligence; set => SetProperty(ref intelligence, value); }
         public int Charisma { get => charisma; set => SetProperty(ref charisma, value); }
         public int Weight { get => weight; set => SetProperty(ref weight, value); }
+        public ItemType Type { get => type; set => SetProperty(ref type, value); }
+        public Boolean Equipped { get => equipped; set => SetProperty(ref equipped, value); }
 
         public Item()
         {
@@ -57,7 +61,7 @@ namespace QuestArc.Models
 
         public Item(string title
             , string description, int itemLevel, int baseDamage, int health, int mana, int strength, 
-            int stamina, int constitution, int dexterity, int wisdom, int intelligence, int charisma)
+            int stamina, int constitution, int dexterity, int wisdom, int intelligence, int charisma, ItemType type)
         {
             this.title = title;
             this.Description = description;
@@ -72,9 +76,17 @@ namespace QuestArc.Models
             this.Wisdom = wisdom;
             this.Intelligence = intelligence;
             this.Charisma = charisma;
+            this.Type = type;
         }
 
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
         public Character Character { get => character; set => SetProperty(ref character, value); }
+    }
+
+    public enum ItemType
+    {
+        WEAPON,
+        POTION,
+        ARMOR
     }
 }

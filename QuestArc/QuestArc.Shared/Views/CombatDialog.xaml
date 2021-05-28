@@ -7,11 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Battle Simulator"
     Width="1263"
+    mc:Ignorable="d">
+    <!--    
+    Removed from ContentDialog:
+    
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     PrimaryButtonText="Run"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
-    SecondaryButtonText="Fight"
-    mc:Ignorable="d">
+    SecondaryButtonText="Fight" 
+    -->
 
     <Grid>
         <Image
@@ -37,9 +41,9 @@
             <Image Source="../Assets/dwarf.jpg" />
 
             <TextBlock
-                Height="12"
-                FontSize="8px"
-                Text="Health"
+                Height="18"
+                FontSize="14px"
+                Text="Health:"
                 TextWrapping="Wrap" />
             <ProgressBar
                 Height="20"
@@ -47,8 +51,8 @@
                 Value="100" />
 
             <TextBlock
-                Height="12"
-                FontSize="8px"
+                Height="18"
+                FontSize="14px"
                 Text="Weapon Damage"
                 TextWrapping="Wrap" />
 
@@ -56,27 +60,29 @@
         </StackPanel>
         <!--#endregion-->
 
+
         <!--#region RightPane-->
         <Grid
             Margin="249,50,10,230"
+        
             Background="DimGray"
-            BorderBrush="DarkBlue"
+            BorderBrush="DarkRed"
             BorderThickness="4"
             CornerRadius="10">
 
             <StackPanel>
                 <TextBlock
-                    Width="215"
                     Height="20"
+                    Width="215"
                     FontSize="14px"
                     Text="Monster Name"
                     TextWrapping="Wrap" />
                 <Image Height="212" Source="../Assets/Goblin.jpg" />
 
                 <TextBlock
-                    Height="12"
-                    FontSize="8px"
-                    Text="Health"
+                    Height="18"
+                    FontSize="14px"
+                    Text="Health:"
                     TextWrapping="Wrap" />
                 <ProgressBar
                     Height="20"
@@ -84,10 +90,35 @@
                     Value="100" />
 
                 <TextBlock
-                    Height="12"
-                    FontSize="8px"
+                    Height="18"
+                    FontSize="14px"
                     Text="Damage"
                     TextWrapping="Wrap" />
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region BottomPane-->
+        <Grid
+            Margin="10,448,10,70"
+            Background="DimGray"
+            BorderBrush="DarkBlue"
+            BorderThickness="4"
+            CornerRadius="10">
+
+            <StackPanel>
+
+                <Grid Width="468" Height="27">
+                    <TextBlock
+                    FontSize="14px"
+                    Text="You encounter a Monster name"
+                    TextWrapping="Wrap" Margin="10,5,10,-2" />
+                </Grid>
+                <Grid Height="140">
+                    <Button Content="Use Weapon" Margin="10,10,0,0" VerticalAlignment="Top" Height="47" Width="225"/>
+                    <Button Content="Flee" HorizontalAlignment="Center" Height="50" Width="452" Margin="0,57,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Inventory" Margin="235,10,0,0" VerticalAlignment="Top" Height="47" Width="225"/>
+                </Grid>
             </StackPanel>
         </Grid>
         <!--#endregion-->

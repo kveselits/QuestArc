@@ -212,14 +212,28 @@
 
         <DataTemplate x:Key="QuestContentTemplate" x:DataType="model:Quest">
             <StackPanel>
-                <Button
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="87"/>
+                        <ColumnDefinition Width="105"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
                     Click="OnEditButtonClickAsync"
                     Content="Edit Quest"
                     Tag="{Binding Id}" />
-                <Button
+                    <Button
+                        Grid.Column="1"
                     Click="OnDeleteButtonClickAsync"
                     Content="Delete Quest"
                     Tag="{Binding Id}" />
+                    <Button
+                        Grid.Column="2"
+                    Click="OnCompleteButtonClickAsync"
+                    Content="Complete Quest"
+                    Tag="{Binding Id}" />
+                </Grid>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Quest ID" />
                     <TextBlock

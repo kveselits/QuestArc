@@ -21,8 +21,18 @@ namespace QuestArc.ViewModels
             this._viewWis = character.Wisdom;
             this._viewCha = character.Charisma;
             this._viewInt = character.Intelligence;
+            this.numPoints = character.UnallocatedPoints;
+            this._unallocatedPoints = "Points: " + Convert.ToString(this.numPoints);
             this.numLevel = character.Level;
             this._viewLevel = "Level: " + Convert.ToString(this.numLevel);
+        }
+
+        private int numPoints;
+        private string _unallocatedPoints;
+        public string UnallocatedPoints
+        {
+            get => _unallocatedPoints;
+            set => _unallocatedPoints = "Level: " + value;
         }
 
         private string _viewName;

@@ -16,43 +16,43 @@ using Windows.UI.Xaml.Navigation;
 
 namespace QuestArc.Views
 {
-	public sealed partial class TaskDeleteModal : ContentDialog
-	{
-		public int Id { get; }
-		public Quest Quest { get; }
+    public sealed partial class TaskDeleteModal : ContentDialog
+    {
+        public int Id { get; }
+        public Quest Quest { get; }
 
-		public TaskDeleteModal()
-		{
-			this.InitializeComponent();
-		}
-			public TaskDeleteModal(int id)
+        public TaskDeleteModal()
         {
-			this.InitializeComponent();
-			Id = id;
-			if(id != 0)
-			{ 
-				var result = App.Database.GetQuestAsync(this.Id);
-				if (result != null)
-				{
-					Quest = result.Result;
-				}
-			}
-			
-		}
-
-       
-
-		private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-		{
-			if(Quest != null)
+            this.InitializeComponent();
+        }
+        public TaskDeleteModal(int id)
+        {
+            this.InitializeComponent();
+            Id = id;
+            if (id != 0)
             {
-				App.Database.DeleteQuestAsync(Quest);
-			}
-		}
+                var result = App.Database.GetQuestAsync(this.Id);
+                if (result != null)
+                {
+                    Quest = result.Result;
+                }
+            }
 
-		private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-		{
-			this.Hide();
-		}
-	}
+        }
+
+
+
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            if (Quest != null)
+            {
+                App.Database.DeleteQuestAsync(Quest);
+            }
+        }
+
+        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            this.Hide();
+        }
+    }
 }

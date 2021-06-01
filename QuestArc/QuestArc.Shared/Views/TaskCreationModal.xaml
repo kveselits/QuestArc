@@ -27,7 +27,13 @@
         <ComboBox
             x:Name="difficultyPicker"
             Header="Difficulty"
-            ItemsSource="{x:Bind Difficulties}" />
+            ItemsSource="{x:Bind Difficulties}"
+            SelectedIndex="0" />
+        <ComboBox
+            x:Name="arcPicker"
+            Header="Arc"
+            ItemsSource="{x:Bind Arcs}"
+            SelectedIndex="0" />
         <CheckBox x:Name="allDayPicker" Content="All Day" />
         <TextBlock x:Name="errorTextBlock" Foreground="Red" />
 

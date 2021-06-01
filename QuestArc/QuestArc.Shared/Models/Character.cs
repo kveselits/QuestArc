@@ -60,11 +60,5 @@ namespace QuestArc.Models
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public ObservableCollection<Item> Items { get => items; set => SetProperty(ref items, value); }
-
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public ObservableCollection<Arc> TempArcs { get => tempArcs; set => SetProperty(ref tempArcs, value); }
-
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public ObservableCollection<Quest> TempQuests { get => tempQuests; set => SetProperty(ref tempQuests, value); }
     }
 }

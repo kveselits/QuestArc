@@ -22,7 +22,7 @@ namespace QuestArc.Services
             Title = "Default Quest",
             Description = "This is an example quest that can be safely deleted",
             StartTime = DateTime.Now,
-            EndTime = DateTime.Now.AddDays(1)
+            EndTime = DateTime.Now
         };
 
         public SQLiteAsyncConnection Database { get; }
@@ -45,20 +45,17 @@ namespace QuestArc.Services
                 {
                     Name = "Default Character",
                     Arcs = new ObservableCollection<Arc>(),
-                    Items = new ObservableCollection<Item>()
+                    Items = new ObservableCollection<Item>(), 
                 };
-
-                
             }
+
             else
             {
                 CurrentCharacter = GetCharacterAsync(1).Result;
             }
 
-            if (!GetArcsAsync().Result.Any())
+            if (!GetArcsAsync().Any())
             {
-                
-
                 Arc defaultArc = new Arc()
                 {
                     Title = "Default Arc",
@@ -72,7 +69,7 @@ namespace QuestArc.Services
 
             Characters = new ObservableCollection<Character>();
             Characters.Add(CurrentCharacter);
-            CurrentCharacter.TempQuests.Add(defaultQuest);
+            //CurrentCharacter.TempQuests.Add(defaultQuest);
         }
 
         #region Character
@@ -81,16 +78,6 @@ namespace QuestArc.Services
         {
             //Get all Characters.
             return Database.GetAllWithChildrenAsync<Character>(recursive: true);
-        }
-
-        internal Task SaveQuestsAsync(ObservableCollection<Quest> quests)
-        {
-            foreach(Quest quest in quests)
-            {
-                return Database.UpdateWithChildrenAsync(quest);
-            }
-            return Database.UpdateWithChildrenAsync(quests);
-
         }
 
         public Task<Character> GetCharacterAsync(int id)
@@ -125,10 +112,10 @@ namespace QuestArc.Services
 
         #region Arc
 
-        public Task<List<Arc>> GetArcsAsync()
+        public List<Arc> GetArcsAsync()
         {
             //Get all Arcs.
-            return Database.GetAllWithChildrenAsync<Arc>(recursive: true);
+            return Database.GetAllWithChildrenAsync<Arc>(recursive: true).Result;
         }
 
         public Task<Arc> GetArcAsync(int id)
@@ -197,6 +184,16 @@ namespace QuestArc.Services
                 SaveArcAsync(arc);
                 return SaveCharacterAsync(CurrentCharacter);
             }
+        }
+
+        public Task SaveQuestsAsync(ObservableCollection<Quest> quests)
+        {
+            foreach (Quest quest in quests)
+            {
+                return Database.UpdateWithChildrenAsync(quest);
+            }
+            return Database.UpdateWithChildrenAsync(quests);
+
         }
 
         public Task DeleteQuestAsync(Quest quest)

@@ -9,6 +9,8 @@ namespace QuestArc.Views
 {
     public sealed partial class TaskCreationModal : ContentDialog
     {
+        private List<Arc> arcs = App.Database.GetArcsAsync();
+
         public String TaskTitle
         {
             get { return TaskTitle; }
@@ -20,7 +22,8 @@ namespace QuestArc.Views
             set { Description = value; }
         }
 
-        public DatePicker StartDate {
+        public DatePicker StartDate
+        {
             get { return startDatePicker; }
             set { StartDate = value; }
         }
@@ -32,7 +35,7 @@ namespace QuestArc.Views
         }
 
         public ObservableCollection<string> Difficulties { get; set; }
-
+        public List<Arc> Arcs { get => arcs; set => arcs = value; }
         public TaskCreationModal()
         {
             this.InitializeComponent();
@@ -70,12 +73,13 @@ namespace QuestArc.Views
 
                 Description = descriptionTextBox.Text,
                 Difficulty = difficultyPicker.SelectedItem?.ToString(),
+                Arc = (Arc)arcPicker.SelectedItem,
                 AllDay = (bool)allDayPicker.IsChecked,
                 Status = "Todo"
             };
 
             App.Database.SaveQuestAsync(quest, App.Database.CurrentCharacter.Arcs[0]);
-   
+
         }
 
         private static DateTime CombineDateAndTime(DateTime dateObj, TimeSpan timeObj)

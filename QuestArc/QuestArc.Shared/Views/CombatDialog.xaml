@@ -63,7 +63,7 @@
                 FontSize="14px"
                 Text="Weapon Damage"
                 TextWrapping="Wrap">
-                <Run Text=": "></Run>
+                <Run Text=" "></Run>
                 <Run Text="{Binding viewBaseDamage}"></Run>
             </TextBlock>
 

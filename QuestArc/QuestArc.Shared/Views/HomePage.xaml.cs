@@ -72,8 +72,9 @@ namespace QuestArc.Views
         {
             flyout.Hide();
             DateTime endTime = new DateTime(year, month, day);
-            App.Database.SaveQuestsAsync(App.Database.GetQuestsOnDateAsync(endTime));
-            ViewModel.Db.CurrentCharacter.TempQuests = App.Database.GetQuestsOnDateAsync(endTime);
+            //App.Database.SaveQuestsAsync(App.Database.GetQuestsOnDateAsync(endTime));
+            ViewModel.TempQuests.Clear();
+            ViewModel.TempQuests = App.Database.GetQuestsOnDateAsync(endTime);
             string shortString = endTime.ToShortDateString();
             ViewModel.SelectedDay = shortString;
             Items.SelectedItem = DayPivot;
@@ -100,7 +101,7 @@ namespace QuestArc.Views
 
             if (!quest.Status.Equals("Complete"))
             {
-                string sqlQuery = "SELECT * FROM Character WHERE Id = " + quest.CharacterId;
+                string sqlQuery = "SELECT * FROM Character WHERE Id = " + quest.ArcId;
 
                 string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "QuestArc.db3");
                 using (var dbConnection = new System.Data.SQLite.SQLiteConnection("Data Source = " + path))

@@ -32,7 +32,7 @@ namespace QuestArc.ViewModels
         private ObservableCollection<Quest> quests;
         public ObservableCollection<Quest> Quests { get => quests; set => SetProperty(ref quests, value); }
 
-        private ObservableCollection<Quest> tempQuests;
+        private ObservableCollection<Quest> tempQuests = App.Database.GetQuestsOnDateAsync(DateTime.Now);
         public ObservableCollection<Quest> TempQuests { get => tempQuests; set => SetProperty(ref tempQuests, value); }
 
         public string SelectedDay { get => selectedDay; set => SetProperty(ref selectedDay, value); }

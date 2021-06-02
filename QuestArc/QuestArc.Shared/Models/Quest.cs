@@ -17,17 +17,12 @@ namespace QuestArc.Models
         private bool allDay;
         private string status;
         private Arc arc;
-        private Character character;
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
         [ForeignKey(typeof(Arc))]
         public int ArcId { get; set; }
-
-        [ForeignKey(typeof(Character))]
-        public int CharacterId { get; set; }
-
 
         public string Title { get => title; set => SetProperty(ref title, value); }
 
@@ -47,9 +42,6 @@ namespace QuestArc.Models
 
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
         public Arc Arc { get => arc; set => SetProperty(ref arc, value); }
-
-        [ManyToOne(CascadeOperations = CascadeOperation.All)]
-        public Character Character { get => character; set => SetProperty(ref character, value); }
 
         public string ShortDescription => $"Quest ID: {Id} - {Title}";
     }

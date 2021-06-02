@@ -24,9 +24,7 @@ namespace QuestArc.Models
         private ObservableCollection<Item> items;
         private ObservableCollection<Arc> arcs;
         private DateTime createdOn;
-        private ObservableCollection<Arc> tempArcs;
-        private int unallocatedPoints = 5;
-        private ObservableCollection<Quest> tempQuests;
+        private int unallocatedPoints;
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -60,13 +58,6 @@ namespace QuestArc.Models
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public ObservableCollection<Item> Items { get => items; set => SetProperty(ref items, value); }
-
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public ObservableCollection<Arc> TempArcs { get => tempArcs; set => SetProperty(ref tempArcs, value); }
-
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public ObservableCollection<Quest> TempQuests { get => tempQuests; set => SetProperty(ref tempQuests, value); }
-        
         public bool Initialized { get; set; }
     }
 }

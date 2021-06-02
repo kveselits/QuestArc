@@ -7,12 +7,16 @@ namespace QuestArc.ViewModels
     public class CharacterViewModel : ObservableObject
     {
         public Character CharacterRef { get; set; }
+        public Monster MonsterRef { get; set; }
+
         public CharacterViewModel()
         {
             Character character = App.Database.GetCharacterAsync(1).Result;
+            MonsterRef = new Monster("Goblin", 100, 5);
             CharacterRef = character;
             this._viewName = character.Name;
             this._viewHealth = character.Health;
+            this._viewCurrentHealth = character.Health;
             this._viewStr = character.Strength;
             this._viewCon = character.Constitution;
             this._viewDex = character.Dexterity;
@@ -25,6 +29,13 @@ namespace QuestArc.ViewModels
             this.numLevel = character.Level;
             this._viewUnallocatedPoints = character.UnallocatedPoints;
             this._viewLevel = "Level: " + Convert.ToString(this.numLevel);
+
+            this._viewMonsterDamage = MonsterRef.Damage;
+            this._viewMonsterHealth = MonsterRef.Health;
+            this._viewMonsterCurrentHealth = MonsterRef.CurrentHealth;
+            this._viewMonsterName = MonsterRef.Name;
+
+
         }
 
         private int numPoints;
@@ -54,6 +65,13 @@ namespace QuestArc.ViewModels
         {
             get => _viewHealth;
             set => SetProperty(ref _viewHealth, value);
+        }
+
+        private int _viewCurrentHealth;
+        public int viewCurrentHealth
+        {
+            get => _viewCurrentHealth;
+            set => SetProperty(ref _viewCurrentHealth, value);
         }
 
         private int _viewStr;
@@ -104,6 +122,34 @@ namespace QuestArc.ViewModels
         {
             get => _viewBaseDamage;
             set => SetProperty(ref _viewBaseDamage, value);
+        }
+
+        private int _viewMonsterDamage;
+        public int viewMonsterDamage
+        {
+            get => _viewMonsterDamage;
+            set => SetProperty(ref _viewMonsterDamage, value);
+        }
+
+        private int _viewMonsterHealth;
+        public int viewMonsterHealth
+        {
+            get => _viewMonsterHealth;
+            set => SetProperty(ref _viewMonsterHealth, value);
+        }
+
+        private int _viewMonsterCurrentHealth;
+        public int viewMonsterCurrentHealth
+        {
+            get => _viewMonsterCurrentHealth;
+            set => SetProperty(ref _viewMonsterCurrentHealth, value);
+        }
+
+        private string _viewMonsterName;
+        public string viewMonsterName
+        {
+            get => _viewMonsterName;
+            set => SetProperty(ref _viewMonsterName, value);
         }
 
         private int numLevel;

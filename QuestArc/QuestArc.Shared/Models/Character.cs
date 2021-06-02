@@ -12,16 +12,17 @@ namespace QuestArc.Models
     public class Character : ObservableObject
     {
         private string name;
-        private int health;
-        private int strength;
-        private int constitution;
-        private int dexterity;
-        private int wisdom;
-        private int charisma;
-        private int stamina;
-        private int intelligence;
-        private int level;
-        private int baseDamage;
+        private int health = 100;
+        private int currentHealth = 100;
+        private int strength = 8;
+        private int constitution = 8;
+        private int dexterity = 8;
+        private int wisdom = 8;
+        private int charisma = 8;
+        private int stamina = 8;
+        private int intelligence = 8;
+        private int level = 1;
+        private int baseDamage = 6;
         private ObservableCollection<Item> items;
         private ObservableCollection<Arc> arcs;
         private DateTime createdOn;
@@ -35,6 +36,8 @@ namespace QuestArc.Models
         public DateTime CreatedOn { get => createdOn; set => SetProperty(ref createdOn, value); }
 
         public int Health { get => health; set => SetProperty(ref health, value); }
+
+        public int CurrentHealth { get => currentHealth; set => SetProperty(ref currentHealth, value); }
 
         public int Strength { get => strength; set => SetProperty(ref strength, value); }
 

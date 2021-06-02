@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using QuestArc.Models;
 using System.Collections.ObjectModel;
 using QuestArc.ViewModels;
+using System.Threading.Tasks;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,10 +24,7 @@ namespace QuestArc.Views
     public sealed partial class CombatDialog : ContentDialog
     {
         CharacterViewModel ViewModel = new CharacterViewModel();
-        string MonsterName = "Goblin";
-        int MonsterMaxHealth = 100;
-        int MonsterCurrHealth = 100;
-        int MonsterDamage = 8;
+       
 
         public CombatDialog()
         {
@@ -34,9 +32,44 @@ namespace QuestArc.Views
             this.DataContext = ViewModel;
         }
 
-        private void UseWeapon_Click(object sender, RoutedEventArgs e)
+        ContentDialog PlayerWins = new ContentDialog()
         {
-            MonsterCurrHealth = MonsterCurrHealth - ViewModel.CharacterRef.BaseDamage;
+            Title = "You won!",
+            CloseButtonText = "Ok"
+        };
+
+        ContentDialog MonsterWins = new ContentDialog()
+        {
+            Title = "You lost!",
+            CloseButtonText = "Ok"
+        };
+
+
+        private async void UseWeapon_Click(object sender, RoutedEventArgs e)
+        {
+            if(ViewModel.viewCurrentHealth > 0 && ViewModel.viewMonsterCurrentHealth > 0)
+            {
+                // Monster curr hp = monster curr hp - Player damage
+                ViewModel.viewMonsterCurrentHealth = ViewModel.viewMonsterCurrentHealth - ViewModel.viewBaseDamage;
+
+                await Task.Delay(300);
+
+                // Player curr hp = player curr hp - Monster damage
+                ViewModel.viewCurrentHealth = ViewModel.viewCurrentHealth - ViewModel.viewMonsterDamage;
+
+                if(ViewModel.viewCurrentHealth <= 0)
+                {
+                    this.Hide();
+                    await PlayerWins.ShowAsync();
+                }
+
+                if(ViewModel.viewMonsterCurrentHealth <= 0)
+                {
+                    this.Hide();
+                    await MonsterWins.ShowAsync();
+                }
+            }
+
         }
 
         private void Inventory_Click(object sender, RoutedEventArgs e)
@@ -46,7 +79,7 @@ namespace QuestArc.Views
 
         private void Flee_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Hide();
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

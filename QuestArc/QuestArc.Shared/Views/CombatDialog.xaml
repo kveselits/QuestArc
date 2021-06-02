@@ -7,16 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Battle Simulator"
     Width="1263"
-    mc:Ignorable="d"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    PrimaryButtonText="Cancel">
-    <!--    
-    Removed from ContentDialog:
-    
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    PrimaryButtonText="Run"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
-    SecondaryButtonText="Fight" 
+    PrimaryButtonText="Cancel"
+    mc:Ignorable="d">
+    <!--
+        Removed from ContentDialog:
+        
+        PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+        PrimaryButtonText="Run"
+        SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+        SecondaryButtonText="Fight"
     -->
 
     <Grid>
@@ -46,25 +46,24 @@
                 Height="20"
                 FontSize="14px"
                 TextWrapping="Wrap">
-                <Run Text=" "></Run>
-                <Run Text="{Binding viewHealth}"></Run>
-                <Run Text=" / "></Run>
-                <Run Text="{Binding viewHealth}"></Run>
-                <Run Text=" "></Run>
+                <Run Text=" " />
+                <Run Text="{Binding viewCurrentHealth}" />
+                <Run Text=" / " />
+                <Run Text="{Binding viewHealth}" />
+                <Run Text=" " />
             </TextBlock>
             <ProgressBar
                 Height="20"
                 Foreground="Firebrick"
-                Value="{Binding viewHealth}">
-            </ProgressBar>
+                Value="{Binding viewCurrentHealth}" />
 
             <TextBlock
                 Height="18"
                 FontSize="14px"
                 Text="Weapon Damage"
                 TextWrapping="Wrap">
-                <Run Text=" "></Run>
-                <Run Text="{Binding viewBaseDamage}"></Run>
+                <Run Text=" " />
+                <Run Text="{Binding viewBaseDamage}" />
             </TextBlock>
 
 
@@ -74,7 +73,7 @@
 
         <!--#region RightPane-->
         <Grid
-            Margin="249,50,10,230"        
+            Margin="249,50,10,230"
             Background="DimGray"
             BorderBrush="DarkRed"
             BorderThickness="4"
@@ -82,33 +81,36 @@
 
             <StackPanel>
                 <TextBlock
-                    Height="20"
                     Width="215"
+                    Height="20"
                     FontSize="14px"
-                    Text="{Binding MonsterName}"
+                    Text="{Binding viewMonsterName}"
                     TextWrapping="Wrap" />
                 <Image Height="212" Source="../Assets/Goblin.jpg" />
 
                 <TextBlock
-                Height="20"
-                FontSize="14px"
-                TextWrapping="Wrap">
-                <Run Text=" "></Run>
-                <Run Text="{Binding MonsterCurrHealth}"></Run>
-                <Run Text=" / "></Run>
-                <Run Text="{Binding MonsterMaxHealth}"></Run>
-                <Run Text=" "></Run>
+                    Height="20"
+                    FontSize="14px"
+                    TextWrapping="Wrap">
+                    <Run Text=" " />
+                    <Run Text="{Binding viewMonsterCurrentHealth}" />
+                    <Run Text=" / " />
+                    <Run Text="{Binding viewMonsterHealth}" />
+                    <Run Text=" " />
                 </TextBlock>
                 <ProgressBar
                     Height="20"
                     Foreground="Firebrick"
-                    Value="{Binding MonsterCurrHealth}" />
+                    Value="{Binding viewMonsterCurrentHealth}" />
 
                 <TextBlock
                     Height="18"
                     FontSize="14px"
-                    Text="Damage"
-                    TextWrapping="Wrap" />
+                    Text="Damage: "
+                    TextWrapping="Wrap">
+                    <Run Text="{Binding viewMonsterDamage}" />
+                </TextBlock>
+
             </StackPanel>
         </Grid>
         <!--#endregion-->
@@ -125,17 +127,37 @@
 
                 <Grid Width="468" Height="27">
                     <TextBlock
-                    Name="StatusBox"
-                    FontSize="14px"
-                    Text="You encounter a "
-                    TextWrapping="Wrap" Margin="10,5,10,-2">
-                        <Run Text="{Binding MonsterName}"></Run>
+                        Name="StatusBox"
+                        Margin="10,5,10,-2"
+                        FontSize="14px"
+                        Text="You encounter a "
+                        TextWrapping="Wrap">
+                        <Run Text="{Binding viewMonsterName}" />
                     </TextBlock>
                 </Grid>
                 <Grid Height="140">
-                    <Button Content="Use Weapon" Click="UseWeapon_Click" Margin="10,10,0,0" VerticalAlignment="Top" Height="47" Width="225"/>
-                    <Button Content="Flee" Click="Flee_Click" HorizontalAlignment="Center" Height="50" Width="452" Margin="0,57,0,0" VerticalAlignment="Top"/>
-                    <Button Content="Inventory" Click="Inventory_Click" Margin="235,10,0,0" VerticalAlignment="Top" Height="47" Width="225"/>
+                    <Button
+                        Width="225"
+                        Height="47"
+                        Margin="10,10,0,0"
+                        VerticalAlignment="Top"
+                        Click="UseWeapon_Click"
+                        Content="Use Weapon" />
+                    <Button
+                        Width="452"
+                        Height="50"
+                        Margin="0,57,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Click="Flee_Click"
+                        Content="Flee" />
+                    <Button
+                        Width="225"
+                        Height="47"
+                        Margin="235,10,0,0"
+                        VerticalAlignment="Top"
+                        Click="Inventory_Click"
+                        Content="Inventory" />
                 </Grid>
             </StackPanel>
         </Grid>

@@ -33,9 +33,6 @@ namespace QuestArc.Models
 
         public async Task RandomBattle()
         {
-            // Get Character stats for view: Name, Level, HP, Damage
-            Character SimCharacter = App.Database.GetCharacterAsync(1).Result;
-
             // Make Random Monster
 
             // Create Combat Dialog
@@ -44,30 +41,9 @@ namespace QuestArc.Models
 
         }
 
-        private class Monster
-        {
-            string name;
-            int health;
-            int damage;
+        
 
-            public Monster(int health, int damage)
-            {
-                this.name = "Gorm Defaulty";
-                this.health = health;
-                this.damage = damage;
-            }
-
-            public void TakeDamage(int damage)
-            {
-                this.health = this.health - damage;
-                if (this.health <= 0)
-                {
-                    return;
-                }
-                return;
-            }
-
-            public void IsSlain()
+    /*        public void IsSlain()
             {
                 
             }
@@ -77,7 +53,7 @@ namespace QuestArc.Models
                 // Deal monsters damage to the players HP pool
             }
 
-        }
+        }*/
 
     }
 }

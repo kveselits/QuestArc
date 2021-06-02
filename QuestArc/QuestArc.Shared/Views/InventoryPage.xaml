@@ -18,77 +18,12 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <DataTemplate x:Key="CharacterTemplate" x:DataType="model:Character">
-            <winui:TreeViewItem
-                AutomationProperties.Name="{x:Bind Name}"
-                IsExpanded="False"
-                ItemsSource="{x:Bind Items}">
-                <TextBlock Margin="{StaticResource XXSmallTopRightBottomMargin}" Text="{x:Bind Name}" />
-            </winui:TreeViewItem>
-        </DataTemplate>
-
-        <DataTemplate x:Key="CharacterContentTemplate" x:DataType="model:Character">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Character ID" />
-                    <TextBlock
-                        Margin="{StaticResource SmallLeftMargin}"
-                        Style="{StaticResource TitleTextBlockStyle}"
-                        Text="{x:Bind Id}" />
-                </StackPanel>
-                <TextBlock
-                    Margin="{StaticResource MediumTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Name" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Name}" />
-                <TextBlock
-                    Margin="{StaticResource MediumTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Health" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Health}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Strength" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Strength}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Constitution" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Constitution}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Dexterity" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Dexterity}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Wisdom" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Wisdom}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Charisma" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Charisma}" />
-                <TextBlock
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Intelligence" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Intelligence}" />
-                <TextBlock
-                    Margin="{StaticResource MediumTopMargin}"
-                    Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Level" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Level}" />
-            </StackPanel>
-        </DataTemplate>
 
         <DataTemplate x:Key="ItemTemplate" x:DataType="model:Item">
             <winui:TreeViewItem AutomationProperties.Name="{x:Bind Title}">
                 <TextBlock
                     Margin="{StaticResource XXSmallTopRightBottomMargin}"
-                    Text="{x:Bind Description}"
+                    Text="{x:Bind Title}"
                     TextWrapping="Wrap" />
             </winui:TreeViewItem>
         </DataTemplate>
@@ -102,26 +37,9 @@
                         Grid.Column="0"
                         Width="70"
                         HorizontalAlignment="Left"
-                        Content="Equip" />
+                        Content="Equip" 
+                        Click="EquipItem"/>
 
-                    <Button
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Width="70"
-                        HorizontalAlignment="Left"
-                        Content="Drop" />
-
-                    <Button
-                        Grid.Row="1"
-                        Grid.Column="2"
-                        Width="70"
-                        HorizontalAlignment="Left"
-                        Content="Upgrade?" />
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Item ID" />
-                    <TextBlock
-                        Margin="{StaticResource SmallLeftMargin}"
-                        Style="{StaticResource TitleTextBlockStyle}"
-                        Text="{x:Bind Id}" />
                 </StackPanel>
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
@@ -131,8 +49,8 @@
                 <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Health" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Health}" />
+                    Text="Description" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Description}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
@@ -143,6 +61,11 @@
                     Style="{StaticResource DetailSubTitleStyle}"
                     Text="Constitution" />
                 <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Constitution}" />
+                <TextBlock
+                    Margin="{StaticResource MediumTopMargin}"
+                    Style="{StaticResource DetailSubTitleStyle}"
+                    Text="Stamina" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Stamina}" />
                 <TextBlock
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
@@ -159,22 +82,30 @@
                     Text="Wisdom" />
                 <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Wisdom}" />
                 <TextBlock
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource DetailSubTitleStyle}"
+                    Text="Intelligence" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Intelligence}" />
+                <TextBlock
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource DetailSubTitleStyle}"
+                    Text="Charisma" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Charisma}" />
+                <TextBlock
                     Margin="{StaticResource MediumTopMargin}"
                     Style="{StaticResource DetailSubTitleStyle}"
-                    Text="Description" />
-                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Description}" />
+                    Text="Health" />
+                <TextBlock Style="{StaticResource DetailBodyBaseMediumStyle}" Text="{x:Bind Health}" />
 
             </StackPanel>
         </DataTemplate>
 
         <templateSelectors:CharacterDataTemplateSelector
             x:Key="TreeViewTemplateSelector"
-            CharacterTemplate="{StaticResource CharacterTemplate}"
             ItemTemplate="{StaticResource ItemTemplate}" />
 
         <templateSelectors:CharacterDataTemplateSelector
             x:Key="ContentTemplateSelector"
-            CharacterTemplate="{StaticResource CharacterContentTemplate}"
             ItemTemplate="{StaticResource ItemContentTemplate}" />
 
     </Page.Resources>
@@ -184,42 +115,32 @@
             <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
-                        x:Name="treeViewColumn"
+                        x:Name="treeViewColumn1"
                         MinWidth="150"
                         MaxWidth="350" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+
                 <Grid Background="{ThemeResource SystemChromeMediumLowColor}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Grid x:Name="header" Margin="80,0,0,0">
+                    <Grid x:Name="header1" Margin="80,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Button
-                            x:Uid="TreeView_CollapseAllButton"
-                            Grid.Column="1"
-                            Padding="{StaticResource SmallLeftRightMargin}"
-                            VerticalAlignment="Stretch"
-                            VerticalContentAlignment="Center"
-                            Background="Transparent"
-                            Command="{Binding ElementName=collapseBehavior, Path=CollapseAllCommand}"
-                            Content="&#xF165;"
-                            FontFamily="Segoe MDL2 Assets"
-                            FontSize="14" />
                     </Grid>
                     <winui:TreeView
-                        x:Name="treeView"
+                        x:Name="treeView1"
                         Grid.Row="1"
                         CanReorderItems="False"
                         ItemTemplateSelector="{StaticResource TreeViewTemplateSelector}"
-                        ItemsSource="{x:Bind ViewModel.Db.Characters}"
+                        ItemsSource="{x:Bind ViewModel.WeaponList}"
                         SelectionMode="Single">
                         <i:Interaction.Behaviors>
-                            <behaviors:TreeViewCollapseBehavior x:Name="collapseBehavior" />
+                            <behaviors:TreeViewCollapseBehavior x:Name="collapseBehavior1" />
                             <ic:EventTriggerBehavior EventName="ItemInvoked">
                                 <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemInvokedCommand}" />
                             </ic:EventTriggerBehavior>
@@ -257,8 +178,154 @@
 
         </PivotItem>
 
-        <PivotItem Header="Armor" />
+            <PivotItem x:Uid="Armor" Header="Armor">
+                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                        x:Name="treeViewColumn2"
+                        MinWidth="150"
+                        MaxWidth="350" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Background="{ThemeResource SystemChromeMediumLowColor}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid x:Name="header2" Margin="80,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button
+                            x:Uid="TreeView_CollapseAllButton"
+                            Grid.Column="1"
+                            Padding="{StaticResource SmallLeftRightMargin}"
+                            VerticalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Background="Transparent"
+                            Command="{Binding ElementName=collapseBehavior, Path=CollapseAllCommand}"
+                            Content="&#xF165;"
+                            FontFamily="Segoe MDL2 Assets"
+                            FontSize="14" />
+                        </Grid>
+                        <winui:TreeView
+                        x:Name="treeView2"
+                        Grid.Row="1"
+                        CanReorderItems="False"
+                        ItemTemplateSelector="{StaticResource TreeViewTemplateSelector}"
+                        ItemsSource="{x:Bind ViewModel.ArmorList}"
+                        SelectionMode="Single">
+                            <i:Interaction.Behaviors>
+                                <behaviors:TreeViewCollapseBehavior x:Name="collapseBehavior2" />
+                                <ic:EventTriggerBehavior EventName="ItemInvoked">
+                                    <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemInvokedCommand}" />
+                                </ic:EventTriggerBehavior>
+                            </i:Interaction.Behaviors>
+                        </winui:TreeView>
+                    </Grid>
 
-        <PivotItem Header="Potions" />
+                <ScrollViewer Grid.Column="1" Padding="{StaticResource DetailPageMargin}">
+                    <ContentControl Content="{x:Bind ViewModel.SelectedItem, Mode=OneWay}" ContentTemplateSelector="{StaticResource ContentTemplateSelector}" />
+                </ScrollViewer>
+
+                <controls:GridSplitter
+                    Grid.Column="1"
+                    Width="16"
+                    HorizontalAlignment="Left"
+                    CursorBehavior="ChangeOnSplitterHover"
+                    GripperCursor="Default"
+                    ResizeBehavior="BasedOnAlignment"
+                    ResizeDirection="Auto" />
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState>
+                                <VisualState.StateTriggers>
+                                    <!--  641 is the default CompactModeThresholdWidth in NavigationView  -->
+                                    <AdaptiveTrigger MinWindowWidth="641" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="header.Margin" Value="0,0,0,0" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Grid>
+            </PivotItem>
+
+                <PivotItem x:Uid="Potions" Header="Potions">
+                    <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                        x:Name="treeViewColumn3"
+                        MinWidth="150"
+                        MaxWidth="350" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Background="{ThemeResource SystemChromeMediumLowColor}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid x:Name="header3" Margin="80,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button
+                            x:Uid="TreeView_CollapseAllButton"
+                            Grid.Column="1"
+                            Padding="{StaticResource SmallLeftRightMargin}"
+                            VerticalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Background="Transparent"
+                            Command="{Binding ElementName=collapseBehavior, Path=CollapseAllCommand}"
+                            Content="&#xF165;"
+                            FontFamily="Segoe MDL2 Assets"
+                            FontSize="14" />
+                            </Grid>
+                            <winui:TreeView
+                        x:Name="treeView3"
+                        Grid.Row="1"
+                        CanReorderItems="False"
+                        ItemTemplateSelector="{StaticResource TreeViewTemplateSelector}"
+                        ItemsSource="{x:Bind ViewModel.PotionList}"
+                        SelectionMode="Single">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:TreeViewCollapseBehavior x:Name="collapseBehavior3" />
+                                    <ic:EventTriggerBehavior EventName="ItemInvoked">
+                                        <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemInvokedCommand}" />
+                                    </ic:EventTriggerBehavior>
+                                </i:Interaction.Behaviors>
+                            </winui:TreeView>
+                        </Grid>
+
+                <ScrollViewer Grid.Column="1" Padding="{StaticResource DetailPageMargin}">
+                    <ContentControl Content="{x:Bind ViewModel.SelectedItem, Mode=OneWay}" ContentTemplateSelector="{StaticResource ContentTemplateSelector}" />
+                </ScrollViewer>
+
+                <controls:GridSplitter
+                    Grid.Column="1"
+                    Width="16"
+                    HorizontalAlignment="Left"
+                    CursorBehavior="ChangeOnSplitterHover"
+                    GripperCursor="Default"
+                    ResizeBehavior="BasedOnAlignment"
+                    ResizeDirection="Auto" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup>
+                                <VisualState>
+                                    <VisualState.StateTriggers>
+                                        <!--  641 is the default CompactModeThresholdWidth in NavigationView  -->
+                                        <AdaptiveTrigger MinWindowWidth="641" />
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="header.Margin" Value="0,0,0,0" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </PivotItem>
     </Pivot>
 </Page>

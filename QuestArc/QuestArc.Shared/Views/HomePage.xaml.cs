@@ -13,6 +13,7 @@ using Windows.UI;
 using System.IO;
 using System.Data;
 using Microsoft.Data.Sqlite;
+using QuestArc.Models;
 
 namespace QuestArc.Views
 {
@@ -30,7 +31,7 @@ namespace QuestArc.Views
         int day = DateTime.Now.Date.Day;
 
         Flyout flyout;
-        
+
 
         public HomePage()
         {
@@ -69,12 +70,14 @@ namespace QuestArc.Views
 
         private void OnGoToDayButtonClickAsync(object sender, RoutedEventArgs e)
         {
+            flyout.Hide();
             DateTime endTime = new DateTime(year, month, day);
             App.Database.SaveQuestsAsync(App.Database.GetQuestsOnDateAsync(endTime));
             ViewModel.Db.CurrentCharacter.TempQuests = App.Database.GetQuestsOnDateAsync(endTime);
             string shortString = endTime.ToShortDateString();
             ViewModel.SelectedDay = shortString;
             Items.SelectedItem = DayPivot;
+            this.Bindings.Update();
         }
 
         private async void OnEditButtonClickAsync(object sender, RoutedEventArgs e)
@@ -89,6 +92,80 @@ namespace QuestArc.Views
             var id = ((Button)sender).Tag;
             TaskDeleteModal dialog = new TaskDeleteModal((int)id);
             await dialog.ShowAsync();
+        }
+
+        private async void OnCompleteButtonClickAsync(object sender, RoutedEventArgs e)
+        {
+            Quest quest = (Quest)(sender as FrameworkElement).DataContext;
+
+            if (!quest.Status.Equals("Complete"))
+            {
+                string sqlQuery = "SELECT * FROM Character WHERE Id = " + quest.CharacterId;
+
+                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "QuestArc.db3");
+                using (var dbConnection = new System.Data.SQLite.SQLiteConnection("Data Source = " + path))
+                {
+                    using (var dbcmd = new System.Data.SQLite.SQLiteCommand())
+                    {
+                        dbConnection.Open();
+                        dbcmd.Connection = dbConnection;
+
+                        dbcmd.CommandText = sqlQuery;
+                        IDataReader reader = dbcmd.ExecuteReader();
+
+                        string characterId = null;
+                        int points = 0;
+
+                        while (reader.Read())
+                        {
+                            characterId = reader["Id"].ToString();
+                            points = (int)(long)reader["UnallocatedPoints"];
+                        }
+
+                        reader.Close();
+
+                        string difficulty = quest.Difficulty;
+                        int numPoints = 0;
+
+                        switch (difficulty)
+                        {
+                            case "Easy":
+                                numPoints = 10 + points;
+                                break;
+                            case "Normal":
+                                numPoints = 20 + points;
+                                break;
+                            case "Hard":
+                                numPoints = 30 + points;
+                                break;
+                        }
+
+                        dbcmd.Parameters.AddWithValue("@id", quest.Id);
+                        dbcmd.Parameters.AddWithValue("@status", "Complete");
+                        dbcmd.CommandText = @"UPDATE Quest SET Status = @status WHERE Id = @id";
+                        dbcmd.ExecuteNonQuery();
+
+                        dbcmd.Parameters.AddWithValue("@id", characterId);
+                        dbcmd.Parameters.AddWithValue("@points", numPoints);
+                        dbcmd.CommandText = @"UPDATE Character SET UnallocatedPoints = @points WHERE Id = @id";
+                        dbcmd.ExecuteNonQuery();
+                        dbConnection.Close();
+                    }
+                    this.Bindings.Update();
+                }
+
+                ContentDialog dialog = new ContentDialog();
+                dialog.Title = "Quest Complete!";
+                dialog.CloseButtonText = "Ok";
+                await dialog.ShowAsync();
+
+            } else
+            {
+                ContentDialog dialog = new ContentDialog();
+                dialog.Title = "Quest is already Complete";
+                dialog.CloseButtonText = "Ok";
+                await dialog.ShowAsync();
+            }
         }
 
         private void OnFlyoutCloseButtonClick(object sender, RoutedEventArgs e)
@@ -167,7 +244,7 @@ namespace QuestArc.Views
                     List<Color> densityColors = new List<Color>();
                     foreach (string date in dateMap.Keys)
                     {
-                        
+
                         if (date.Contains(newDate))
                         {
                             for (int i = 0; i < count; i++)
@@ -193,7 +270,7 @@ namespace QuestArc.Views
             flyout = (Flyout)this.Resources["flyout"];
 
             string[] dates = sender.Date.ToString().Split('/', ' ');
-            if(dates[1].Length == 1)
+            if (dates[1].Length == 1)
             {
                 dates[1] = "0" + dates[1];
             }
@@ -207,10 +284,12 @@ namespace QuestArc.Views
             month = int.Parse(dates[0]);
             day = int.Parse(dates[1]);
 
-            if (dateMap.ContainsKey(date)) {
+            if (dateMap.ContainsKey(date))
+            {
                 flyoutText.Text = (string)dateMap[date][0];
                 GoToDayButton.Visibility = Visibility.Visible;
-            } else
+            }
+            else
             {
                 flyoutText.Text = "No Quests Today";
                 GoToDayButton.Visibility = Visibility.Collapsed;

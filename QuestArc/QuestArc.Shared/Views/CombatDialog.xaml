@@ -41,7 +41,7 @@
             <Image Source="../Assets/dwarf.jpg" />
 
             <TextBlock
-                Height="18"
+                Height="20"
                 FontSize="14px"
                 Text="Health:"
                 TextWrapping="Wrap" />
@@ -80,7 +80,7 @@
                 <Image Height="212" Source="../Assets/Goblin.jpg" />
 
                 <TextBlock
-                    Height="18"
+                    Height="20"
                     FontSize="14px"
                     Text="Health:"
                     TextWrapping="Wrap" />

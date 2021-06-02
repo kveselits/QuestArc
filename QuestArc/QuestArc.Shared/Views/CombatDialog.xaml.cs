@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using QuestArc.Models;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,9 +20,14 @@ namespace QuestArc.Views
 {
     public sealed partial class CombatDialog : ContentDialog
     {
-        public CombatDialog()
+        public CombatDialog(Character c)
         {
             this.InitializeComponent();
+            Character SimCharacter = c;
+
+            int _viewHealth = SimCharacter.Health;
+            int _viewWepDamage = SimCharacter.Health;
+            int _viewHealth = SimCharacter.Health;
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

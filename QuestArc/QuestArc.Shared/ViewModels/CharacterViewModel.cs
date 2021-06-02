@@ -32,7 +32,7 @@ namespace QuestArc.ViewModels
         public string UnallocatedPoints
         {
             get => _unallocatedPoints;
-            set => _unallocatedPoints = "Level: " + value;
+            set => _unallocatedPoints = "Points: " + value;
         }
 
         private string _viewName;

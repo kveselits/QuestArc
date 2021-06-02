@@ -19,7 +19,7 @@
 
             <!--#region LeftPane-->
             <Grid
-                Margin="50,50,910,50"
+                Margin="50,40,910,100"
                 Background="LightYellow"
                 BorderBrush="DarkBlue"
                 BorderThickness="4"
@@ -50,11 +50,12 @@
                         FontSize="24"
                         Width="430"
                         Foreground="Black"
-                        Text="{Binding UnallocatedPoints, FallbackValue=42}" />
+                        Text="{Binding UnallocatedPoints, FallbackValue=5}" />
                     <ProgressBar x:Name="healthProgBar"
                         Maximum="100"
                         Value="{Binding viewHealth, FallbackValue=50}" 
-                        Height="20" />
+                        Height="20" 
+                        Foreground="Firebrick"/>
                     <ProgressBar x:Name="CharProgBar"
                         Maximum="100"
                         Value="50"
@@ -62,13 +63,13 @@
                 </StackPanel>
 
                 <StackPanel
-                    Margin="45,440,45,40"
+                    Margin="45,440,45,100"
                     Background="WhiteSmoke"
                     BorderBrush="DarkBlue"
                     BorderThickness="2"
                     Spacing="5">
 
-                    
+
                     <!-- STRENGTH -->
                     <TextBlock
                         Width="90"
@@ -93,7 +94,7 @@
                         Content="+"
                         Foreground="Black" />
 
-                    
+
                     <!-- CONSTITUTION -->
                     <TextBlock
                         Width="90"
@@ -110,7 +111,7 @@
                         Foreground="Black"                    
                         Text="{Binding viewCon, FallbackValue=-1}" 
                         TextWrapping="Wrap"/>
-                    
+
                     <Button
                         Click="ConButton_Pressed"
                         Margin="200,-55,0,0"
@@ -118,7 +119,7 @@
                         Content="+"
                         Foreground="Black" />
 
-                    
+
                     <!-- DEXTERITY -->
                     <TextBlock
                         Width="90"
@@ -161,7 +162,7 @@
                         Foreground="Black"                    
                         Text="{Binding viewWis, FallbackValue=-1}" 
                         TextWrapping="Wrap"/>
-                    
+
                     <Button
                         Click="WisButton_Pressed"
                         Margin="200,-55,0,0"
@@ -186,7 +187,7 @@
                         Foreground="Black"                    
                         Text="{Binding viewCha, FallbackValue=-1}" 
                         TextWrapping="Wrap"/>
-                    
+
                     <Button
                         Click="ChaButton_Pressed"
                         Margin="200,-55,0,0"
@@ -211,7 +212,7 @@
                         Foreground="Black"                    
                         Text="{Binding viewInt, FallbackValue=-1}" 
                         TextWrapping="Wrap"/>
-                    
+
                     <Button
                         Click="IntButton_Pressed"
                         Margin="200,-55,0,0"
@@ -219,41 +220,95 @@
                         Content="+"
                         Foreground="Black"/>
                 </StackPanel>
+                <!-- Do Battle -->
+                    <Button
+                        Width="420"
+                        Height="55"
+                        Content="Do Battle!"
+                        Click="DoBattle_Pressed" HorizontalAlignment="Center" Margin="0,875,0,0" VerticalAlignment="Top"/>
 
             </Grid>
             <!--#endregion-->
 
             <!--#region RightPane-->
             <Grid
-                Margin="625,50,35,527"
+                Margin="645,40,35,600"
                 Background="DimGray"
                 BorderBrush="DarkBlue"
                 BorderThickness="4"
                 CornerRadius="10">
+
+                <!-- Left Weapon -->
+                <StackPanel 
+                    Background="SlateGray"
+                    BorderBrush="Black"
+                    BorderThickness="2" 
+                    Margin="75,25,600,165">
+                    <TextBlock Text="Left Weapon" FontSize="12" FontWeight="Thin" TextWrapping="Wrap" Width="85" Height="20" TextAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Helmet -->
+                <StackPanel 
+                    Background="SlateGray"
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    Margin="365,10,365,375">
+                    <TextBlock Text="Helmet" FontSize="12" FontWeight="Thin" TextWrapping="Wrap" Width="85" Height="20" TextAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Back -->
+                <StackPanel 
+                    Background="SlateGray"
+                    BorderBrush="Black"
+                    BorderThickness="2" 
+                    Margin="275,100,440,240">
+                    <TextBlock Text="Back" FontSize="12" FontWeight="Thin" TextWrapping="Wrap" Width="85" Height="20" TextAlignment="Center"/>
+                </StackPanel>
+
+
+                <!-- Chest -->
+                <StackPanel 
+                    Background="SlateGray"
+                    BorderBrush="Black"
+                    BorderThickness="2" 
+                    Margin="440,100,275,240">
+                    <TextBlock Text="Chest" FontSize="12" FontWeight="Thin" TextWrapping="Wrap" Width="85" Height="20" TextAlignment="Center"/>
+                </StackPanel>
+
+
+                <!-- Feet -->
+                <StackPanel 
+                    Background="SlateGray"
+                    BorderBrush="Black"
+                    BorderThickness="2" 
+                    Margin="320,235,320,120">
+                    <TextBlock Text="Feet" FontSize="12" FontWeight="Thin" TextWrapping="Wrap" Width="85" Height="20" TextAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Right Weapon -->
+                <StackPanel 
+                    Background="SlateGray"
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    Margin="600,25,75,170">
+                    <TextBlock Text="Right Weapon" FontSize="12" FontWeight="Thin" TextWrapping="Wrap" Width="85" Height="20" TextAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Inventory Viewer -->
                 <TextBox
-                    Width="820"
-                    Height="350"
-                    Margin="0,10,0,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
+                    Margin="10,359,10,10"
                     CornerRadius="10"
                     IsReadOnly="True"
                     TextWrapping="Wrap" />
-                <TextBox
-                    Width="820"
-                    Height="55"
-                    Margin="0,365,0,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    CornerRadius="10"
-                    PlaceholderText="Command..."
-                    TextWrapping="Wrap"/>
+
             </Grid>
             <!--#endregion-->
 
             <!--#region Ailments&Blessings-->
             <Grid
-                Margin="625,500,470,50"
+                Margin="641,519,470,95"
+                Height="500"
+                Width="420"
                 Background="IndianRed"
                 BorderBrush="DarkBlue"
                 BorderThickness="4"
@@ -271,7 +326,9 @@
             </Grid>
 
             <Grid
-                Margin="1041,500,35,50"
+                Margin="1076,519,35,95"
+                Height="500"
+                Width="420"
                 Background="PaleGreen"
                 BorderBrush="DarkBlue"
                 BorderThickness="4"

@@ -45,7 +45,7 @@
                 Margin="25,-40,0,0"
                 FontSize="20"
                 Foreground="Black"
-                Text="{Binding viewStr, FallbackValue=0}"
+                Text="{Binding viewStr, FallbackValue=8}"
                 TextAlignment="Center"
                 TextWrapping="Wrap" />
 
@@ -69,7 +69,7 @@
                 Margin="25,-40,0,0"
                 FontSize="20"
                 Foreground="Black"
-                Text="{Binding viewCon, FallbackValue=0}"
+                Text="{Binding viewCon, FallbackValue=8}"
                 TextAlignment="Center"
                 TextWrapping="Wrap" />
 
@@ -93,7 +93,7 @@
                 Margin="25,-40,0,0"
                 FontSize="20"
                 Foreground="Black"
-                Text="{Binding viewDex, FallbackValue=0}"
+                Text="{Binding viewDex, FallbackValue=8}"
                 TextAlignment="Center"
                 TextWrapping="Wrap" />
 
@@ -117,7 +117,7 @@
                 Margin="25,-40,0,0"
                 FontSize="20"
                 Foreground="Black"
-                Text="{Binding viewWis, FallbackValue=0}"
+                Text="{Binding viewWis, FallbackValue=8}"
                 TextAlignment="Center"
                 TextWrapping="Wrap" />
 
@@ -141,7 +141,7 @@
                 Margin="25,-40,0,0"
                 FontSize="20"
                 Foreground="Black"
-                Text="{Binding viewCha, FallbackValue=0}"
+                Text="{Binding viewCha, FallbackValue=8}"
                 TextAlignment="Center"
                 TextWrapping="Wrap" />
 
@@ -165,7 +165,7 @@
                 Margin="25,-40,0,0"
                 FontSize="20"
                 Foreground="Black"
-                Text="{Binding viewInt, FallbackValue=0}"
+                Text="{Binding viewInt, FallbackValue=8}"
                 TextAlignment="Center"
                 TextWrapping="Wrap" />
 

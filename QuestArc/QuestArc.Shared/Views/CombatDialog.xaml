@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Battle Simulator"
     Width="1263"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    PrimaryButtonText="Cancel">
     <!--    
     Removed from ContentDialog:
     
@@ -36,25 +38,34 @@
                 Width="215"
                 Height="20"
                 FontSize="14px"
-                Text="Character Name"
+                Text="{Binding viewName}"
                 TextWrapping="Wrap" />
             <Image Source="../Assets/dwarf.jpg" />
 
             <TextBlock
                 Height="20"
                 FontSize="14px"
-                Text="Health:"
-                TextWrapping="Wrap" />
+                TextWrapping="Wrap">
+                <Run Text=" "></Run>
+                <Run Text="{Binding viewHealth}"></Run>
+                <Run Text=" / "></Run>
+                <Run Text="{Binding viewHealth}"></Run>
+                <Run Text=" "></Run>
+            </TextBlock>
             <ProgressBar
                 Height="20"
                 Foreground="Firebrick"
-                Value="100" />
+                Value="{Binding viewHealth}">
+            </ProgressBar>
 
             <TextBlock
                 Height="18"
                 FontSize="14px"
                 Text="Weapon Damage"
-                TextWrapping="Wrap" />
+                TextWrapping="Wrap">
+                <Run Text=": "></Run>
+                <Run Text="{Binding viewBaseDamage}"></Run>
+            </TextBlock>
 
 
         </StackPanel>
@@ -63,8 +74,7 @@
 
         <!--#region RightPane-->
         <Grid
-            Margin="249,50,10,230"
-        
+            Margin="249,50,10,230"        
             Background="DimGray"
             BorderBrush="DarkRed"
             BorderThickness="4"
@@ -75,19 +85,24 @@
                     Height="20"
                     Width="215"
                     FontSize="14px"
-                    Text="Monster Name"
+                    Text="{Binding MonsterName}"
                     TextWrapping="Wrap" />
                 <Image Height="212" Source="../Assets/Goblin.jpg" />
 
                 <TextBlock
-                    Height="20"
-                    FontSize="14px"
-                    Text="Health:"
-                    TextWrapping="Wrap" />
+                Height="20"
+                FontSize="14px"
+                TextWrapping="Wrap">
+                <Run Text=" "></Run>
+                <Run Text="{Binding MonsterCurrHealth}"></Run>
+                <Run Text=" / "></Run>
+                <Run Text="{Binding MonsterMaxHealth}"></Run>
+                <Run Text=" "></Run>
+                </TextBlock>
                 <ProgressBar
                     Height="20"
                     Foreground="Firebrick"
-                    Value="100" />
+                    Value="{Binding MonsterCurrHealth}" />
 
                 <TextBlock
                     Height="18"
@@ -100,7 +115,7 @@
 
         <!--#region BottomPane-->
         <Grid
-            Margin="10,448,10,70"
+            Margin="10,400,10,70"
             Background="DimGray"
             BorderBrush="DarkBlue"
             BorderThickness="4"
@@ -110,14 +125,17 @@
 
                 <Grid Width="468" Height="27">
                     <TextBlock
+                    Name="StatusBox"
                     FontSize="14px"
-                    Text="You encounter a Monster name"
-                    TextWrapping="Wrap" Margin="10,5,10,-2" />
+                    Text="You encounter a "
+                    TextWrapping="Wrap" Margin="10,5,10,-2">
+                        <Run Text="{Binding MonsterName}"></Run>
+                    </TextBlock>
                 </Grid>
                 <Grid Height="140">
-                    <Button Content="Use Weapon" Margin="10,10,0,0" VerticalAlignment="Top" Height="47" Width="225"/>
-                    <Button Content="Flee" HorizontalAlignment="Center" Height="50" Width="452" Margin="0,57,0,0" VerticalAlignment="Top"/>
-                    <Button Content="Inventory" Margin="235,10,0,0" VerticalAlignment="Top" Height="47" Width="225"/>
+                    <Button Content="Use Weapon" Click="UseWeapon_Click" Margin="10,10,0,0" VerticalAlignment="Top" Height="47" Width="225"/>
+                    <Button Content="Flee" Click="Flee_Click" HorizontalAlignment="Center" Height="50" Width="452" Margin="0,57,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Inventory" Click="Inventory_Click" Margin="235,10,0,0" VerticalAlignment="Top" Height="47" Width="225"/>
                 </Grid>
             </StackPanel>
         </Grid>

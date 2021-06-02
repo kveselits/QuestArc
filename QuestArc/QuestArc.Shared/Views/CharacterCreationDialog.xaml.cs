@@ -122,6 +122,8 @@ namespace QuestArc.Views
                 Wisdom = ViewModel.viewWis,
                 Charisma = ViewModel.viewCha,
                 Intelligence = ViewModel.viewInt,
+                UnallocatedPoints = ViewModel.viewUnallocatedPoints,
+                BaseDamage = 6,
                 Initialized = true
 
             };

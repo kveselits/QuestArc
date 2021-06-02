@@ -23,15 +23,30 @@ namespace QuestArc.Views
     public sealed partial class CombatDialog : ContentDialog
     {
         CharacterViewModel ViewModel = new CharacterViewModel();
+        string MonsterName = "Goblin";
+        int MonsterMaxHealth = 100;
+        int MonsterCurrHealth = 100;
+        int MonsterDamage = 8;
 
         public CombatDialog()
         {
             this.InitializeComponent();
             this.DataContext = ViewModel;
+        }
+
+        private void UseWeapon_Click(object sender, RoutedEventArgs e)
+        {
+            MonsterCurrHealth = MonsterCurrHealth - ViewModel.CharacterRef.BaseDamage;
+        }
+
+        private void Inventory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Flee_Click(object sender, RoutedEventArgs e)
+        {
             
-            //ObservableCollection<Item> _viewItems = SimCharacter.Items;
-            //Item EquippedItem = (Item)_viewItems.Where(e => e.Equipped);
-            //int _viewCharWeapDamage = EquippedItem.BaseDamage; 
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

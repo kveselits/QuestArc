@@ -62,7 +62,6 @@ namespace QuestArc.Models
                 this.health = this.health - damage;
                 if (this.health <= 0)
                 {
-                    // Temporary
                     return;
                 }
                 return;

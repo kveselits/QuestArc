@@ -127,5 +127,11 @@ namespace QuestArc.Views
                 await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
             }
         }
+
+        private async void DoBattle_Pressed(object sender, RoutedEventArgs e)
+        {
+            BattleSimulator sim = new BattleSimulator();
+            await sim.RandomBattle();
+        }
     }
 }

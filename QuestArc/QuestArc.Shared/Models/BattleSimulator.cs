@@ -36,8 +36,10 @@ namespace QuestArc.Models
             // Get Character stats for view: Name, Level, HP, Damage
             Character SimCharacter = App.Database.GetCharacterAsync(1).Result;
 
+            // Make Random Monster
+
             // Create Combat Dialog
-            CombatDialog dialog = new CombatDialog();
+            CombatDialog dialog = new CombatDialog(SimCharacter);
             await dialog.ShowAsync();
 
         }

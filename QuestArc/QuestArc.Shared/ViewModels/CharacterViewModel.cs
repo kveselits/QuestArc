@@ -19,6 +19,7 @@ namespace QuestArc.ViewModels
             this._viewWis = character.Wisdom;
             this._viewCha = character.Charisma;
             this._viewInt = character.Intelligence;
+            this._viewBaseDamage = character.BaseDamage;
             this.numPoints = character.UnallocatedPoints;
             this._unallocatedPoints = "Points: " + Convert.ToString(this.numPoints);
             this.numLevel = character.Level;
@@ -96,6 +97,13 @@ namespace QuestArc.ViewModels
         {
             get => _viewInt;
             set => SetProperty(ref _viewInt, value);
+        }
+
+        private int _viewBaseDamage;
+        public int viewBaseDamage
+        {
+            get => _viewBaseDamage;
+            set => SetProperty(ref _viewBaseDamage, value);
         }
 
         private int numLevel;

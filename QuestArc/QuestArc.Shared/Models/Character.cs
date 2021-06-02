@@ -21,6 +21,7 @@ namespace QuestArc.Models
         private int stamina;
         private int intelligence;
         private int level;
+        private int baseDamage;
         private ObservableCollection<Item> items;
         private ObservableCollection<Arc> arcs;
         private DateTime createdOn;
@@ -39,6 +40,9 @@ namespace QuestArc.Models
 
         public int Constitution { get => constitution; set => SetProperty(ref constitution, value); }
 
+        public int BaseDamage { get => baseDamage; set => SetProperty(ref baseDamage, value); }
+
+        // Dex should control how many actions a character can use during a turn
         public int Dexterity { get => dexterity; set => SetProperty(ref dexterity, value); }
 
         public int Wisdom { get => wisdom; set => SetProperty(ref wisdom, value); }
@@ -58,6 +62,120 @@ namespace QuestArc.Models
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public ObservableCollection<Item> Items { get => items; set => SetProperty(ref items, value); }
+
+        [Ignore]
+        public Item RightHand { get; set; }
+        [Ignore]
+        public Item LeftHand { get; set; }
+        [Ignore]
+        public Item Chest { get; set; }
+        [Ignore]
+        public Item Legs { get; set; }
+        [Ignore]
+        public Item Hands { get; set; }
+        [Ignore]
+        public Item Feet { get; set; }
+        [Ignore]
+        public Item Back { get; set; }
+        [Ignore]
+        public Item Head { get; set; }
+
         public bool Initialized { get; set; }
+
+        public bool EquipItem(Item item)
+        {
+            switch (item.Slot)
+            {
+                case ItemSlot.RIGHTHAND:
+                    if (RightHand != null)
+                        DeModifyStats(RightHand);
+                    RightHand = item;
+                    ModifyStats(item);
+                    return true;
+
+                case ItemSlot.LEFTHAND:
+                    if (LeftHand != null)
+                        DeModifyStats(LeftHand);
+                    LeftHand = item;
+                    ModifyStats(item);
+                    return true;
+
+                case ItemSlot.CHEST:
+                    if (Chest != null)
+                        DeModifyStats(Chest);
+                    Chest = item;
+                    ModifyStats(item);
+                    return true;
+
+                case ItemSlot.LEGS:
+                    if (Legs != null)
+                        DeModifyStats(Legs);
+                    Legs = item;
+                    ModifyStats(item);
+                    return true;
+
+                case ItemSlot.HANDS:
+                    if (Hands != null)
+                        DeModifyStats(Hands);
+                    Hands = item;
+                    ModifyStats(item);
+                    return true;
+
+                case ItemSlot.FEET:
+                    if (Feet != null)
+                        DeModifyStats(Feet);
+                    Feet = item;
+                    ModifyStats(item);
+                    return true;
+
+                case ItemSlot.BACK:
+                    if (Back != null)
+                        DeModifyStats(Back);
+                    Back = item;
+                    ModifyStats(item);
+                    return true;
+
+                case ItemSlot.HEAD:
+                    if (Head != null)
+                        DeModifyStats(Head);
+                    Head = item;
+                    ModifyStats(item);
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
+
+        public void ModifyStats(Item item)
+        {
+            BaseDamage += item.BaseDamage;
+            Health += item.Health;
+            Strength += item.Strength;
+            Stamina += item.Stamina;
+            Constitution += item.Constitution;
+            Dexterity += item.Dexterity;
+            Wisdom += item.Wisdom;
+            Intelligence += item.Intelligence;
+            Charisma += item.Charisma;
+        }
+
+        public void DeModifyStats(Item item)
+        {
+            BaseDamage -= item.BaseDamage;
+            Health -= item.Health;
+            Strength -= item.Strength;
+            Stamina -= item.Stamina;
+            Constitution -= item.Constitution;
+            Dexterity -= item.Dexterity;
+            Wisdom -= item.Wisdom;
+            Intelligence -= item.Intelligence;
+            Charisma -= item.Charisma;
+        }
+
+        public void takeDamage()
+        {
+
+        }
     }
 }

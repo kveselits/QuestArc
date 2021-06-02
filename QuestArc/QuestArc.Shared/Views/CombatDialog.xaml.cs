@@ -30,8 +30,8 @@ namespace QuestArc.Views
             this.DataContext = ViewModel;
             
             //ObservableCollection<Item> _viewItems = SimCharacter.Items;
-            Item EquippedItem = (Item)_viewItems.Where(e => e.Equipped);
-            int _viewCharWeapDamage = EquippedItem.BaseDamage; 
+            //Item EquippedItem = (Item)_viewItems.Where(e => e.Equipped);
+            //int _viewCharWeapDamage = EquippedItem.BaseDamage; 
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

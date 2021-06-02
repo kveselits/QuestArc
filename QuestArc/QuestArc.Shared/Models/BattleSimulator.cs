@@ -39,7 +39,7 @@ namespace QuestArc.Models
             // Make Random Monster
 
             // Create Combat Dialog
-            CombatDialog dialog = new CombatDialog(SimCharacter);
+            CombatDialog dialog = new CombatDialog();
             await dialog.ShowAsync();
 
         }

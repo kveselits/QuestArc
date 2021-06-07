@@ -9,6 +9,115 @@
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" ZoomMode="Enabled" VerticalScrollMode="Enabled" CanDrag="True">
+                <Grid>
+                    <Viewbox>
+                        <Grid>
+                            <Image x:Name="imageTraining" Source="/Assets/RiverrunMap.png"/>
+                            <Canvas>
+                                <Button x:Name="buttonSelection" Width="41" Height="29"
+                        Canvas.Left="152" Canvas.Top="842" Click="ButtonClick">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border BorderThickness="10"
+                                    BorderBrush="Blue"
+                                    Background="Transparent">
+                                                <ContentPresenter
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button x:Name="buttonSelection_Copy" Width="48" Height="39"
+                                    Canvas.Left="320" Canvas.Top="773">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border BorderThickness="10"
+                                                BorderBrush="Blue"
+                                                Background="Transparent">
+                                                <ContentPresenter
+                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </Canvas>
+                            <Button x:Name="buttonSelection_Copy1" Width="48" Height="39"
+    Margin="305,590,0,0" VerticalAlignment="Top">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border BorderThickness="10"
+                                            BorderBrush="Blue"
+                                            Background="Transparent">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button x:Name="buttonSelection_Copy2" Width="48" Height="39"
+    Margin="814,525,0,0" VerticalAlignment="Top">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border BorderThickness="10"
+                                            BorderBrush="Blue"
+                                            Background="Transparent">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button x:Name="buttonSelection_Copy3" Width="48" Height="39"
+    Margin="124,321,0,0" VerticalAlignment="Top">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border BorderThickness="10"
+                                            BorderBrush="Blue"
+                                            Background="Transparent">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button x:Name="buttonSelection_Copy4" Width="48" Height="39"
+    Margin="359,75,0,0" VerticalAlignment="Top">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border BorderThickness="10"
+                                            BorderBrush="Blue"
+                                            Background="Transparent">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button x:Name="buttonSelection_Copy5" Width="48" Height="39"
+    Margin="864,231,0,0" VerticalAlignment="Top">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border BorderThickness="10"
+                                            BorderBrush="Blue"
+                                            Background="Transparent">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
+                    </Viewbox>
+                </Grid>
+            </ScrollViewer>
             <!--
                 The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.

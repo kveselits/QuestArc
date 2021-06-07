@@ -1,7 +1,7 @@
 ﻿using System;
 
 using QuestArc.ViewModels;
-
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace QuestArc.Views
@@ -13,6 +13,13 @@ namespace QuestArc.Views
         public MapPage()
         {
             InitializeComponent();
+        }
+
+       
+        private async void ButtonClick(object sender, RoutedEventArgs e)
+        {
+            MapDialog dialog = new MapDialog();
+            await dialog.ShowAsync();
         }
     }
 }

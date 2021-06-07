@@ -45,6 +45,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\CombatDialog.xaml.cs">
       <DependentUpon>CombatDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MapDialog.xaml.cs">
+      <DependentUpon>MapDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\TaskDeleteModal.xaml.cs">
       <DependentUpon>TaskDeleteModal.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\MapDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\TaskDeleteModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +156,7 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\dwarf.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Goblin.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\RiverrunMap.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\tavernBackground.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogoSmall.png" />
   </ItemGroup>

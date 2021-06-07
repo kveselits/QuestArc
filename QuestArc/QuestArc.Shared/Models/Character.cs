@@ -26,7 +26,7 @@ namespace QuestArc.Models
         private ObservableCollection<Item> items;
         private ObservableCollection<Arc> arcs;
         private DateTime createdOn;
-        private int unallocatedPoints;
+        private int unallocatedPoints = 100;
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

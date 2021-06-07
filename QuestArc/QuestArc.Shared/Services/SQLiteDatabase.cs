@@ -47,6 +47,7 @@ namespace QuestArc.Services
                     Arcs = new ObservableCollection<Arc>(),
                     Items = new ObservableCollection<Item>(), 
                 };
+                AddItems();
             }
 
             else
@@ -69,7 +70,7 @@ namespace QuestArc.Services
 
             Characters = new ObservableCollection<Character>();
             Characters.Add(CurrentCharacter);
-            AddItems();
+            
             //CurrentCharacter.TempQuests.Add(defaultQuest);
         }
 
@@ -283,6 +284,7 @@ namespace QuestArc.Services
             item.Description = "A basic longsword";
             item.BaseDamage = 10;
             CurrentCharacter.EquipItem(item);
+            CurrentCharacter.Items.Add(item);
             SaveItemAsync(item);
         }
         #endregion

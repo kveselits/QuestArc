@@ -57,6 +57,7 @@ namespace QuestArc.Views
             if (result == ContentDialogResult.Primary)
             {
                 ViewModel.CharacterRef.UnallocatedPoints -= ViewModel.viewStr * 5;
+                ViewModel.viewUnallocatedPoints -= ViewModel.viewStr * 5;
                 ViewModel.viewStr += 1;
                 ViewModel.CharacterRef.Strength += 1;
                 await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
@@ -70,6 +71,7 @@ namespace QuestArc.Views
             if (result == ContentDialogResult.Primary)
             {
                 ViewModel.CharacterRef.UnallocatedPoints -= ViewModel.viewCon * 5;
+                ViewModel.viewUnallocatedPoints -= ViewModel.viewCon * 5;
                 ViewModel.viewCon += 1;
                 ViewModel.CharacterRef.Constitution += 1;
                 await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
@@ -83,6 +85,7 @@ namespace QuestArc.Views
             if (result == ContentDialogResult.Primary)
             {
                 ViewModel.CharacterRef.UnallocatedPoints -= ViewModel.viewDex * 5;
+                ViewModel.viewUnallocatedPoints -= ViewModel.viewDex * 5;
                 ViewModel.viewDex += 1;
                 ViewModel.CharacterRef.Dexterity += 1;
                 await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
@@ -96,6 +99,7 @@ namespace QuestArc.Views
             if (result == ContentDialogResult.Primary)
             {
                 ViewModel.CharacterRef.UnallocatedPoints -= ViewModel.viewWis * 5;
+                ViewModel.viewUnallocatedPoints -= ViewModel.viewWis * 5;
                 ViewModel.viewWis += 1;
                 ViewModel.CharacterRef.Wisdom += 1;
                 await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
@@ -109,6 +113,7 @@ namespace QuestArc.Views
             if (result == ContentDialogResult.Primary)
             {
                 ViewModel.CharacterRef.UnallocatedPoints -= ViewModel.viewCha * 5;
+                ViewModel.viewUnallocatedPoints -= ViewModel.viewCha * 5;
                 ViewModel.viewCha += 1;
                 ViewModel.CharacterRef.Charisma += 1;
                 await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
@@ -122,10 +127,17 @@ namespace QuestArc.Views
             if (result == ContentDialogResult.Primary)
             {
                 ViewModel.CharacterRef.UnallocatedPoints -= ViewModel.viewInt * 5;
+                ViewModel.viewUnallocatedPoints -= ViewModel.viewInt * 5;
                 ViewModel.viewInt += 1;
                 ViewModel.CharacterRef.Intelligence += 1;
                 await App.Database.SaveCharacterAsync(ViewModel.CharacterRef);
             }
+        }
+
+        private async void DoBattle_Pressed(object sender, RoutedEventArgs e)
+        {
+            BattleSimulator sim = new BattleSimulator();
+            await sim.RandomBattle();
         }
     }
 }

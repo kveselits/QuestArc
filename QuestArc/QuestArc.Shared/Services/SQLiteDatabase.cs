@@ -47,6 +47,7 @@ namespace QuestArc.Services
                     Arcs = new ObservableCollection<Arc>(),
                     Items = new ObservableCollection<Item>(), 
                 };
+                AddItems();
             }
 
             else
@@ -69,6 +70,7 @@ namespace QuestArc.Services
 
             Characters = new ObservableCollection<Character>();
             Characters.Add(CurrentCharacter);
+            
             //CurrentCharacter.TempQuests.Add(defaultQuest);
         }
 
@@ -232,7 +234,22 @@ namespace QuestArc.Services
             return Database.UpdateWithChildrenAsync(item);
         }
 
-        public Task SaveItemAsync(Item item, Character character)
+        public Task SaveItemAsync(Item item)
+        {
+            if (item.Id != 0)
+            {
+                // Update an existing Item
+
+                return Database.UpdateWithChildrenAsync(item);
+            }
+            else
+            {
+                // Save a new Item.
+                return Database.InsertAsync(item);
+            }
+        }
+
+        public Task SaveItemToCharacterAsync(Item item, Character character)
         {
             if (item.Id != 0)
             {
@@ -257,6 +274,18 @@ namespace QuestArc.Services
         {
             // Delete a Item.
             return Database.DeleteAsync(item);
+        }
+
+        public void AddItems()
+        {
+            // Add Default Items
+            Item item = new Item();
+            item.Title = "Long sword";
+            item.Description = "A basic longsword";
+            item.BaseDamage = 10;
+            CurrentCharacter.EquipItem(item);
+            CurrentCharacter.Items.Add(item);
+            SaveItemAsync(item);
         }
         #endregion
     }

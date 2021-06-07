@@ -17,12 +17,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\NavigationViewHeaderBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\NavigationViewHeaderMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\TreeViewCollapseBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BattleSimulator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\NavHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ResourceExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Singleton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Character.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Arc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Monster.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Quest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ActivationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\NavigationService.cs" />
@@ -37,8 +39,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\CharacterPage.xaml.cs">
       <DependentUpon>CharacterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\CharCreationModal.xaml.cs">
-      <DependentUpon>CharCreationModal.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CharacterCreationDialog.xaml.cs">
+      <DependentUpon>CharacterCreationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CombatDialog.xaml.cs">
+      <DependentUpon>CombatDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\TaskDeleteModal.xaml.cs">
       <DependentUpon>TaskDeleteModal.xaml</DependentUpon>
@@ -100,7 +105,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\CharCreationModal.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\CharacterCreationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\CombatDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\dwarf.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Goblin.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\tavernBackground.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogoSmall.png" />
   </ItemGroup>

@@ -50,7 +50,6 @@ namespace QuestArc.ViewModels
             Quests = Db.GetQuestsOnDateAsync(DateTime.Now);*/
         }
 
-       
         private void OnItemInvoked(WinUI.TreeViewItemInvokedEventArgs args)
             => SelectedItem = args.InvokedItem;
     }

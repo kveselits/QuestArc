@@ -1,0 +1,167 @@
+﻿<ContentDialog
+    x:Class="QuestArc.Views.CombatDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:QuestArc.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Battle Simulator"
+    Width="1263"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    PrimaryButtonText="Cancel"
+    mc:Ignorable="d">
+    <!--
+        Removed from ContentDialog:
+        
+        PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+        PrimaryButtonText="Run"
+        SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+        SecondaryButtonText="Fight"
+    -->
+
+    <Grid>
+        <Image
+            Margin="0,0,-333,0"
+            Opacity="0.5"
+            Source="../Assets/tavernBackground.jpg"
+            Stretch="Fill" />
+
+        <!--#region LeftPane-->
+        <StackPanel
+            Margin="10,50,257,230"
+            Background="LightYellow"
+            BorderBrush="DarkBlue"
+            BorderThickness="4"
+            CornerRadius="10">
+
+            <TextBlock
+                Width="215"
+                Height="20"
+                FontSize="14px"
+                Text="{Binding viewName}"
+                TextWrapping="Wrap" />
+            <Image Source="../Assets/dwarf.jpg" />
+
+            <TextBlock
+                Height="20"
+                FontSize="14px"
+                TextWrapping="Wrap">
+                <Run Text=" " />
+                <Run Text="{Binding viewCurrentHealth}" />
+                <Run Text=" / " />
+                <Run Text="{Binding viewHealth}" />
+                <Run Text=" " />
+            </TextBlock>
+            <ProgressBar
+                Height="20"
+                Foreground="Firebrick"
+                Value="{Binding viewCurrentHealth}" />
+
+            <TextBlock
+                Height="18"
+                FontSize="14px"
+                Text="Weapon Damage"
+                TextWrapping="Wrap">
+                <Run Text=" " />
+                <Run Text="{Binding viewBaseDamage}" />
+            </TextBlock>
+
+
+        </StackPanel>
+        <!--#endregion-->
+
+
+        <!--#region RightPane-->
+        <Grid
+            Margin="249,50,10,230"
+            Background="DimGray"
+            BorderBrush="DarkRed"
+            BorderThickness="4"
+            CornerRadius="10">
+
+            <StackPanel>
+                <TextBlock
+                    Width="215"
+                    Height="20"
+                    FontSize="14px"
+                    Text="{Binding viewMonsterName}"
+                    TextWrapping="Wrap" />
+                <Image Height="212" Source="../Assets/Goblin.jpg" />
+
+                <TextBlock
+                    Height="20"
+                    FontSize="14px"
+                    TextWrapping="Wrap">
+                    <Run Text=" " />
+                    <Run Text="{Binding viewMonsterCurrentHealth}" />
+                    <Run Text=" / " />
+                    <Run Text="{Binding viewMonsterHealth}" />
+                    <Run Text=" " />
+                </TextBlock>
+                <ProgressBar
+                    Height="20"
+                    Foreground="Firebrick"
+                    Value="{Binding viewMonsterCurrentHealth}" />
+
+                <TextBlock
+                    Height="18"
+                    FontSize="14px"
+                    Text="Damage: "
+                    TextWrapping="Wrap">
+                    <Run Text="{Binding viewMonsterDamage}" />
+                </TextBlock>
+
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region BottomPane-->
+        <Grid
+            Margin="10,400,10,70"
+            Background="DimGray"
+            BorderBrush="DarkBlue"
+            BorderThickness="4"
+            CornerRadius="10">
+
+            <StackPanel>
+
+                <Grid Width="468" Height="27">
+                    <TextBlock
+                        Name="StatusBox"
+                        Margin="10,5,10,-2"
+                        FontSize="14px"
+                        Text="You encounter a "
+                        TextWrapping="Wrap">
+                        <Run Text="{Binding viewMonsterName}" />
+                    </TextBlock>
+                </Grid>
+                <Grid Height="140">
+                    <Button
+                        Width="225"
+                        Height="47"
+                        Margin="10,10,0,0"
+                        VerticalAlignment="Top"
+                        Click="UseWeapon_Click"
+                        Content="Use Weapon" />
+                    <Button
+                        Width="452"
+                        Height="50"
+                        Margin="0,57,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Click="Flee_Click"
+                        Content="Flee" />
+                    <Button
+                        Width="225"
+                        Height="47"
+                        Margin="235,10,0,0"
+                        VerticalAlignment="Top"
+                        Click="Inventory_Click"
+                        Content="Inventory" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
+    </Grid>
+</ContentDialog>

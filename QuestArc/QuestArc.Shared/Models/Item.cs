@@ -25,6 +25,7 @@ namespace QuestArc.Models
         private int charisma;
         private int weight;
         private ItemType type;
+        private ItemSlot slot;
         private Boolean equipped;
 
         [PrimaryKey, AutoIncrement]
@@ -48,19 +49,18 @@ namespace QuestArc.Models
         public int Charisma { get => charisma; set => SetProperty(ref charisma, value); }
         public int Weight { get => weight; set => SetProperty(ref weight, value); }
         public ItemType Type { get => type; set => SetProperty(ref type, value); }
+        public ItemSlot Slot { get => slot; set => SetProperty(ref slot, value); }
         public Boolean Equipped { get => equipped; set => SetProperty(ref equipped, value); }
+
+        [ManyToOne(CascadeOperations = CascadeOperation.All)]
+        public Character Character { get => character; set => SetProperty(ref character, value); }
 
         public Item()
         {
         }
 
-        public Item(string itemName)
-        {
-            this.title = itemName;
-        }
-
         public Item(string title
-            , string description, int itemLevel, int baseDamage, int health, int mana, int strength, 
+            , string description, int itemLevel, int baseDamage, int health, int mana, int strength,
             int stamina, int constitution, int dexterity, int wisdom, int intelligence, int charisma, ItemType type)
         {
             this.title = title;
@@ -79,8 +79,10 @@ namespace QuestArc.Models
             this.Type = type;
         }
 
-        [ManyToOne(CascadeOperations = CascadeOperation.All)]
-        public Character Character { get => character; set => SetProperty(ref character, value); }
+        public Item(string itemName)
+        {
+            this.title = itemName;
+        }
     }
 
     public enum ItemType
@@ -88,5 +90,16 @@ namespace QuestArc.Models
         WEAPON,
         POTION,
         ARMOR
+    }
+    public enum ItemSlot
+    {
+        RIGHTHAND,
+        LEFTHAND,
+        CHEST,
+        LEGS,
+        HANDS,
+        FEET,
+        BACK,
+        HEAD
     }
 }

@@ -95,6 +95,8 @@ namespace QuestArc.Views
             {
                 
                 Item newItem = (Item)(sender as FrameworkElement).DataContext;
+                App.Database.CurrentCharacter.EquipItem(newItem);
+                App.Database.SaveCharacterAsync(App.Database.CurrentCharacter);
 
                 string sqlQuery = "";
 

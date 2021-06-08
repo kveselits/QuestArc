@@ -20,6 +20,7 @@ namespace QuestArc.Services
         public Quest defaultQuest { get; set; } = new Quest()
         {
             Title = "Default Quest",
+            Status = "ToDo",
             Description = "This is an example quest that can be safely deleted",
             StartTime = DateTime.Now,
             EndTime = DateTime.Now
@@ -70,7 +71,7 @@ namespace QuestArc.Services
 
             Characters = new ObservableCollection<Character>();
             Characters.Add(CurrentCharacter);
-            
+            EquipItems();
             //CurrentCharacter.TempQuests.Add(defaultQuest);
         }
 
@@ -215,6 +216,16 @@ namespace QuestArc.Services
             return quests;
         }
 
+        public ObservableCollection<Quest> GetQuestsOnStatusAsync()
+        {
+            /* Get all Quests on a specific status. */
+
+            var results = GetQuestsAsync().Result.Where(t => t.Status == "Complete")
+                            .OrderBy(t => t.EndTime);
+            ObservableCollection<Quest> quests = new ObservableCollection<Quest>(results);
+            return quests;
+        }
+
         #endregion
 
         #region Item
@@ -279,13 +290,26 @@ namespace QuestArc.Services
         public void AddItems()
         {
             // Add Default Items
+            Item item = CreateItem();
+            CurrentCharacter.EquipItem(item);
+            CurrentCharacter.Items.Add(item);
+            SaveItemAsync(item);
+        }
+
+        private static Item CreateItem()
+        {
             Item item = new Item();
             item.Title = "Long sword";
             item.Description = "A basic longsword";
             item.BaseDamage = 10;
+            return item;
+        }
+
+        public void EquipItems()
+        {
+            Item item = CreateItem();
             CurrentCharacter.EquipItem(item);
-            CurrentCharacter.Items.Add(item);
-            SaveItemAsync(item);
+            SaveCharacterAsync(CurrentCharacter);
         }
         #endregion
     }

@@ -13,6 +13,12 @@ namespace QuestArc.Views
         public QuestLogPage()
         {
             InitializeComponent();
+            Quests.ItemsSource = App.Database.GetQuestsOnStatusAsync();
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

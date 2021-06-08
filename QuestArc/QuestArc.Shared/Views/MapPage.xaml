@@ -9,6 +9,115 @@
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" ZoomMode="Enabled" VerticalScrollMode="Enabled" CanDrag="True">
+                <Grid>
+                    <Viewbox>
+                        <Grid>
+                            <Image x:Name="imageTraining" Source="/Assets/OakenacreVillage.png"/>
+                            <Canvas>
+                                <Button x:Name="Button" Width="41" Height="29"
+                        Canvas.Left="284" Canvas.Top="905" Click="ButtonClick">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border BorderThickness="10"
+                                    BorderBrush="Blue"
+                                    Background="Transparent">
+                                                <ContentPresenter
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button x:Name="Button1" Width="48" Height="39"
+                                    Canvas.Left="752" Canvas.Top="768" Click="ButtonClick1">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border BorderThickness="10"
+                                                BorderBrush="Blue"
+                                                Background="Transparent">
+                                                <ContentPresenter
+                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </Canvas>
+                            <Button x:Name="Button2" Width="48" Height="39"
+    Margin="1166,446,0,0" VerticalAlignment="Top" Click="ButtonClick2">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border BorderThickness="10"
+                                            BorderBrush="Blue"
+                                            Background="Transparent">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button x:Name="Button3" Width="48" Height="39"
+    Margin="814,525,0,0" VerticalAlignment="Top" Click="ButtonClick3">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border BorderThickness="10"
+                                            BorderBrush="Blue"
+                                            Background="Transparent">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button x:Name="Button4" Width="48" Height="39"
+    Margin="223,357,0,0" VerticalAlignment="Top" Click="ButtonClick4">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border BorderThickness="10"
+                                            BorderBrush="Blue"
+                                            Background="Transparent">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button x:Name="Button5" Width="48" Height="39"
+    Margin="428,186,0,0" VerticalAlignment="Top" Click="ButtonClick5">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border BorderThickness="10"
+                                            BorderBrush="Blue"
+                                            Background="Transparent">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button x:Name="Button6" Width="48" Height="39"
+    Margin="1257,186,0,0" VerticalAlignment="Top" Click="ButtonClick6" RenderTransformOrigin="9.812,1.308">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border BorderThickness="10"
+                                            BorderBrush="Yellow"
+                                            Background="Transparent">
+                                            <ContentPresenter
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
+                    </Viewbox>
+                </Grid>
+            </ScrollViewer>
             <!--
                 The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.

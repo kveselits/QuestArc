@@ -156,6 +156,7 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\dwarf.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Goblin.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\OakenacreVillage.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\RiverrunMap.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\tavernBackground.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogoSmall.png" />

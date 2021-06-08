@@ -19,10 +19,12 @@ namespace QuestArc.Views
 {
 	public sealed partial class MapDialog : ContentDialog
 	{
-		public MapDialog()
+		public Quest SelectedQuest { get; set; }
+
+		public MapDialog(Quest selectedQuest)
 		{
 			this.InitializeComponent();
-			DataContext = ViewModel;
+			SelectedQuest = selectedQuest;
 		}
 
 		public MapViewModel ViewModel { get; } = new MapViewModel();

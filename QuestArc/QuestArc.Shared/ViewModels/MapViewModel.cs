@@ -8,19 +8,14 @@ namespace QuestArc.ViewModels
 {
     public class MapViewModel : ObservableObject
     {
+        private Quest selectedQuest;
+
         public MapViewModel()
         {
             Quests = App.Database.GetQuestsAsync().Result;
-            Waypoints = new ArrayList();
-            foreach (var item in Quests)
-            {
-                if(Waypoints.Count < 5)
-                {
-                    Waypoints.Add(item);
-                }
-            };
+            SelectedQuest = Quests[0];
         }
-        public List<Quest> Quests { get; private set; }
-        public ArrayList Waypoints { get; private set; }
+        public List<Quest> Quests { get; set; }
+        public Quest SelectedQuest { get => selectedQuest; set => SetProperty(ref selectedQuest, value); }
     }
 }

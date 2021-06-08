@@ -11,7 +11,7 @@ namespace QuestArc.ViewModels
 
         public CharacterViewModel()
         {
-            Character character = App.Database.GetCharacterAsync(1).Result;
+            Character character = App.Database.CurrentCharacter;
             MonsterRef = new Monster("Goblin", 100, 5);
             CharacterRef = character;
             this._viewName = character.Name;
@@ -29,6 +29,13 @@ namespace QuestArc.ViewModels
             this.numLevel = character.Level;
             this._viewUnallocatedPoints = character.UnallocatedPoints;
             this._viewLevel = "Level: " + Convert.ToString(this.numLevel);
+
+            this.viewLeftHand = character.LeftHand;
+            this.viewRightHand = character.RightHand;
+            this.viewBack = character.Back;
+            this.viewHelmet = character.Head;
+            this.viewChest = character.Chest;
+            this.viewFeet = character.Feet;
 
             this._viewMonsterDamage = MonsterRef.Damage;
             this._viewMonsterHealth = MonsterRef.Health;
@@ -122,6 +129,48 @@ namespace QuestArc.ViewModels
         {
             get => _viewBaseDamage;
             set => SetProperty(ref _viewBaseDamage, value);
+        }
+
+        private Item _viewLeftHand;
+        public Item viewLeftHand
+        {
+            get => _viewLeftHand;
+            set => SetProperty(ref _viewLeftHand, value);
+        }
+
+        private Item _viewRightHand;
+        public Item viewRightHand
+        {
+            get => _viewRightHand;
+            set => SetProperty(ref _viewRightHand, value);
+        }
+
+        private Item _viewChest;
+        public Item viewChest
+        {
+            get => _viewChest;
+            set => SetProperty(ref _viewChest, value);
+        }
+
+        private Item _viewFeet;
+        public Item viewFeet
+        {
+            get => _viewFeet;
+            set => SetProperty(ref _viewFeet, value);
+        }
+
+        private Item _viewHelmet;
+        public Item viewHelmet
+        {
+            get => _viewHelmet;
+            set => SetProperty(ref _viewHelmet, value);
+        }
+
+        private Item _viewBack;
+        public Item viewBack
+        {
+            get => _viewBack;
+            set => SetProperty(ref _viewBack, value);
         }
 
         private int _viewMonsterDamage;

@@ -4,9 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:QuestArc.Models"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="QuestListViewTemplate" x:DataType="model:Quest">
+            <TextBlock FontSize="30" Text="{x:Bind Title}" x:Phase="1" Margin="0,5,0,5"/>
+        </DataTemplate>
+    </Page.Resources>
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
+
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
             <!--
@@ -20,20 +28,24 @@
                     <Image MaxWidth="1900" MaxHeight="1900" Source="../Assets/tavernBackground.jpg" Stretch="Fill" Opacity="0.5"></Image>
 
                     <!--#region Jobs Pane-->
-                    <Grid Margin="50,50,975,50" Background="PaleGoldenrod" CornerRadius="10" BorderBrush="DarkBlue" BorderThickness="4">
-                        <TextBlock Text="Jobs" FontSize="30" TextWrapping="Wrap"/>
-                        <ListView>
-
-                        </ListView>
-                    </Grid>
 
                     <!--#region Search Pane-->
-                    <TextBox x:Name="searchBar" PlaceholderText="Search..." FontSize="36" Margin="975,50,50,1773" BorderBrush="DarkBlue" BorderThickness="4"></TextBox>
-                    <Grid Margin="975,132,50,50" Background="LightGray" CornerRadius="10" BorderBrush="DarkBlue" BorderThickness="4">
-                        <TextBlock Text="Logbook" FontSize="30" TextWrapping="Wrap"/>
-                        <ListView>
 
-                        </ListView>
+                    <TextBox x:Name="searchBar" PlaceholderText="Search..." FontSize="36" Margin="975,50,50,1773" BorderBrush="DarkBlue" BorderThickness="4"></TextBox>
+                    <Grid Margin="300,200,300,200" Background="LightGray" CornerRadius="10" BorderBrush="DarkBlue" BorderThickness="4">
+                        <TextBlock Text="Logbook" FontSize ="40" TextWrapping="Wrap"/>
+                        <ListView
+    x:Name="Quests"
+    ItemTemplate="{StaticResource QuestListViewTemplate}"
+    BorderThickness="1"
+    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+    Width="1065"
+    HorizontalAlignment="Center" Margin="0,215,0,171"/>
+
+                        <!-- In this example, the ListView's ItemTemplate property is bound to a data template (shown below)
+called ContactListViewTemplate, defined in a Page.Resources section. -->
+
+
                     </Grid>
                 </Grid>
             </Viewbox>

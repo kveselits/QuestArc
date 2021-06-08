@@ -263,6 +263,13 @@
                         Text="Left Weapon"
                         TextAlignment="Center"
                         TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding viewLeftHand.Title}"
+                        Width="85"
+                        Height="20"
+                        FontSize="12"
+                        FontWeight="Thin"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap"/>
                 </StackPanel>
 
                 <!--  Helmet  -->
@@ -279,6 +286,7 @@
                         Text="Helmet"
                         TextAlignment="Center"
                         TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding viewHelmet.Title}"></TextBlock>
                 </StackPanel>
 
                 <!--  Back  -->
@@ -295,6 +303,7 @@
                         Text="Back"
                         TextAlignment="Center"
                         TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding viewBack.Title}"></TextBlock>
                 </StackPanel>
 
 
@@ -312,6 +321,7 @@
                         Text="Chest"
                         TextAlignment="Center"
                         TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding viewChest.Title}"></TextBlock>
                 </StackPanel>
 
 
@@ -329,6 +339,7 @@
                         Text="Feet"
                         TextAlignment="Center"
                         TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding viewFeet.Title}"></TextBlock>
                 </StackPanel>
 
                 <!--  Right Weapon  -->
@@ -345,14 +356,16 @@
                         Text="Right Weapon"
                         TextAlignment="Center"
                         TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding viewRightHand.Title}"
+                        Width="85"
+                        Height="20"
+                        FontSize="12"
+                        FontWeight="Thin"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
                 </StackPanel>
 
                 <!--  Inventory Viewer  -->
-                <TextBox
-                    Margin="10,359,10,10"
-                    CornerRadius="10"
-                    IsReadOnly="True"
-                    TextWrapping="Wrap" />
 
             </Grid>
             <!--#endregion-->
